@@ -1,0 +1,327 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import { v3 as co } from '../data/company';
+---
+
+<LandscapeLayout
+  title={`${co.name} — ${co.tagline}`}
+  description={`${co.name}: eco-friendly native plant landscaping, lawn removal, and habitat gardens in ${co.serviceArea}.`}
+  primaryColor={co.colors.primary}
+  secondaryColor={co.colors.secondary}
+>
+  <style>
+    :root {
+      --c-primary: #8b4513;
+      --c-secondary: #f5f0e0;
+      --c-accent: #6b8e23;
+      --c-bg: #fffef8;
+      --c-text: #2a1a0a;
+      --c-muted: #8a7a5a;
+      --c-hero: #3d1f0a;
+      --c-card: #faf5e8;
+      --c-border: #d4c4a0;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--c-bg); color: var(--c-text); }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .btn-terra {
+      background: var(--c-primary);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .btn-terra:hover { opacity: 0.88; }
+    .btn-sage {
+      background: var(--c-accent);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+    .btn-sage:hover { opacity: 0.88; }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
+    .section-label { color: var(--c-accent); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; }
+    .card { background: var(--c-card); border: 1px solid var(--c-border); border-radius: 1.25rem; padding: 1.75rem; }
+    .hero-section {
+      min-height: 88vh;
+      background: var(--c-hero);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=85') center/cover no-repeat;
+      opacity: 0.45;
+    }
+    .leaf-badge {
+      background: rgba(107,142,35,0.2);
+      border: 1px solid rgba(107,142,35,0.5);
+      color: #d4f0a0;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .plan-highlight { background: var(--c-accent); color: white; }
+    .stat-chip { background: rgba(0,0,0,0.3); backdrop-filter: blur(8px); border-radius: 1rem; padding: 1.25rem 1.75rem; text-align: center; }
+  </style>
+
+  <!-- Nav -->
+  <header style="background: rgba(61,31,10,0.96); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(107,142,35,0.2);">
+    <nav aria-label="Main navigation" style="max-width: 72rem; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 1.5rem;" aria-hidden="true">🌿</span>
+        <span class="font-display" style="color: white; font-size: 1.2rem; font-weight: 700;">{co.name}</span>
+      </a>
+      <div style="display: flex; gap: 1.5rem; align-items: center;">
+        <a href="#services" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Services</a>
+        <a href="#portfolio" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Portfolio</a>
+        <a href="#plans" style="color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem;">Plans</a>
+        <a href="#contact" class="btn-sage" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Free Consult</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero-section" aria-label="Hero">
+      <div class="hero-img" role="img" aria-label="California native wildflower garden"></div>
+      <div style="position: relative; z-index: 1; max-width: 72rem; margin: 0 auto; padding: 7rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; max-width: 36rem;">
+        <span class="leaf-badge"><span aria-hidden="true">🌱</span>Certified Bay-Friendly</span>
+        <h1 class="font-display" style="color: white; font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.1;">{co.tagline}</h1>
+        <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.7;">Native plants, rainwater harvesting, and chemical-free care — for gardens that give back to the land.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#contact" class="btn-terra">Book a Consultation</a>
+          <a href="#services" class="btn-outline-white">What We Do</a>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div style="position: relative; z-index: 1; max-width: 72rem; margin: 0 auto; padding: 0 1.5rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        {co.stats.map(s => (
+          <div class="stat-chip">
+            <div class="font-display" style="color: #d4f0a0; font-size: 1.75rem; font-weight: 700;">{s.value}</div>
+            <div style="color: rgba(255,255,255,0.65); font-size: 0.75rem;">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-heading" style="padding: 5rem 1.5rem; max-width: 72rem; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <p class="section-label">What We Grow</p>
+        <h2 id="services-heading" class="font-display" style="font-size: 2.5rem; margin-top: 0.5rem;">Ecological Services</h2>
+        <p style="color: var(--c-muted); margin-top: 0.75rem; max-width: 34rem; margin-left: auto; margin-right: auto;">Every service we offer is designed to work with nature, not against it.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        {co.services.map(s => (
+          <div class="card">
+            <div style="font-size: 2.25rem; margin-bottom: 0.75rem;" aria-hidden="true">{s.icon}</div>
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--c-primary); margin-bottom: 0.5rem;">{s.title}</h3>
+            <p style="color: var(--c-muted); line-height: 1.65; font-size: 0.92rem; margin: 0;">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans" aria-labelledby="plans-heading" style="padding: 5rem 1.5rem; background: var(--c-secondary);">
+      <div style="max-width: 72rem; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">Maintenance Programs</p>
+          <h2 id="plans-heading" class="font-display" style="font-size: 2.5rem; margin-top: 0.5rem;">Care Plans</h2>
+          <p style="color: var(--c-muted); margin-top: 0.75rem;">100% chemical-free. Always.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; align-items: start;">
+          {co.plans.map(p => (
+            <div class={`card ${p.highlight ? 'plan-highlight' : ''}`} style={p.highlight ? 'transform: translateY(-6px);' : ''}>
+              {p.highlight && <div style="font-size: 0.73rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; color: rgba(255,255,255,0.75);">Most Popular</div>}
+              <h3 class="font-display" style={`font-size: 1.5rem; font-weight: 700; ${p.highlight ? 'color: white;' : 'color: var(--c-primary);'}`}>{p.name}</h3>
+              <div style="margin: 1rem 0; display: flex; align-items: baseline; gap: 0.25rem;">
+                <span style={`font-size: 2.5rem; font-weight: 800; ${p.highlight ? 'color: white;' : ''}`}>{p.price}</span>
+                <span style={`font-size: 0.875rem; ${p.highlight ? 'color: rgba(255,255,255,0.6);' : 'color: var(--c-muted);'}`}>{p.period}</span>
+              </div>
+              <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                {p.features.map(f => (
+                  <li style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                    <span aria-hidden="true" style={p.highlight ? 'color: #d4f0a0;' : 'color: var(--c-accent);'}>✦</span>
+                    <span style={p.highlight ? 'color: rgba(255,255,255,0.9);' : ''}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" class="btn-terra" style={`display: block; text-align: center; ${p.highlight ? 'background: white; color: var(--c-accent);' : ''}`}>Get Started</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" aria-labelledby="portfolio-heading" style="padding: 5rem 1.5rem; max-width: 72rem; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <p class="section-label">Recent Projects</p>
+        <h2 id="portfolio-heading" class="font-display" style="font-size: 2.5rem; margin-top: 0.5rem;">Garden Stories</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        {co.portfolio.map(p => (
+          <figure style="margin: 0; border-radius: 1.25rem; overflow: hidden; border: 1px solid var(--c-border);">
+            <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;" />
+            <figcaption style="padding: 1.25rem; background: var(--c-card);">
+              <h3 style="font-weight: 700; color: var(--c-primary); margin-bottom: 0.35rem;">{p.title}</h3>
+              <p style="color: var(--c-muted); font-size: 0.9rem; margin: 0; line-height: 1.6;">{p.description}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- Before/After -->
+    <section aria-labelledby="ba-heading" style="padding: 5rem 1.5rem; background: var(--c-secondary);">
+      <div style="max-width: 72rem; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">Transformations</p>
+          <h2 id="ba-heading" class="font-display" style="font-size: 2.5rem; margin-top: 0.5rem;">From Lawn to Life</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem;">
+          {co.beforeAfter.map(ba => (
+            <div>
+              <h3 style="font-weight: 700; color: var(--c-primary); margin-bottom: 1rem; text-align: center;">{ba.label}</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div>
+                  <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); margin-bottom: 0.4rem;">Before</p>
+                  <img src={ba.before} alt={`Before: ${ba.label}`} width="300" height="200" loading="lazy" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;" />
+                </div>
+                <div>
+                  <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-accent); margin-bottom: 0.4rem;">After</p>
+                  <img src={ba.after} alt={`After: ${ba.label}`} width="300" height="200" loading="lazy" style="width: 100%; height: 160px; object-fit: cover; border-radius: 0.75rem;" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section aria-labelledby="certs-heading" style="padding: 4rem 1.5rem; max-width: 72rem; margin: 0 auto; text-align: center;">
+      <p class="section-label">Credentials</p>
+      <h2 id="certs-heading" class="font-display" style="font-size: 2rem; margin: 0.5rem 0 2rem;">Certified Ecological Stewardship</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+        {co.certifications.map(c => (
+          <span style="background: var(--c-card); border: 1px solid var(--c-border); color: var(--c-text); padding: 0.5rem 1.25rem; border-radius: 2rem; font-size: 0.88rem; font-weight: 600;">{c}</span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section aria-labelledby="team-heading" style="padding: 5rem 1.5rem; background: var(--c-secondary);">
+      <div style="max-width: 72rem; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">The People</p>
+          <h2 id="team-heading" class="font-display" style="font-size: 2.5rem; margin-top: 0.5rem;">Meet the Stewards</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+          {co.teamMembers.map(m => (
+            <div class="card" style="text-align: center;">
+              <div style="width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--c-primary), var(--c-accent)); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;" aria-hidden="true">
+                <span style="color: white; font-size: 1.5rem; font-weight: 700;">{m.name.charAt(0)}</span>
+              </div>
+              <h3 style="font-weight: 700; margin-bottom: 0.25rem; font-size: 0.975rem;">{m.name}</h3>
+              <p style="color: var(--c-muted); font-size: 0.85rem; margin: 0;">{m.role}</p>
+              {m.cert && <p style="color: var(--c-accent); font-size: 0.78rem; margin-top: 0.35rem; font-weight: 600;">{m.cert}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Area -->
+    <section aria-labelledby="area-heading" style="padding: 5rem 1.5rem; max-width: 72rem; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+        <div>
+          <p class="section-label">Where We Work</p>
+          <h2 id="area-heading" class="font-display" style="font-size: 2.25rem; margin: 0.5rem 0 1rem;">Our Bioregion</h2>
+          <p style="color: var(--c-muted); line-height: 1.7; margin-bottom: 1rem;">We work within the coastal sage scrub bioregion of North San Diego County.</p>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+            {co.serviceArea.split(', ').map(area => (
+              <li style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="color: var(--c-accent);" aria-hidden="true">🌿</span> {area}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div style="background: var(--c-card); border: 1px solid var(--c-border); border-radius: 1.25rem; height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem;">
+          <span style="font-size: 3rem;" aria-hidden="true">🗺️</span>
+          <p style="color: var(--c-muted); font-weight: 600; margin: 0;">Coastal North County</p>
+          <p style="color: var(--c-muted); font-size: 0.82rem; margin: 0; text-align: center; padding: 0 1rem;">{co.serviceArea}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-heading" style="padding: 5rem 1.5rem; background: var(--c-hero);">
+      <div style="max-width: 44rem; margin: 0 auto; text-align: center;">
+        <p style="color: #d4f0a0; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem;">Let's Grow Together</p>
+        <h2 id="contact-heading" class="font-display" style="color: white; font-size: 2.75rem; margin: 0.5rem 0 1rem;">Free Ecological Consultation</h2>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; line-height: 1.7;">We'll walk your property, assess your soil, and map a native garden plan — at no charge.</p>
+        <form style="display: grid; gap: 1rem; text-align: left;" novalidate aria-label="Consultation request form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label for="v3-fname" style="color: rgba(255,255,255,0.8); font-size: 0.82rem; display: block; margin-bottom: 0.35rem;">First Name <span aria-hidden="true">*</span></label>
+              <input id="v3-fname" name="first_name" type="text" required autocomplete="given-name" style="width: 100%; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="Rosa" />
+            </div>
+            <div>
+              <label for="v3-lname" style="color: rgba(255,255,255,0.8); font-size: 0.82rem; display: block; margin-bottom: 0.35rem;">Last Name <span aria-hidden="true">*</span></label>
+              <input id="v3-lname" name="last_name" type="text" required autocomplete="family-name" style="width: 100%; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="Guerrero" />
+            </div>
+          </div>
+          <div>
+            <label for="v3-email" style="color: rgba(255,255,255,0.8); font-size: 0.82rem; display: block; margin-bottom: 0.35rem;">Email <span aria-hidden="true">*</span></label>
+            <input id="v3-email" name="email" type="email" required autocomplete="email" style="width: 100%; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="rosa@example.com" />
+          </div>
+          <div>
+            <label for="v3-interest" style="color: rgba(255,255,255,0.8); font-size: 0.82rem; display: block; margin-bottom: 0.35rem;">I'm interested in…</label>
+            <select id="v3-interest" name="interest" style="width: 100%; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(61,31,10,0.9); color: white; font-size: 0.95rem; box-sizing: border-box;">
+              <option value="">Select…</option>
+              {co.services.map(s => <option value={s.title}>{s.title}</option>)}
+            </select>
+          </div>
+          <div>
+            <label for="v3-message" style="color: rgba(255,255,255,0.8); font-size: 0.82rem; display: block; margin-bottom: 0.35rem;">Tell us about your space</label>
+            <textarea id="v3-message" name="message" rows={4} style="width: 100%; padding: 0.75rem; border-radius: 0.75rem; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 0.95rem; resize: vertical; box-sizing: border-box;" placeholder="Size, current plants, goals for wildlife…"></textarea>
+          </div>
+          <button type="submit" class="btn-sage" style="width: 100%; padding: 1rem; font-size: 1rem; border: none; cursor: pointer; border-radius: 0.75rem;">Book Free Consultation</button>
+        </form>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 1.5rem;">{co.phone} · {co.email}</p>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: #1e0e04; color: rgba(255,255,255,0.5); padding: 2.5rem 1.5rem; text-align: center;">
+    <div style="max-width: 72rem; margin: 0 auto;">
+      <p class="font-display" style="color: #d4f0a0; font-size: 1.1rem; margin-bottom: 0.4rem;">{co.name}</p>
+      <p style="font-size: 0.8rem; margin-bottom: 0.35rem;">{co.address}</p>
+      <p style="font-size: 0.8rem;">&copy; {new Date().getFullYear()} {co.name}. Chemical-free. Earth-first.</p>
+    </div>
+  </footer>
+</LandscapeLayout>

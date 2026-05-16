@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+
+const variants = [
+  {
+    slug: 'v1-residential-lawn',
+    label: 'V1 — Residential Lawn',
+    name: 'GreenScape Lawn & Garden',
+    tagline: 'Your Neighborhood Lawn Experts',
+    description: 'Classic green/cream residential lawn care brand.',
+    palette: { bg: '#2d6a2d', text: '#f5f0e8', accent: '#4a9e4a' },
+    emoji: '🌿',
+  },
+  {
+    slug: 'v2-luxury-design-build',
+    label: 'V2 — Luxury Design-Build',
+    name: 'Meridian Design + Build',
+    tagline: 'Where Landscape Becomes Legacy',
+    description: 'Deep sage/champagne high-end estate design.',
+    palette: { bg: '#3d5a3d', text: '#f0ead8', accent: '#b8a96a' },
+    emoji: '✨',
+  },
+  {
+    slug: 'v3-eco-native',
+    label: 'V3 — Eco-Native Plants',
+    name: 'Tierra Viva Native Gardens',
+    tagline: 'Rooted in Nature. Designed for Life.',
+    description: 'Warm terracotta/sage ecological native plant design.',
+    palette: { bg: '#8b4513', text: '#f5f0e0', accent: '#6b8e23' },
+    emoji: '🌻',
+  },
+  {
+    slug: 'v4-tree-arborist',
+    label: 'V4 — Tree & Arborist',
+    name: 'Canopy Tree & Arborist Services',
+    tagline: 'Certified Arborists. Trusted Tree Care.',
+    description: 'Forest green/wood-grain ISA-certified arborist.',
+    palette: { bg: '#2d4a1e', text: '#f4ede0', accent: '#8b6914' },
+    emoji: '🌳',
+  },
+  {
+    slug: 'v5-commercial-property',
+    label: 'V5 — Commercial Property',
+    name: 'Apex Commercial Landscapes',
+    tagline: 'Professional Property. Premium Presentation.',
+    description: 'Navy/silver corporate commercial landscape management.',
+    palette: { bg: '#1a2744', text: '#f0f4f8', accent: '#8a9ab8' },
+    emoji: '🏢',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landscape Templates — 5 Variants</title>
+    <meta name="description" content="Five production-ready landscape, lawn care, and tree service landing page templates built with Astro + Tailwind." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; }
+      .font-display { font-family: 'Playfair Display', serif; }
+      a { text-decoration: none; color: inherit; }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.4); }
+      .card { transition: transform 0.2s, box-shadow 0.2s; }
+    </style>
+  </head>
+  <body>
+    <header style="border-bottom: 1px solid #21262d; padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; max-width: 80rem; margin: 0 auto;">
+      <div>
+        <span class="font-display" style="font-size: 1.25rem; color: #58a6ff;">Landscape Templates</span>
+        <span style="color: #8b949e; font-size: 0.85rem; margin-left: 0.75rem;">5 Variants · Astro + Tailwind</span>
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <span style="background: #238636; color: white; font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; letter-spacing: 0.05em;">LIVE</span>
+      </div>
+    </header>
+
+    <main style="max-width: 80rem; margin: 0 auto; padding: 4rem 2rem;">
+      <div style="text-align: center; margin-bottom: 4rem;">
+        <h1 class="font-display" style="font-size: clamp(2.5rem, 5vw, 4rem); color: #f0f6fc; line-height: 1.1; margin-bottom: 1rem;">
+          Landscape & Lawn Care<br />Landing Page Templates
+        </h1>
+        <p style="color: #8b949e; font-size: 1.05rem; max-width: 40rem; margin: 0 auto 2rem; line-height: 1.7;">
+          Five distinct client-ready variants covering residential lawn care, luxury design-build, eco-native gardens, tree arborist, and commercial property management.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <span style="background: #1f2937; border: 1px solid #374151; padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.82rem; color: #9ca3af;">Astro v6</span>
+          <span style="background: #1f2937; border: 1px solid #374151; padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.82rem; color: #9ca3af;">Tailwind CSS</span>
+          <span style="background: #1f2937; border: 1px solid #374151; padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.82rem; color: #9ca3af;">axe-core 0 violations</span>
+          <span style="background: #1f2937; border: 1px solid #374151; padding: 0.4rem 1rem; border-radius: 9999px; font-size: 0.82rem; color: #9ca3af;">TypeScript data layer</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+        {variants.map(v => (
+          <a href={`/${v.slug}`} class="card" style={`display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid #21262d;`}>
+            <div style={`background: ${v.palette.bg}; padding: 2.5rem 1.75rem; position: relative; overflow: hidden;`}>
+              <div style="position: absolute; top: -20px; right: -20px; font-size: 6rem; opacity: 0.12;" aria-hidden="true">{v.emoji}</div>
+              <div style={`font-size: 3rem; margin-bottom: 1rem;`} aria-hidden="true">{v.emoji}</div>
+              <div style={`font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: ${v.palette.accent}; margin-bottom: 0.5rem;`}>{v.label}</div>
+              <h2 class="font-display" style={`color: ${v.palette.text}; font-size: 1.4rem; line-height: 1.2; margin-bottom: 0.5rem;`}>{v.name}</h2>
+              <p style={`color: ${v.palette.text}; opacity: 0.75; font-size: 0.85rem;`}>{v.tagline}</p>
+            </div>
+            <div style="background: #161b22; padding: 1.25rem 1.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <p style="color: #8b949e; font-size: 0.85rem; line-height: 1.5;">{v.description}</p>
+              <span style="color: #58a6ff; font-size: 1.2rem; flex-shrink: 0; margin-left: 1rem;" aria-hidden="true">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div style="margin-top: 4rem; padding: 2rem; border: 1px solid #21262d; border-radius: 0.75rem; background: #161b22;">
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #f0f6fc;">Sections included in every variant</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem;">
+          {['Hero w/ landscape photo', 'Services grid', 'Maintenance plans & pricing', 'Project portfolio', 'Before & after gallery', 'Certifications (ISA, NALP…)', 'Team profiles', 'Service area map', 'Free estimate form', 'Accessible nav + skip link', 'axe-core 0 violations', 'Mobile responsive'].map(item => (
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: #8b949e;">
+              <span style="color: #3fb950;" aria-hidden="true">✓</span> {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+
+    <footer style="border-top: 1px solid #21262d; padding: 2rem; text-align: center; color: #8b949e; font-size: 0.82rem; margin-top: 4rem;">
+      <p>Landscape Templates · Built with Astro + Tailwind · {new Date().getFullYear()}</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,308 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import { v2 as co } from '../data/company';
+---
+
+<LandscapeLayout
+  title={`${co.name} — ${co.tagline}`}
+  description={`${co.name}: bespoke luxury landscape design and construction in ${co.serviceArea}.`}
+  primaryColor={co.colors.primary}
+  secondaryColor={co.colors.secondary}
+>
+  <style>
+    :root {
+      --c-primary: #3d5a3d;
+      --c-secondary: #f0ead8;
+      --c-accent: #b8a96a;
+      --c-bg: #fafaf7;
+      --c-text: #1c2b1c;
+      --c-muted: #7a7a6a;
+      --c-hero: #1a2a1a;
+      --c-card: #f5f0e4;
+      --c-border: #d8cfa8;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--c-bg); color: var(--c-text); }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .btn-gold {
+      background: var(--c-accent);
+      color: var(--c-hero);
+      padding: 0.875rem 2.25rem;
+      border-radius: 0;
+      font-weight: 700;
+      display: inline-block;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    .btn-gold:hover { opacity: 0.88; }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.5);
+      color: white;
+      padding: 0.875rem 2.25rem;
+      border-radius: 0;
+      font-weight: 600;
+      display: inline-block;
+      transition: all 0.2s;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .section-label { color: var(--c-accent); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.78rem; }
+    .card { background: var(--c-card); border: 1px solid var(--c-border); padding: 2rem; }
+    .hero-section {
+      min-height: 95vh;
+      background: var(--c-hero);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85') center/cover no-repeat;
+      opacity: 0.4;
+    }
+    .badge-gold {
+      border: 1px solid var(--c-accent);
+      color: var(--c-accent);
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+    .divider { width: 60px; height: 2px; background: var(--c-accent); }
+    .plan-highlight { background: var(--c-primary); color: white; }
+  </style>
+
+  <!-- Nav -->
+  <header style="background: rgba(26,42,26,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(184,169,106,0.2);">
+    <nav aria-label="Main navigation" style="max-width: 80rem; margin: 0 auto; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#" style="text-decoration: none;">
+        <div class="font-display" style="color: white; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em;">{co.name}</div>
+        <div style="color: var(--c-accent); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;">Est. {co.founded}</div>
+      </a>
+      <div style="display: flex; gap: 2rem; align-items: center;">
+        <a href="#services" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">Services</a>
+        <a href="#portfolio" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">Portfolio</a>
+        <a href="#plans" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">Investment</a>
+        <a href="#contact" class="btn-gold" style="padding: 0.6rem 1.5rem;">Inquire</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero-section" aria-label="Hero">
+      <div class="hero-img" role="img" aria-label="Luxury estate garden"></div>
+      <div style="position: relative; z-index: 1; max-width: 80rem; margin: 0 auto; padding: 10rem 2rem; display: flex; flex-direction: column; gap: 1.75rem; max-width: 44rem; margin-left: 8vw;">
+        <span class="badge-gold">{co.tagline}</span>
+        <h1 class="font-display" style="color: white; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.05; font-weight: 700;">{co.name}</h1>
+        <div class="divider"></div>
+        <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.75; max-width: 26rem;">Singular gardens for singular homes. We design, build, and steward landscapes of enduring beauty.</p>
+        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.5rem;">
+          <a href="#contact" class="btn-gold">Begin Your Project</a>
+          <a href="#portfolio" class="btn-ghost">View Portfolio</a>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); border-top: 1px solid rgba(184,169,106,0.2);">
+        <div style="max-width: 80rem; margin: 0 auto; padding: 1.5rem 2rem; display: flex; gap: 3rem; flex-wrap: wrap;">
+          {co.stats.map(s => (
+            <div>
+              <div class="font-display" style="color: var(--c-accent); font-size: 1.75rem; font-weight: 700;">{s.value}</div>
+              <div style="color: rgba(255,255,255,0.6); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-heading" style="padding: 6rem 2rem; max-width: 80rem; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;">
+        <div>
+          <p class="section-label">Expertise</p>
+          <h2 id="services-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0 1.5rem; line-height: 1.1;">Our Services</h2>
+          <div class="divider" style="margin-bottom: 1.5rem;"></div>
+          <p style="color: var(--c-muted); line-height: 1.8;">From first sketch to seasonal stewardship, we manage every detail of your outdoor legacy.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          {co.services.map(s => (
+            <div class="card">
+              <div style="font-size: 1.75rem; margin-bottom: 1rem;" aria-hidden="true">{s.icon}</div>
+              <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.02em;">{s.title}</h3>
+              <p style="color: var(--c-muted); line-height: 1.65; font-size: 0.88rem; margin: 0;">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" aria-labelledby="portfolio-heading" style="padding: 6rem 2rem; background: var(--c-secondary);">
+      <div style="max-width: 80rem; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <p class="section-label">Selected Work</p>
+          <h2 id="portfolio-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0;">Portfolio</h2>
+          <div class="divider" style="margin: 1.5rem auto 0;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+          {co.portfolio.map(p => (
+            <figure style="margin: 0;">
+              <img src={p.img} alt={p.title} width="600" height="420" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; display: block;" />
+              <figcaption style="padding: 1.5rem 0;">
+                <div class="divider" style="width: 32px; margin-bottom: 1rem;"></div>
+                <h3 class="font-display" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">{p.title}</h3>
+                <p style="color: var(--c-muted); font-size: 0.9rem; margin: 0; line-height: 1.6;">{p.description}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After -->
+    <section aria-labelledby="ba-heading" style="padding: 6rem 2rem; max-width: 80rem; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 4rem;">
+        <p class="section-label">Transformations</p>
+        <h2 id="ba-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0;">Before & After</h2>
+        <div class="divider" style="margin: 1.5rem auto 0;"></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem;">
+        {co.beforeAfter.map(ba => (
+          <div>
+            <h3 class="font-display" style="font-size: 1.25rem; margin-bottom: 1.25rem; text-align: center;">{ba.label}</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+              <div>
+                <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 0.5rem;">Before</p>
+                <img src={ba.before} alt={`Before: ${ba.label}`} width="300" height="220" loading="lazy" style="width: 100%; height: 180px; object-fit: cover;" />
+              </div>
+              <div>
+                <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 0.5rem;">After</p>
+                <img src={ba.after} alt={`After: ${ba.label}`} width="300" height="220" loading="lazy" style="width: 100%; height: 180px; object-fit: cover;" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section id="plans" aria-labelledby="plans-heading" style="padding: 6rem 2rem; background: var(--c-secondary);">
+      <div style="max-width: 80rem; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <p class="section-label">Investment</p>
+          <h2 id="plans-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0;">Stewardship Plans</h2>
+          <div class="divider" style="margin: 1.5rem auto 0;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: start;">
+          {co.plans.map(p => (
+            <div class={`card ${p.highlight ? 'plan-highlight' : ''}`}>
+              {p.highlight && <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; color: var(--c-accent);">Recommended</div>}
+              <h3 class="font-display" style={`font-size: 1.75rem; font-weight: 600; ${p.highlight ? 'color: white;' : ''}`}>{p.name}</h3>
+              <div style="margin: 1.25rem 0; display: flex; align-items: baseline; gap: 0.25rem;">
+                <span style={`font-size: 2.75rem; font-weight: 800; ${p.highlight ? 'color: var(--c-accent);' : 'color: var(--c-primary);'}`}>{p.price}</span>
+                <span style={`font-size: 0.85rem; ${p.highlight ? 'color: rgba(255,255,255,0.6);' : 'color: var(--c-muted);'}`}>{p.period}</span>
+              </div>
+              <div class="divider" style={`margin-bottom: 1.5rem; ${p.highlight ? 'background: var(--c-accent);' : ''}`}></div>
+              <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                {p.features.map(f => (
+                  <li style="display: flex; gap: 0.75rem; font-size: 0.9rem; align-items: flex-start;">
+                    <span aria-hidden="true" style={`flex-shrink: 0; ${p.highlight ? 'color: var(--c-accent);' : 'color: var(--c-accent);'}`}>◆</span>
+                    <span style={p.highlight ? 'color: rgba(255,255,255,0.9);' : ''}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" class="btn-gold" style={`display: block; text-align: center; ${p.highlight ? '' : 'background: var(--c-primary); color: white;'}`}>Inquire</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section aria-labelledby="certs-heading" style="padding: 5rem 2rem; max-width: 80rem; margin: 0 auto; text-align: center;">
+      <p class="section-label">Credentials</p>
+      <h2 id="certs-heading" class="font-display" style="font-size: 2.25rem; margin: 1rem 0 2.5rem;">Certified Excellence</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center;">
+        {co.certifications.map(c => (
+          <span style="border: 1px solid var(--c-accent); color: var(--c-text); padding: 0.6rem 1.5rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em;">{c}</span>
+        ))}
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section aria-labelledby="team-heading" style="padding: 5rem 2rem; background: var(--c-secondary);">
+      <div style="max-width: 80rem; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <p class="section-label">The Studio</p>
+          <h2 id="team-heading" class="font-display" style="font-size: 2.5rem; margin: 1rem 0;">Our Team</h2>
+          <div class="divider" style="margin: 1.25rem auto 0;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+          {co.teamMembers.map(m => (
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--c-primary); margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--c-accent);" aria-hidden="true">
+                <span style="color: white; font-size: 1.75rem; font-family: 'Playfair Display', serif; font-weight: 600;">{m.name.charAt(0)}</span>
+              </div>
+              <h3 class="font-display" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem;">{m.name}</h3>
+              <p style="color: var(--c-muted); font-size: 0.85rem; margin: 0;">{m.role}</p>
+              {m.cert && <p style="color: var(--c-accent); font-size: 0.78rem; margin-top: 0.35rem; font-weight: 600;">{m.cert}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-heading" style="padding: 6rem 2rem; background: var(--c-hero);">
+      <div style="max-width: 40rem; margin: 0 auto; text-align: center;">
+        <p class="section-label">Begin</p>
+        <h2 id="contact-heading" class="font-display" style="color: white; font-size: 3rem; margin: 1rem 0 0.5rem; line-height: 1.1;">Start Your Project</h2>
+        <div class="divider" style="margin: 1.5rem auto 2rem;"></div>
+        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; line-height: 1.7;">We accept a limited number of new projects each season. Reach out to begin the conversation.</p>
+        <form style="display: grid; gap: 1rem; text-align: left;" novalidate aria-label="Project inquiry form">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label for="v2-fname" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">First Name</label>
+              <input id="v2-fname" name="first_name" type="text" required autocomplete="given-name" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="Jane" />
+            </div>
+            <div>
+              <label for="v2-lname" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Last Name</label>
+              <input id="v2-lname" name="last_name" type="text" required autocomplete="family-name" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="Smith" />
+            </div>
+          </div>
+          <div>
+            <label for="v2-email" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Email</label>
+            <input id="v2-email" name="email" type="email" required autocomplete="email" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="jane@example.com" />
+          </div>
+          <div>
+            <label for="v2-project" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Project Type</label>
+            <select id="v2-project" name="project_type" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(26,42,26,0.9); color: white; font-size: 0.95rem; box-sizing: border-box;">
+              <option value="">Select…</option>
+              {co.services.map(s => <option value={s.title}>{s.title}</option>)}
+            </select>
+          </div>
+          <div>
+            <label for="v2-message" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Your Vision</label>
+            <textarea id="v2-message" name="message" rows={4} style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; resize: vertical; box-sizing: border-box;" placeholder="Tell us about your property and aspirations…"></textarea>
+          </div>
+          <button type="submit" class="btn-gold" style="width: 100%; padding: 1.1rem; font-size: 0.9rem; border: none; cursor: pointer;">Submit Inquiry</button>
+        </form>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 1.5rem;">{co.phone} · {co.email}</p>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: #0a1408; color: rgba(255,255,255,0.5); padding: 3rem 2rem; text-align: center;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <p class="font-display" style="color: var(--c-accent); font-size: 1.1rem; margin-bottom: 0.5rem;">{co.name}</p>
+      <p style="font-size: 0.8rem; margin-bottom: 0.4rem;">{co.address}</p>
+      <p style="font-size: 0.8rem;">&copy; {new Date().getFullYear()} {co.name}. All rights reserved.</p>
+    </div>
+  </footer>
+</LandscapeLayout>
