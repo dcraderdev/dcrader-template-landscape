@@ -1,308 +1,344 @@
 ---
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v2 as co } from '../data/company';
+const fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap";
+
+const projects = [
+  { name: "Casa Cielo — Rancho Santa Fe", scope: "2.4-acre formal garden, reflecting pool, rose parterre, bespoke water feature", value: "$420,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=85", year: "2023" },
+  { name: "Villa del Mar — La Jolla Shores", scope: "Blufftop infinity terrace, sculptural agave garden, specimen olive grove", value: "$285,000", img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=900&q=85", year: "2024" },
+  { name: "The Whitmore Estate — Del Mar", scope: "French parterre, boxwood allées, croquet lawn, custom pergola dining", value: "$340,000", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85", year: "2023" },
+];
+
+const testimonials = [
+  { quote: "Meridian transformed our property into something we never thought possible. Every detail was considered, every plant chosen with intention.", name: "Catherine R.", location: "Rancho Santa Fe" },
+  { quote: "The team understood our vision before we could articulate it. Working with them was effortless and the result is extraordinary.", name: "James & Priya W.", location: "La Jolla" },
+];
 ---
 
 <LandscapeLayout
-  title={`${co.name} — ${co.tagline}`}
-  description={`${co.name}: bespoke luxury landscape design and construction in ${co.serviceArea}.`}
-  primaryColor={co.colors.primary}
-  secondaryColor={co.colors.secondary}
+  title="Meridian Design + Build — Luxury Landscape Studio, La Jolla"
+  description="Meridian Design + Build creates singular estate gardens across La Jolla, Rancho Santa Fe, Del Mar, and Coronado. Bespoke design. Enduring legacy."
+  fonts={fonts}
 >
-  <style>
-    :root {
-      --c-primary: #3d5a3d;
-      --c-secondary: #f0ead8;
-      --c-accent: #b8a96a;
-      --c-bg: #fafaf7;
-      --c-text: #1c2b1c;
-      --c-muted: #7a7a6a;
-      --c-hero: #1a2a1a;
-      --c-card: #f5f0e4;
-      --c-border: #d8cfa8;
-    }
-    body { font-family: 'Inter', sans-serif; background: var(--c-bg); color: var(--c-text); }
-    .font-display { font-family: 'Playfair Display', serif; }
-    .btn-gold {
-      background: var(--c-accent);
-      color: var(--c-hero);
-      padding: 0.875rem 2.25rem;
-      border-radius: 0;
-      font-weight: 700;
-      display: inline-block;
-      transition: opacity 0.2s;
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-    .btn-gold:hover { opacity: 0.88; }
-    .btn-ghost {
-      border: 1px solid rgba(255,255,255,0.5);
-      color: white;
-      padding: 0.875rem 2.25rem;
-      border-radius: 0;
-      font-weight: 600;
-      display: inline-block;
-      transition: all 0.2s;
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.1); }
-    .section-label { color: var(--c-accent); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.78rem; }
-    .card { background: var(--c-card); border: 1px solid var(--c-border); padding: 2rem; }
-    .hero-section {
-      min-height: 95vh;
-      background: var(--c-hero);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-img {
-      position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85') center/cover no-repeat;
-      opacity: 0.4;
-    }
-    .badge-gold {
-      border: 1px solid var(--c-accent);
-      color: var(--c-accent);
-      padding: 0.4rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      display: inline-block;
-    }
-    .divider { width: 60px; height: 2px; background: var(--c-accent); }
-    .plan-highlight { background: var(--c-primary); color: white; }
-  </style>
 
-  <!-- Nav -->
-  <header style="background: rgba(26,42,26,0.97); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(184,169,106,0.2);">
-    <nav aria-label="Main navigation" style="max-width: 80rem; margin: 0 auto; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between;">
-      <a href="#" style="text-decoration: none;">
-        <div class="font-display" style="color: white; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em;">{co.name}</div>
-        <div style="color: var(--c-accent); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;">Est. {co.founded}</div>
-      </a>
-      <div style="display: flex; gap: 2rem; align-items: center;">
-        <a href="#services" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">Services</a>
-        <a href="#portfolio" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">Portfolio</a>
-        <a href="#plans" style="color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em;">Investment</a>
-        <a href="#contact" class="btn-gold" style="padding: 0.6rem 1.5rem;">Inquire</a>
-      </div>
-    </nav>
-  </header>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #f9f7f2; color: #1e2b1e; margin: 0; }
+  .garam { font-family: 'Cormorant Garamond', Georgia, serif; }
 
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="hero-section" aria-label="Hero">
-      <div class="hero-img" role="img" aria-label="Luxury estate garden"></div>
-      <div style="position: relative; z-index: 1; max-width: 80rem; margin: 0 auto; padding: 10rem 2rem; display: flex; flex-direction: column; gap: 1.75rem; max-width: 44rem; margin-left: 8vw;">
-        <span class="badge-gold">{co.tagline}</span>
-        <h1 class="font-display" style="color: white; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.05; font-weight: 700;">{co.name}</h1>
-        <div class="divider"></div>
-        <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; line-height: 1.75; max-width: 26rem;">Singular gardens for singular homes. We design, build, and steward landscapes of enduring beauty.</p>
-        <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.5rem;">
-          <a href="#contact" class="btn-gold">Begin Your Project</a>
-          <a href="#portfolio" class="btn-ghost">View Portfolio</a>
-        </div>
-      </div>
-      <!-- Stats -->
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); border-top: 1px solid rgba(184,169,106,0.2);">
-        <div style="max-width: 80rem; margin: 0 auto; padding: 1.5rem 2rem; display: flex; gap: 3rem; flex-wrap: wrap;">
-          {co.stats.map(s => (
-            <div>
-              <div class="font-display" style="color: var(--c-accent); font-size: 1.75rem; font-weight: 700;">{s.value}</div>
-              <div style="color: rgba(255,255,255,0.6); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  /* color tokens */
+  :root {
+    --sage: #2e4a2e;
+    --sage-mid: #3d5c3d;
+    --champ: #c8a96a;
+    --champ-light: #f0e8d0;
+    --bg: #f9f7f2;
+    --bg2: #f3ede1;
+    --text: #1e2b1e;
+    --muted: #7a7a6a;
+    --rule: #d8cfa8;
+  }
 
-    <!-- Services -->
-    <section id="services" aria-labelledby="services-heading" style="padding: 6rem 2rem; max-width: 80rem; margin: 0 auto;">
-      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;">
-        <div>
-          <p class="section-label">Expertise</p>
-          <h2 id="services-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0 1.5rem; line-height: 1.1;">Our Services</h2>
-          <div class="divider" style="margin-bottom: 1.5rem;"></div>
-          <p style="color: var(--c-muted); line-height: 1.8;">From first sketch to seasonal stewardship, we manage every detail of your outdoor legacy.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-          {co.services.map(s => (
-            <div class="card">
-              <div style="font-size: 1.75rem; margin-bottom: 1rem;" aria-hidden="true">{s.icon}</div>
-              <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.02em;">{s.title}</h3>
-              <p style="color: var(--c-muted); line-height: 1.65; font-size: 0.88rem; margin: 0;">{s.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+  .btn-inquire {
+    display: inline-block;
+    background: var(--champ, #c8a96a);
+    color: #1e2b1e;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    transition: opacity 0.18s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-inquire:hover { opacity: 0.85; }
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.5rem;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .rule { width: 48px; height: 1px; background: #c8a96a; }
+  .label-sm {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8a96a;
+  }
+  hr.divider { border: none; border-top: 1px solid #d8cfa8; margin: 0; }
+</style>
 
-    <!-- Portfolio -->
-    <section id="portfolio" aria-labelledby="portfolio-heading" style="padding: 6rem 2rem; background: var(--c-secondary);">
-      <div style="max-width: 80rem; margin: 0 auto;">
-        <div style="text-align: center; margin-bottom: 4rem;">
-          <p class="section-label">Selected Work</p>
-          <h2 id="portfolio-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0;">Portfolio</h2>
-          <div class="divider" style="margin: 1.5rem auto 0;"></div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-          {co.portfolio.map(p => (
-            <figure style="margin: 0;">
-              <img src={p.img} alt={p.title} width="600" height="420" loading="lazy" style="width: 100%; height: 280px; object-fit: cover; display: block;" />
-              <figcaption style="padding: 1.5rem 0;">
-                <div class="divider" style="width: 32px; margin-bottom: 1rem;"></div>
-                <h3 class="font-display" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">{p.title}</h3>
-                <p style="color: var(--c-muted); font-size: 0.9rem; margin: 0; line-height: 1.6;">{p.description}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Before/After -->
-    <section aria-labelledby="ba-heading" style="padding: 6rem 2rem; max-width: 80rem; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 4rem;">
-        <p class="section-label">Transformations</p>
-        <h2 id="ba-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0;">Before & After</h2>
-        <div class="divider" style="margin: 1.5rem auto 0;"></div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem;">
-        {co.beforeAfter.map(ba => (
-          <div>
-            <h3 class="font-display" style="font-size: 1.25rem; margin-bottom: 1.25rem; text-align: center;">{ba.label}</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-              <div>
-                <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 0.5rem;">Before</p>
-                <img src={ba.before} alt={`Before: ${ba.label}`} width="300" height="220" loading="lazy" style="width: 100%; height: 180px; object-fit: cover;" />
-              </div>
-              <div>
-                <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-accent); margin-bottom: 0.5rem;">After</p>
-                <img src={ba.after} alt={`After: ${ba.label}`} width="300" height="220" loading="lazy" style="width: 100%; height: 180px; object-fit: cover;" />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Plans -->
-    <section id="plans" aria-labelledby="plans-heading" style="padding: 6rem 2rem; background: var(--c-secondary);">
-      <div style="max-width: 80rem; margin: 0 auto;">
-        <div style="text-align: center; margin-bottom: 4rem;">
-          <p class="section-label">Investment</p>
-          <h2 id="plans-heading" class="font-display" style="font-size: 3rem; margin: 1rem 0;">Stewardship Plans</h2>
-          <div class="divider" style="margin: 1.5rem auto 0;"></div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; align-items: start;">
-          {co.plans.map(p => (
-            <div class={`card ${p.highlight ? 'plan-highlight' : ''}`}>
-              {p.highlight && <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; color: var(--c-accent);">Recommended</div>}
-              <h3 class="font-display" style={`font-size: 1.75rem; font-weight: 600; ${p.highlight ? 'color: white;' : ''}`}>{p.name}</h3>
-              <div style="margin: 1.25rem 0; display: flex; align-items: baseline; gap: 0.25rem;">
-                <span style={`font-size: 2.75rem; font-weight: 800; ${p.highlight ? 'color: var(--c-accent);' : 'color: var(--c-primary);'}`}>{p.price}</span>
-                <span style={`font-size: 0.85rem; ${p.highlight ? 'color: rgba(255,255,255,0.6);' : 'color: var(--c-muted);'}`}>{p.period}</span>
-              </div>
-              <div class="divider" style={`margin-bottom: 1.5rem; ${p.highlight ? 'background: var(--c-accent);' : ''}`}></div>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                {p.features.map(f => (
-                  <li style="display: flex; gap: 0.75rem; font-size: 0.9rem; align-items: flex-start;">
-                    <span aria-hidden="true" style={`flex-shrink: 0; ${p.highlight ? 'color: var(--c-accent);' : 'color: var(--c-accent);'}`}>◆</span>
-                    <span style={p.highlight ? 'color: rgba(255,255,255,0.9);' : ''}>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="#contact" class="btn-gold" style={`display: block; text-align: center; ${p.highlight ? '' : 'background: var(--c-primary); color: white;'}`}>Inquire</a>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications -->
-    <section aria-labelledby="certs-heading" style="padding: 5rem 2rem; max-width: 80rem; margin: 0 auto; text-align: center;">
-      <p class="section-label">Credentials</p>
-      <h2 id="certs-heading" class="font-display" style="font-size: 2.25rem; margin: 1rem 0 2.5rem;">Certified Excellence</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center;">
-        {co.certifications.map(c => (
-          <span style="border: 1px solid var(--c-accent); color: var(--c-text); padding: 0.6rem 1.5rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em;">{c}</span>
-        ))}
-      </div>
-    </section>
-
-    <!-- Team -->
-    <section aria-labelledby="team-heading" style="padding: 5rem 2rem; background: var(--c-secondary);">
-      <div style="max-width: 80rem; margin: 0 auto;">
-        <div style="text-align: center; margin-bottom: 3.5rem;">
-          <p class="section-label">The Studio</p>
-          <h2 id="team-heading" class="font-display" style="font-size: 2.5rem; margin: 1rem 0;">Our Team</h2>
-          <div class="divider" style="margin: 1.25rem auto 0;"></div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-          {co.teamMembers.map(m => (
-            <div style="text-align: center;">
-              <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--c-primary); margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--c-accent);" aria-hidden="true">
-                <span style="color: white; font-size: 1.75rem; font-family: 'Playfair Display', serif; font-weight: 600;">{m.name.charAt(0)}</span>
-              </div>
-              <h3 class="font-display" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem;">{m.name}</h3>
-              <p style="color: var(--c-muted); font-size: 0.85rem; margin: 0;">{m.role}</p>
-              {m.cert && <p style="color: var(--c-accent); font-size: 0.78rem; margin-top: 0.35rem; font-weight: 600;">{m.cert}</p>}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" aria-labelledby="contact-heading" style="padding: 6rem 2rem; background: var(--c-hero);">
-      <div style="max-width: 40rem; margin: 0 auto; text-align: center;">
-        <p class="section-label">Begin</p>
-        <h2 id="contact-heading" class="font-display" style="color: white; font-size: 3rem; margin: 1rem 0 0.5rem; line-height: 1.1;">Start Your Project</h2>
-        <div class="divider" style="margin: 1.5rem auto 2rem;"></div>
-        <p style="color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; line-height: 1.7;">We accept a limited number of new projects each season. Reach out to begin the conversation.</p>
-        <form style="display: grid; gap: 1rem; text-align: left;" novalidate aria-label="Project inquiry form">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div>
-              <label for="v2-fname" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">First Name</label>
-              <input id="v2-fname" name="first_name" type="text" required autocomplete="given-name" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="Jane" />
-            </div>
-            <div>
-              <label for="v2-lname" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Last Name</label>
-              <input id="v2-lname" name="last_name" type="text" required autocomplete="family-name" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="Smith" />
-            </div>
-          </div>
-          <div>
-            <label for="v2-email" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Email</label>
-            <input id="v2-email" name="email" type="email" required autocomplete="email" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; box-sizing: border-box;" placeholder="jane@example.com" />
-          </div>
-          <div>
-            <label for="v2-project" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Project Type</label>
-            <select id="v2-project" name="project_type" style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(26,42,26,0.9); color: white; font-size: 0.95rem; box-sizing: border-box;">
-              <option value="">Select…</option>
-              {co.services.map(s => <option value={s.title}>{s.title}</option>)}
-            </select>
-          </div>
-          <div>
-            <label for="v2-message" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; display: block; margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase;">Your Vision</label>
-            <textarea id="v2-message" name="message" rows={4} style="width: 100%; padding: 0.875rem; border: 1px solid rgba(184,169,106,0.3); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; resize: vertical; box-sizing: border-box;" placeholder="Tell us about your property and aspirations…"></textarea>
-          </div>
-          <button type="submit" class="btn-gold" style="width: 100%; padding: 1.1rem; font-size: 0.9rem; border: none; cursor: pointer;">Submit Inquiry</button>
-        </form>
-        <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 1.5rem;">{co.phone} · {co.email}</p>
-      </div>
-    </section>
-  </main>
-
-  <footer style="background: #0a1408; color: rgba(255,255,255,0.5); padding: 3rem 2rem; text-align: center;">
-    <div style="max-width: 80rem; margin: 0 auto;">
-      <p class="font-display" style="color: var(--c-accent); font-size: 1.1rem; margin-bottom: 0.5rem;">{co.name}</p>
-      <p style="font-size: 0.8rem; margin-bottom: 0.4rem;">{co.address}</p>
-      <p style="font-size: 0.8rem;">&copy; {new Date().getFullYear()} {co.name}. All rights reserved.</p>
+<!-- NAV -->
+<header style="background: rgba(30,42,30,0.97); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(200,169,106,0.18);">
+  <nav aria-label="Main navigation" style="max-width:88rem; margin:0 auto; padding:1.4rem 3rem; display:flex; align-items:center; justify-content:space-between;">
+    <a href="#" style="text-decoration:none;">
+      <span class="label-sm" style="color:#c8a96a; display:block; letter-spacing:0.25em;">Meridian</span>
+      <span style="color:rgba(255,255,255,0.45); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; display:block; margin-top:1px;">Design + Build · Est. {co.founded}</span>
+    </a>
+    <div style="display:flex; gap:2.5rem; align-items:center;">
+      {['Services','Portfolio','Studio','Journal'].map(l => (
+        <a href={`#${l.toLowerCase()}`} style="color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.82rem; letter-spacing:0.06em; font-weight:300; transition:color 0.18s;" onmouseover="this.style.color='rgba(255,255,255,0.95)'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">{l}</a>
+      ))}
+      <a href="#contact" class="btn-inquire" style="padding:0.7rem 1.75rem;">Inquire</a>
     </div>
-  </footer>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- HERO — full-height editorial -->
+<section aria-label="Hero" style="position:relative; min-height:96vh; overflow:hidden; display:flex; align-items:flex-end;">
+  <img
+    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=90"
+    alt="Luxury estate garden with formal pool and manicured hedges"
+    width="1800" height="1200"
+    fetchpriority="high"
+    style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;"
+  />
+  <!-- gradient -->
+  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,18,10,0.9) 0%, rgba(10,18,10,0.3) 50%, rgba(10,18,10,0.1) 100%);"></div>
+  <!-- content -->
+  <div style="position:relative; z-index:1; max-width:88rem; margin:0 auto; padding:0 3rem 5rem; width:100%;">
+    <div style="max-width:38rem;">
+      <p class="label-sm" style="margin-bottom:1.25rem;">La Jolla, California</p>
+      <h1 class="garam" style="color:#fff; font-size:clamp(3rem,6vw,5.5rem); font-weight:300; line-height:1.06; margin:0 0 1.5rem; letter-spacing:-0.01em;">
+        Where landscape<br /><em>becomes legacy.</em>
+      </h1>
+      <div class="rule" style="margin-bottom:1.5rem;"></div>
+      <p style="color:rgba(255,255,255,0.72); font-size:1rem; line-height:1.8; max-width:28rem; font-weight:300; margin-bottom:2rem;">
+        A design-build studio creating estate gardens of singular beauty for discerning clients across coastal San Diego.
+      </p>
+      <div style="display:flex; gap:1.25rem; align-items:center;">
+        <a href="#contact" class="btn-inquire">Begin Your Project</a>
+        <a href="#portfolio" class="btn-ghost">View Portfolio</a>
+      </div>
+    </div>
+  </div>
+  <!-- scroll cue -->
+  <div style="position:absolute; right:3rem; bottom:2.5rem; z-index:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;">
+    <span style="color:rgba(255,255,255,0.4); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; writing-mode:vertical-rl;">Scroll</span>
+    <div style="width:1px; height:40px; background:rgba(200,169,106,0.5);"></div>
+  </div>
+</section>
+
+<!-- MANIFESTO STRIP -->
+<section style="background:#1e2b1e; padding:3.5rem 3rem;">
+  <div style="max-width:88rem; margin:0 auto; display:flex; gap:4rem; align-items:center; flex-wrap:wrap;">
+    <p class="garam" style="color:#c8a96a; font-size:1.5rem; font-weight:300; font-style:italic; flex:1; min-width:240px; margin:0; line-height:1.5;">"A garden is the greatest reflection of the people who live within it."</p>
+    <hr style="width:1px; height:80px; border:none; background:rgba(200,169,106,0.25);" aria-hidden="true" />
+    <div style="flex:1; min-width:240px; display:flex; gap:3rem; flex-wrap:wrap;">
+      {co.stats.map(s => (
+        <div>
+          <p class="garam" style="color:#fff; font-size:2.5rem; font-weight:600; margin:0; line-height:1;">{s.value}</p>
+          <p style="color:rgba(255,255,255,0.45); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; margin:0.4rem 0 0; font-weight:300;">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — numbered editorial list -->
+<section id="services" aria-labelledby="svc-h" style="background:#f9f7f2; padding:7rem 3rem;">
+  <div style="max-width:88rem; margin:0 auto; display:grid; grid-template-columns:280px 1fr; gap:6rem; align-items:start;">
+    <div style="position:sticky; top:6rem;">
+      <p class="label-sm" style="margin-bottom:1rem;">Studio expertise</p>
+      <h2 id="svc-h" class="garam" style="font-size:3rem; font-weight:400; line-height:1.1; margin:0 0 1.5rem;">Our<br /><em>services</em></h2>
+      <div class="rule"></div>
+      <p style="color:#7a7a6a; margin-top:1.25rem; line-height:1.8; font-size:0.9rem; font-weight:300;">From first sketch to seasonal stewardship — we manage every detail of your outdoor legacy.</p>
+    </div>
+    <div>
+      {co.services.map((s, i) => (
+        <div>
+          {i > 0 && <hr class="divider" />}
+          <div style={`display:grid; grid-template-columns:60px 1fr; gap:2rem; align-items:start; padding:2.5rem 0;`}>
+            <span class="garam" style="font-size:3.5rem; font-weight:300; color:#d8cfa8; line-height:1;">{String(i+1).padStart(2,'0')}</span>
+            <div>
+              <h3 style="font-size:1.2rem; font-weight:500; margin:0 0 0.6rem; color:#1e2b1e; letter-spacing:0.01em;">{s.title}</h3>
+              <p style="color:#7a7a6a; font-size:0.9rem; line-height:1.8; margin:0; font-weight:300;">{s.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO — large editorial -->
+<section id="portfolio" aria-labelledby="port-h" style="background:#f3ede1; padding:7rem 3rem;">
+  <div style="max-width:88rem; margin:0 auto;">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:4rem; padding-bottom:1.5rem; border-bottom:1px solid #d8cfa8;">
+      <div>
+        <p class="label-sm">Selected work</p>
+        <h2 id="port-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0 0;">Portfolio</h2>
+      </div>
+      <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300;">2023 — 2024</p>
+    </div>
+    {projects.map((p, i) => (
+      <div>
+        {i > 0 && <hr class="divider" style="margin:0;" />}
+        <div style={`display:grid; grid-template-columns:${i%2===0?'5fr 4fr':'4fr 5fr'}; gap:0; min-height:480px; ${i>0?'':'border-top:1px solid #d8cfa8;'}`}>
+          <div style={`overflow:hidden; ${i%2===1?'order:1;':''}`}>
+            <img src={p.img} alt={p.name} width="900" height="600" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" />
+          </div>
+          <div style={`padding:3.5rem; display:flex; flex-direction:column; justify-content:center; background:${i%2===0?'#fff':'#f9f7f2'}; ${i%2===1?'order:0;':''}`}>
+            <p class="label-sm" style="margin-bottom:1.25rem;">{p.year}</p>
+            <h3 class="garam" style="font-size:2rem; font-weight:400; margin:0 0 1.25rem; line-height:1.2;">{p.name}</h3>
+            <div class="rule" style="margin-bottom:1.25rem;"></div>
+            <p style="color:#7a7a6a; font-size:0.9rem; line-height:1.8; font-weight:300; margin-bottom:1.75rem;">{p.scope}</p>
+            <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#c8a96a; font-weight:500;">Project investment: {p.value}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section aria-labelledby="ba-h" style="background:#f9f7f2; padding:6rem 3rem;">
+  <div style="max-width:88rem; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:4rem;">
+      <p class="label-sm">Transformations</p>
+      <h2 id="ba-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0;">Before &amp; after</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:2.5rem;">
+      {co.beforeAfter.map(ba => (
+        <div>
+          <h3 class="garam" style="font-size:1.25rem; font-weight:400; margin-bottom:1.25rem; font-style:italic;">{ba.label}</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+            <div>
+              <p class="label-sm" style="margin-bottom:0.5rem; color:#7a7a6a;">Before</p>
+              <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+            </div>
+            <div>
+              <p class="label-sm" style="margin-bottom:0.5rem;">After</p>
+              <img src={ba.after} alt={`After: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:#1e2b1e; padding:6rem 3rem;">
+  <div style="max-width:72rem; margin:0 auto;">
+    <p class="label-sm" style="text-align:center; display:block; margin-bottom:3rem;">Client words</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:3rem;">
+      {testimonials.map(t => (
+        <div style="border-top:1px solid rgba(200,169,106,0.3); padding-top:2rem;">
+          <p class="garam" style="color:rgba(255,255,255,0.88); font-size:1.2rem; font-style:italic; line-height:1.75; margin:0 0 1.5rem; font-weight:300;">"{t.quote}"</p>
+          <div class="rule"></div>
+          <p style="color:#c8a96a; font-size:0.82rem; margin:1rem 0 0; font-weight:500;">{t.name} <span style="color:rgba(255,255,255,0.35); font-weight:300;">— {t.location}</span></p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section aria-labelledby="certs-h" style="background:#f3ede1; padding:5rem 3rem;">
+  <div style="max-width:88rem; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:center;">
+    <div>
+      <p class="label-sm" style="margin-bottom:0.75rem;">Credentials</p>
+      <h2 id="certs-h" class="garam" style="font-size:2.5rem; font-weight:400; margin:0 0 1.25rem;">Certified excellence</h2>
+      <p style="color:#7a7a6a; font-size:0.9rem; line-height:1.8; font-weight:300;">Every project is led by licensed designers with deep expertise in horticulture, construction, and estate stewardship.</p>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+      {co.certifications.map(c => (
+        <span style="border:1px solid #c8a96a; color:#1e2b1e; font-size:0.82rem; font-weight:500; padding:0.55rem 1.25rem; letter-spacing:0.03em;">{c}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="studio" aria-labelledby="team-h" style="background:#f9f7f2; padding:6rem 3rem;">
+  <div style="max-width:88rem; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:4rem;">
+      <p class="label-sm">The people</p>
+      <h2 id="team-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0;">The Studio</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem;">
+      {co.teamMembers.map(m => (
+        <div style="text-align:center;">
+          <div style="width:88px; height:88px; border-radius:50%; background:#2e4a2e; margin:0 auto 1.25rem; display:flex; align-items:center; justify-content:center; border:1px solid #c8a96a;" aria-hidden="true">
+            <span class="garam" style="color:#c8a96a; font-size:2.25rem; font-weight:600; line-height:1;">{m.name[0]}</span>
+          </div>
+          <h3 class="garam" style="font-size:1.2rem; font-weight:400; margin:0 0 0.25rem;">{m.name}</h3>
+          <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300; margin:0;">{m.role}</p>
+          {m.cert && <p style="color:#c8a96a; font-size:0.75rem; font-weight:500; margin:0.35rem 0 0; letter-spacing:0.04em;">{m.cert}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT — no pricing, just inquiry -->
+<section id="contact" aria-labelledby="contact-h" style="background:#f3ede1; padding:7rem 3rem;">
+  <div style="max-width:52rem; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:4rem;">
+      <p class="label-sm">Begin</p>
+      <h2 id="contact-h" class="garam" style="font-size:3.5rem; font-weight:300; margin:0.5rem 0 1rem; line-height:1.1;">Start the<br /><em>conversation</em></h2>
+      <div class="rule" style="margin:1.5rem auto;"></div>
+      <p style="color:#7a7a6a; font-size:0.95rem; line-height:1.8; font-weight:300;">We accept a limited number of new projects each season. We would love to hear about yours.</p>
+    </div>
+    <form novalidate aria-label="Project inquiry form" style="display:grid; gap:1.1rem;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;">
+        <div>
+          <label for="v2-fn" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">First name</label>
+          <input id="v2-fn" name="first_name" type="text" required autocomplete="given-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+        </div>
+        <div>
+          <label for="v2-ln" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Last name</label>
+          <input id="v2-ln" name="last_name" type="text" required autocomplete="family-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+        </div>
+      </div>
+      <div>
+        <label for="v2-email" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Email address</label>
+        <input id="v2-email" name="email" type="email" required autocomplete="email" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+      </div>
+      <div>
+        <label for="v2-loc" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Property location</label>
+        <input id="v2-loc" name="location" type="text" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" placeholder="City or neighborhood" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+      </div>
+      <div>
+        <label for="v2-scope" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Project scope</label>
+        <select id="v2-scope" name="scope" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none; appearance:auto;">
+          <option value="">Please select…</option>
+          {co.services.map(s => <option value={s.title}>{s.title}</option>)}
+        </select>
+      </div>
+      <div>
+        <label for="v2-vision" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Your vision</label>
+        <textarea id="v2-vision" name="vision" rows={5} style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; resize:vertical; outline:none;" placeholder="Tell us about your property, your aspirations, and what you hope to create…" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'"></textarea>
+      </div>
+      <button type="submit" class="btn-inquire" style="width:100%; padding:1.1rem; font-size:0.85rem;">Submit Inquiry</button>
+    </form>
+    <p style="text-align:center; color:#7a7a6a; font-size:0.78rem; margin-top:1.5rem; font-weight:300;">{co.phone} · {co.email}</p>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#111a11; color:rgba(255,255,255,0.4); padding:3rem; text-align:center;">
+  <div style="max-width:88rem; margin:0 auto;">
+    <p class="garam" style="color:#c8a96a; font-size:1.1rem; font-weight:400; margin-bottom:0.5rem;">Meridian Design + Build</p>
+    <p style="font-size:0.78rem; margin-bottom:0.4rem;">{co.address}</p>
+    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Meridian Design + Build. All rights reserved. CA Licensed.</p>
+  </div>
+</footer>
+
 </LandscapeLayout>

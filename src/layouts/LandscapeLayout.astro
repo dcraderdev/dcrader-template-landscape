@@ -4,11 +4,10 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description: string;
-  primaryColor: string;
-  secondaryColor: string;
+  fonts?: string;
 }
 
-const { title, description, primaryColor, secondaryColor } = Astro.props;
+const { title, description, fonts } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,24 +20,24 @@ const { title, description, primaryColor, secondaryColor } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    {fonts && <link href={fonts} rel="stylesheet" />}
+    <slot name="head" />
   </head>
   <body>
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded">
+    <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:fixed;top:1rem;left:1rem;z-index:9999;padding:0.5rem 1rem;background:white;color:black;font-weight:700;border-radius:4px;text-decoration:none;width:auto;height:auto;overflow:visible;'">
       Skip to main content
     </a>
     <slot />
     <script>
-      // Run axe-core in development
       if (import.meta.env.DEV) {
         import('axe-core').then(({ default: axe }) => {
           axe.run().then(results => {
             if (results.violations.length) {
-              console.group('%c Accessibility Violations', 'color:red;font-weight:bold');
-              results.violations.forEach(v => console.error(v));
+              console.group('%c axe violations', 'color:red;font-weight:bold');
+              results.violations.forEach(v => console.error(v.id, v.description, v.nodes));
               console.groupEnd();
             } else {
-              console.log('%c No axe violations found', 'color:green;font-weight:bold');
+              console.log('%c axe: 0 violations', 'color:green;font-weight:bold');
             }
           });
         });
