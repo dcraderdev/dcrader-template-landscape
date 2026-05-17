@@ -146,20 +146,37 @@ const heroPreloadSizes = "100vw";
   </div>
 </section>
 
-<!-- BIG IMPACT STRIP -->
-<section style="background:#2a1a0a; padding:3.5rem 1.5rem;">
-  <div class="inner" style="display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; align-items:center;">
-    {[
-      {v:'380+', l:'Lawns removed'},
-      {v:'2M+', l:'Gallons saved per year'},
-      {v:'120+', l:'Pollinator habitats created'},
-      {v:'$480K', l:'Rebates processed for clients'},
-    ].map(s => (
-      <div style="text-align:center; padding:0 2rem; border-right:1px solid rgba(255,255,255,0.1); last:border-right:none;">
-        <p class="fran" style="color:#c8d8a0; font-size:2.5rem; font-weight:600; margin:0; line-height:1;">{s.v}</p>
-        <p style="color:rgba(255,255,255,0.5); font-size:0.78rem; margin:0.4rem 0 0;">{s.l}</p>
+<!-- PLANT PALETTE — Tierra Viva's signature natives -->
+<section aria-labelledby="palette-h" style="background:#2a1a0a; padding:4.5rem 1.5rem;">
+  <div class="inner">
+    <div style="display:flex; justify-content:space-between; align-items:end; flex-wrap:wrap; gap:1rem; margin-bottom:2.25rem;">
+      <div>
+        <span class="label" style="color:#c8d8a0;">Tierra Viva plant palette</span>
+        <h2 id="palette-h" class="fran" style="color:#fffdf6; font-size:1.85rem; font-weight:500; margin:0.4rem 0 0;">Species we plant in <em style="font-style:italic; color:#c8d8a0;">North County</em> gardens</h2>
       </div>
-    ))}
+      <p style="color:rgba(255,253,246,0.55); font-size:0.78rem; max-width:18rem; line-height:1.7; margin:0;">Each garden gets a custom palette&mdash;these six form the backbone of most Encinitas and Cardiff projects.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.75rem;">
+      {[
+        { common: 'Cleveland Sage', latin: 'Salvia clevelandii', role: 'Pollinator anchor', water: 'Very low', bloom: 'May – July', accent: '#9aa6e8' },
+        { common: 'Toyon', latin: 'Heteromeles arbutifolia', role: 'Bird hedge', water: 'Low', bloom: 'Berries Nov – Feb', accent: '#d97a5a' },
+        { common: 'California Lilac', latin: 'Ceanothus &lsquo;Yankee Point&rsquo;', role: 'Slope groundcover', water: 'Very low', bloom: 'March – April', accent: '#7a8fc2' },
+        { common: 'Coast Live Oak', latin: 'Quercus agrifolia', role: 'Keystone shade', water: 'None established', bloom: 'Year-round canopy', accent: '#6a8a4a' },
+        { common: 'Sticky Monkeyflower', latin: 'Diplacus aurantiacus', role: 'Hummingbird magnet', water: 'Low', bloom: 'April – August', accent: '#e6a04a' },
+        { common: 'Deer Grass', latin: 'Muhlenbergia rigens', role: 'Sculptural texture', water: 'Very low', bloom: 'Plumes Aug – Oct', accent: '#c8b078' },
+      ].map(p => (
+        <article style="background:#3d2614; border:1px solid #5a3a1e; border-radius:14px; padding:1.25rem 1.1rem; display:flex; flex-direction:column; gap:0.5rem;">
+          <span aria-hidden="true" style={`display:inline-block; width:36px; height:36px; border-radius:50%; background:${p.accent}; opacity:0.85; margin-bottom:0.35rem; box-shadow:inset 0 -10px 16px rgba(0,0,0,0.25);`}></span>
+          <p class="fran" style="color:#fffdf6; font-size:1rem; font-weight:600; margin:0; line-height:1.2;">{p.common}</p>
+          <p style="color:rgba(255,253,246,0.55); font-size:0.72rem; font-style:italic; margin:0;" set:html={p.latin}></p>
+          <p style="color:#c8d8a0; font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin:0.35rem 0 0;">{p.role}</p>
+          <dl style="margin:0.4rem 0 0; display:grid; grid-template-columns:auto 1fr; gap:0.15rem 0.6rem; font-size:0.72rem;">
+            <dt style="color:rgba(255,253,246,0.5);">Water</dt><dd style="margin:0; color:rgba(255,253,246,0.85);">{p.water}</dd>
+            <dt style="color:rgba(255,253,246,0.5);">Bloom</dt><dd style="margin:0; color:rgba(255,253,246,0.85);">{p.bloom}</dd>
+          </dl>
+        </article>
+      ))}
+    </div>
   </div>
 </section>
 
