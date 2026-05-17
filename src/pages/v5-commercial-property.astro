@@ -170,7 +170,7 @@ const contractTiers = [
   <!-- content -->
   <div style="position:relative; z-index:1; max-width:80rem; margin:0 auto; padding:0 2rem 5rem; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:end;">
     <div>
-      <p style="color:#8394b0; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.25rem;">Serving 185+ commercial accounts</p>
+      <p style="color:#8394b0; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.25rem;">San Diego, California — since 1998</p>
       <h1 style="color:#fff; font-size:clamp(2.5rem,5.5vw,4.25rem); font-weight:900; line-height:1.05; margin:0 0 1.25rem; letter-spacing:-0.02em;">
         Professional Property.<br /><span style="color:#8394b0;">Premium Presentation.</span>
       </h1>
@@ -182,15 +182,24 @@ const contractTiers = [
         <a href="#contracts" style="color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.9rem; font-weight:500; display:flex; align-items:center; gap:0.4rem; padding:0.9rem 0;">View Contract Tiers →</a>
       </div>
     </div>
-    <!-- Stats -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.08);">
-      {co.stats.map(s => (
-        <div style="background:#0a1020; padding:1.5rem; text-align:center;">
-          <p style="color:#fff; font-size:2rem; font-weight:900; margin:0 0 0.25rem; letter-spacing:-0.02em;">{s.value}</p>
-          <p style="color:#8394b0; font-size:0.72rem; margin:0; text-transform:uppercase; letter-spacing:0.1em; font-weight:500;">{s.label}</p>
-        </div>
-      ))}
-    </div>
+    <!-- Timeline — Apex milestones -->
+    <aside aria-label="Company history" style="background:rgba(255,255,255,0.04); border-left:2px solid #8394b0; padding:1.75rem 1.5rem 1.75rem 2rem;">
+      <p style="color:#8394b0; font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 1.25rem;">A quarter-century on the ground</p>
+      <ol style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1rem;">
+        {[
+          { year: '1998', event: 'Apex Commercial Landscapes founded by Richard Holt with one truck and a single Mission Valley account.' },
+          { year: '2004', event: 'First multi-site SLA signed with Kearny Mesa retail group; crew grows to 12 full-time.' },
+          { year: '2011', event: 'Earns ISO 9001 certification; opens dedicated equipment yard on Balboa Ave.' },
+          { year: '2018', event: 'Adds in-house irrigation audit division and SMART-controller monitoring for water-budget clients.' },
+          { year: 'Today', event: 'A 90-person operation maintaining office campuses, hotels, and HOAs across greater San Diego.' },
+        ].map(t => (
+          <li style="display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start;">
+            <span style="color:#fff; font-size:0.78rem; font-weight:900; letter-spacing:0.04em; min-width:3.25rem; padding-top:0.1rem;">{t.year}</span>
+            <span style="color:rgba(255,255,255,0.78); font-size:0.85rem; line-height:1.55; font-weight:400;">{t.event}</span>
+          </li>
+        ))}
+      </ol>
+    </aside>
   </div>
 </section>
 
