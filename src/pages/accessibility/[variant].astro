@@ -1,0 +1,47 @@
+---
+import LandscapeLayout from '../../layouts/LandscapeLayout.astro';
+import { v1, v2, v3, v4, v5 } from '../../data/company';
+
+export function getStaticPaths() {
+  return [
+    { params: { variant: 'v1-residential-lawn' }, props: { co: v1, parent: '/v1-residential-lawn' } },
+    { params: { variant: 'v2-luxury-design-build' }, props: { co: v2, parent: '/v2-luxury-design-build' } },
+    { params: { variant: 'v3-eco-native' }, props: { co: v3, parent: '/v3-eco-native' } },
+    { params: { variant: 'v4-tree-arborist' }, props: { co: v4, parent: '/v4-tree-arborist' } },
+    { params: { variant: 'v5-commercial-property' }, props: { co: v5, parent: '/v5-commercial-property' } },
+  ];
+}
+
+const { co, parent } = Astro.props;
+const accessibilityEmail = co.email.replace(/^[^@]+@/, 'accessibility@');
+const phoneDigits = co.phone.replace(/\D/g, '');
+---
+
+<LandscapeLayout
+  title={`Accessibility Statement — ${co.name}`}
+  description={`${co.name} is committed to digital accessibility and WCAG 2.1 Level AA conformance.`}
+>
+<main id="main-content" tabindex="-1" style="background:#fff; color:#1c2b1a; font-family:'Inter',system-ui,sans-serif; min-height:100vh; padding:4rem 1.5rem;">
+  <article style="max-width:46rem; margin:0 auto; line-height:1.7;">
+    <p style="margin:0 0 0.5rem;"><a href={parent} style="color:#2a5f2a; text-decoration:underline; font-weight:600;">&larr; Back to {co.name}</a></p>
+    <h1 style="font-size:clamp(2rem,4vw,2.75rem); font-weight:700; line-height:1.15; margin:1rem 0 1.5rem; color:#1c2b1a;">Accessibility Statement</h1>
+
+    <p style="font-size:1.05rem;">{co.name} is committed to ensuring digital accessibility for people of all abilities. We strive to conform to <strong>WCAG 2.1 Level AA</strong> standards and continuously improve the user experience for everyone.</p>
+
+    <h2 style="font-size:1.4rem; margin:2rem 0 0.75rem; color:#1c2b1a; font-weight:700;">Need help or accommodations?</h2>
+    <p>If you experience any difficulty accessing this website, or need accommodations, please contact us and we will work to provide the information or service through alternative communication.</p>
+    <ul style="list-style:none; padding:0; margin:1rem 0 0; display:flex; flex-direction:column; gap:0.5rem;">
+      <li>Email: <a href={`mailto:${accessibilityEmail}`} style="color:#2a5f2a; text-decoration:underline; font-weight:600; min-height:44px; display:inline-block; padding:0.25rem 0;">{accessibilityEmail}</a></li>
+      <li>Phone: <a href={`tel:${phoneDigits}`} style="color:#2a5f2a; text-decoration:underline; font-weight:600; min-height:44px; display:inline-block; padding:0.25rem 0;">{co.phone}</a></li>
+    </ul>
+
+    <h2 style="font-size:1.4rem; margin:2rem 0 0.75rem; color:#1c2b1a; font-weight:700;">Our ongoing commitment</h2>
+    <p>This site is reviewed regularly for accessibility issues. We test against WCAG 2.1 AA criteria using automated tools (axe-core) and manual keyboard and screen-reader review. Where third-party content or imagery is used, we provide descriptive alt text and accessible alternatives.</p>
+
+    <h2 style="font-size:1.4rem; margin:2rem 0 0.75rem; color:#1c2b1a; font-weight:700;">Standards and conformance</h2>
+    <p>This website targets conformance with the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA, published by the W3C Web Accessibility Initiative.</p>
+
+    <p style="margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid #dde8dd; font-size:0.9rem; color:#637063;">Last updated: 2026-05-17</p>
+  </article>
+</main>
+</LandscapeLayout>

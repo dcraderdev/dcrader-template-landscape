@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./a11y.css";
 
 *, *::before, *::after {
   animation: none !important;
@@ -18,5 +19,18 @@
   :focus-visible {
     outline: 3px solid currentColor;
     outline-offset: 2px;
+  }
+  /* WCAG 2.5.5: ensure interactive controls meet 44x44 touch target */
+  a, button, [role="button"], input, select, textarea, summary {
+    min-height: 44px;
+  }
+  /* Allow inline links inside paragraphs to stay inline (text doesn't need 44px box) */
+  p a, li a, span a, td a {
+    min-height: 0;
+  }
+  /* Form controls visible focus */
+  input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid #2a5f2a;
+    outline-offset: 1px;
   }
 }

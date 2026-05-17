@@ -35,7 +35,7 @@ const testimonials = [
     --bg: #f9f7f2;
     --bg2: #f3ede1;
     --text: #1e2b1e;
-    --muted: #7a7a6a;
+    --muted: #595950;
     --rule: #d8cfa8;
   }
 
@@ -72,11 +72,12 @@ const testimonials = [
   .rule { width: 48px; height: 1px; background: #c8a96a; }
   .label-sm {
     font-size: 0.68rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: #c8a96a;
+    color: #74591f;
   }
+  .label-sm.on-dark { color: #e0c890; }
   hr.divider { border: none; border-top: 1px solid #d8cfa8; margin: 0; }
 </style>
 
@@ -84,8 +85,8 @@ const testimonials = [
 <header style="background: rgba(30,42,30,0.97); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(200,169,106,0.18);">
   <nav aria-label="Main navigation" style="max-width:88rem; margin:0 auto; padding:1.4rem 3rem; display:flex; align-items:center; justify-content:space-between;">
     <a href="#" style="text-decoration:none;">
-      <span class="label-sm" style="color:#c8a96a; display:block; letter-spacing:0.25em;">Meridian</span>
-      <span style="color:rgba(255,255,255,0.45); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; display:block; margin-top:1px;">Design + Build · Est. {co.founded}</span>
+      <span class="label-sm on-dark" style="display:block; letter-spacing:0.25em;">Meridian</span>
+      <span style="color:rgba(255,255,255,0.78); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; display:block; margin-top:1px;">Design + Build · Est. {co.founded}</span>
     </a>
     <div style="display:flex; gap:2.5rem; align-items:center;">
       {['Services','Portfolio','Studio','Journal'].map(l => (
@@ -96,7 +97,7 @@ const testimonials = [
   </nav>
 </header>
 
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO — full-height editorial -->
 <section aria-label="Hero" style="position:relative; min-height:96vh; overflow:hidden; display:flex; align-items:flex-end;">
@@ -112,7 +113,7 @@ const testimonials = [
   <!-- content -->
   <div style="position:relative; z-index:1; max-width:88rem; margin:0 auto; padding:0 3rem 5rem; width:100%;">
     <div style="max-width:38rem;">
-      <p class="label-sm" style="margin-bottom:1.25rem;">La Jolla, California</p>
+      <p class="label-sm on-dark" style="margin-bottom:1.25rem;">La Jolla, California</p>
       <h1 class="garam" style="color:#fff; font-size:clamp(3rem,6vw,5.5rem); font-weight:300; line-height:1.06; margin:0 0 1.5rem; letter-spacing:-0.01em;">
         Where landscape<br /><em>becomes legacy.</em>
       </h1>
@@ -142,7 +143,7 @@ const testimonials = [
       {co.stats.map(s => (
         <div>
           <p class="garam" style="color:#fff; font-size:2.5rem; font-weight:600; margin:0; line-height:1;">{s.value}</p>
-          <p style="color:rgba(255,255,255,0.45); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; margin:0.4rem 0 0; font-weight:300;">{s.label}</p>
+          <p style="color:rgba(255,255,255,0.78); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; margin:0.4rem 0 0; font-weight:300;">{s.label}</p>
         </div>
       ))}
     </div>
@@ -156,17 +157,17 @@ const testimonials = [
       <p class="label-sm" style="margin-bottom:1rem;">Studio expertise</p>
       <h2 id="svc-h" class="garam" style="font-size:3rem; font-weight:400; line-height:1.1; margin:0 0 1.5rem;">Our<br /><em>services</em></h2>
       <div class="rule"></div>
-      <p style="color:#7a7a6a; margin-top:1.25rem; line-height:1.8; font-size:0.9rem; font-weight:300;">From first sketch to seasonal stewardship — we manage every detail of your outdoor legacy.</p>
+      <p style="color:#595950; margin-top:1.25rem; line-height:1.8; font-size:0.9rem; font-weight:300;">From first sketch to seasonal stewardship — we manage every detail of your outdoor legacy.</p>
     </div>
     <div>
       {co.services.map((s, i) => (
         <div>
           {i > 0 && <hr class="divider" />}
           <div style={`display:grid; grid-template-columns:60px 1fr; gap:2rem; align-items:start; padding:2.5rem 0;`}>
-            <span class="garam" style="font-size:3.5rem; font-weight:300; color:#d8cfa8; line-height:1;">{String(i+1).padStart(2,'0')}</span>
+            <span class="garam" style="font-size:3.5rem; font-weight:300; color:#a08840; line-height:1;">{String(i+1).padStart(2,'0')}</span>
             <div>
               <h3 style="font-size:1.2rem; font-weight:500; margin:0 0 0.6rem; color:#1e2b1e; letter-spacing:0.01em;">{s.title}</h3>
-              <p style="color:#7a7a6a; font-size:0.9rem; line-height:1.8; margin:0; font-weight:300;">{s.description}</p>
+              <p style="color:#595950; font-size:0.9rem; line-height:1.8; margin:0; font-weight:300;">{s.description}</p>
             </div>
           </div>
         </div>
@@ -183,7 +184,7 @@ const testimonials = [
         <p class="label-sm">Selected work</p>
         <h2 id="port-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0 0;">Portfolio</h2>
       </div>
-      <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300;">2023 — 2024</p>
+      <p style="color:#595950; font-size:0.82rem; font-weight:300;">2023 — 2024</p>
     </div>
     {projects.map((p, i) => (
       <div>
@@ -196,8 +197,8 @@ const testimonials = [
             <p class="label-sm" style="margin-bottom:1.25rem;">{p.year}</p>
             <h3 class="garam" style="font-size:2rem; font-weight:400; margin:0 0 1.25rem; line-height:1.2;">{p.name}</h3>
             <div class="rule" style="margin-bottom:1.25rem;"></div>
-            <p style="color:#7a7a6a; font-size:0.9rem; line-height:1.8; font-weight:300; margin-bottom:1.75rem;">{p.scope}</p>
-            <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#c8a96a; font-weight:500;">Project investment: {p.value}</p>
+            <p style="color:#595950; font-size:0.9rem; line-height:1.8; font-weight:300; margin-bottom:1.75rem;">{p.scope}</p>
+            <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#74591f; font-weight:600;">Project investment: {p.value}</p>
           </div>
         </div>
       </div>
@@ -218,7 +219,7 @@ const testimonials = [
           <h3 class="garam" style="font-size:1.25rem; font-weight:400; margin-bottom:1.25rem; font-style:italic;">{ba.label}</h3>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
             <div>
-              <p class="label-sm" style="margin-bottom:0.5rem; color:#7a7a6a;">Before</p>
+              <p class="label-sm" style="margin-bottom:0.5rem; color:#595950;">Before</p>
               <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
             </div>
             <div>
@@ -235,13 +236,13 @@ const testimonials = [
 <!-- TESTIMONIALS -->
 <section style="background:#1e2b1e; padding:6rem 3rem;">
   <div style="max-width:72rem; margin:0 auto;">
-    <p class="label-sm" style="text-align:center; display:block; margin-bottom:3rem;">Client words</p>
+    <p class="label-sm on-dark" style="text-align:center; display:block; margin-bottom:3rem;">Client words</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:3rem;">
       {testimonials.map(t => (
         <div style="border-top:1px solid rgba(200,169,106,0.3); padding-top:2rem;">
           <p class="garam" style="color:rgba(255,255,255,0.88); font-size:1.2rem; font-style:italic; line-height:1.75; margin:0 0 1.5rem; font-weight:300;">"{t.quote}"</p>
           <div class="rule"></div>
-          <p style="color:#c8a96a; font-size:0.82rem; margin:1rem 0 0; font-weight:500;">{t.name} <span style="color:rgba(255,255,255,0.35); font-weight:300;">— {t.location}</span></p>
+          <p style="color:#c8a96a; font-size:0.82rem; margin:1rem 0 0; font-weight:500;">{t.name} <span style="color:rgba(255,255,255,0.78); font-weight:400;">— {t.location}</span></p>
         </div>
       ))}
     </div>
@@ -254,7 +255,7 @@ const testimonials = [
     <div>
       <p class="label-sm" style="margin-bottom:0.75rem;">Credentials</p>
       <h2 id="certs-h" class="garam" style="font-size:2.5rem; font-weight:400; margin:0 0 1.25rem;">Certified excellence</h2>
-      <p style="color:#7a7a6a; font-size:0.9rem; line-height:1.8; font-weight:300;">Every project is led by licensed designers with deep expertise in horticulture, construction, and estate stewardship.</p>
+      <p style="color:#595950; font-size:0.9rem; line-height:1.8; font-weight:300;">Every project is led by licensed designers with deep expertise in horticulture, construction, and estate stewardship.</p>
     </div>
     <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
       {co.certifications.map(c => (
@@ -278,8 +279,8 @@ const testimonials = [
             <span class="garam" style="color:#c8a96a; font-size:2.25rem; font-weight:600; line-height:1;">{m.name[0]}</span>
           </div>
           <h3 class="garam" style="font-size:1.2rem; font-weight:400; margin:0 0 0.25rem;">{m.name}</h3>
-          <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300; margin:0;">{m.role}</p>
-          {m.cert && <p style="color:#c8a96a; font-size:0.75rem; font-weight:500; margin:0.35rem 0 0; letter-spacing:0.04em;">{m.cert}</p>}
+          <p style="color:#595950; font-size:0.82rem; font-weight:300; margin:0;">{m.role}</p>
+          {m.cert && <p style="color:#74591f; font-size:0.75rem; font-weight:600; margin:0.35rem 0 0; letter-spacing:0.04em;">{m.cert}</p>}
         </div>
       ))}
     </div>
@@ -293,51 +294,53 @@ const testimonials = [
       <p class="label-sm">Begin</p>
       <h2 id="contact-h" class="garam" style="font-size:3.5rem; font-weight:300; margin:0.5rem 0 1rem; line-height:1.1;">Start the<br /><em>conversation</em></h2>
       <div class="rule" style="margin:1.5rem auto;"></div>
-      <p style="color:#7a7a6a; font-size:0.95rem; line-height:1.8; font-weight:300;">We accept a limited number of new projects each season. We would love to hear about yours.</p>
+      <p style="color:#595950; font-size:0.95rem; line-height:1.8; font-weight:300;">We accept a limited number of new projects each season. We would love to hear about yours.</p>
     </div>
     <form novalidate aria-label="Project inquiry form" style="display:grid; gap:1.1rem;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;">
         <div>
-          <label for="v2-fn" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">First name</label>
+          <label for="v2-fn" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#595950; display:block; margin-bottom:0.5rem;">First name</label>
           <input id="v2-fn" name="first_name" type="text" required autocomplete="given-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
         </div>
         <div>
-          <label for="v2-ln" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Last name</label>
+          <label for="v2-ln" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#595950; display:block; margin-bottom:0.5rem;">Last name</label>
           <input id="v2-ln" name="last_name" type="text" required autocomplete="family-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
         </div>
       </div>
       <div>
-        <label for="v2-email" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Email address</label>
+        <label for="v2-email" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#595950; display:block; margin-bottom:0.5rem;">Email address</label>
         <input id="v2-email" name="email" type="email" required autocomplete="email" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
       </div>
       <div>
-        <label for="v2-loc" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Property location</label>
+        <label for="v2-loc" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#595950; display:block; margin-bottom:0.5rem;">Property location</label>
         <input id="v2-loc" name="location" type="text" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" placeholder="City or neighborhood" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
       </div>
       <div>
-        <label for="v2-scope" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Project scope</label>
+        <label for="v2-scope" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#595950; display:block; margin-bottom:0.5rem;">Project scope</label>
         <select id="v2-scope" name="scope" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none; appearance:auto;">
           <option value="">Please select…</option>
           {co.services.map(s => <option value={s.title}>{s.title}</option>)}
         </select>
       </div>
       <div>
-        <label for="v2-vision" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Your vision</label>
+        <label for="v2-vision" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#595950; display:block; margin-bottom:0.5rem;">Your vision</label>
         <textarea id="v2-vision" name="vision" rows={5} style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; resize:vertical; outline:none;" placeholder="Tell us about your property, your aspirations, and what you hope to create…" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'"></textarea>
       </div>
       <button type="submit" class="btn-inquire" style="width:100%; padding:1.1rem; font-size:0.85rem;">Submit Inquiry</button>
     </form>
-    <p style="text-align:center; color:#7a7a6a; font-size:0.78rem; margin-top:1.5rem; font-weight:300;">{co.phone} · {co.email}</p>
+    <p style="text-align:center; color:#595950; font-size:0.78rem; margin-top:1.5rem; font-weight:300;">{co.phone} · {co.email}</p>
   </div>
 </section>
 
 </main>
 
-<footer style="background:#111a11; color:rgba(255,255,255,0.4); padding:3rem; text-align:center;">
-  <div style="max-width:88rem; margin:0 auto;">
-    <p class="garam" style="color:#c8a96a; font-size:1.1rem; font-weight:400; margin-bottom:0.5rem;">Meridian Design + Build</p>
-    <p style="font-size:0.78rem; margin-bottom:0.4rem;">{co.address}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Meridian Design + Build. All rights reserved. CA Licensed.</p>
+<footer style="background:#111a11; color:rgba(255,255,255,0.75); padding:3rem; text-align:center;">
+  <div style="max-width:88rem; margin:0 auto; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
+    <p class="garam" style="color:#e0c890; font-size:1.15rem; font-weight:400; margin:0;">Meridian Design + Build</p>
+    <p style="font-size:0.85rem; margin:0; color:rgba(255,255,255,0.78);">{co.address}</p>
+    <p style="font-size:0.85rem; margin:0;"><a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#e0c890; text-decoration:underline;">{co.phone}</a> &middot; <a href={`mailto:${co.email}`} style="color:#e0c890; text-decoration:underline;">{co.email}</a></p>
+    <p style="font-size:0.85rem; margin:0;"><a href="/accessibility/v2-luxury-design-build" style="color:#e0c890; text-decoration:underline;">Accessibility Statement</a></p>
+    <p style="font-size:0.78rem; margin:0; color:rgba(255,255,255,0.65);">&copy; {new Date().getFullYear()} Meridian Design + Build. All rights reserved. CA Licensed.</p>
   </div>
 </footer>
 

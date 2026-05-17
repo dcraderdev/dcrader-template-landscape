@@ -27,7 +27,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
   --cream-dark: #f0ebe0;
   --gold: #c8a84b;
   --text: #1c2b1a;
-  --muted: #637063;
+  --muted: #4a564a;
   --border: #dde8dd;
 
   .btn-green {
@@ -65,9 +65,10 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #3d7a3d;
+    color: #1f4a1f;
     margin-bottom: 0.6rem;
   }
+  .label.on-dark { color: #c8e8c8; }
   .card {
     background: #fff;
     border: 1px solid #dde8dd;
@@ -117,15 +118,15 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
       <span class="serif" style="font-size:1.2rem; font-weight:700; color:#1c2b1a;">GreenScape</span>
     </a>
     <div style="display:flex; gap:1.75rem; align-items:center;">
-      <a href="#services" style="color:#637063; text-decoration:none; font-size:0.88rem; font-weight:500;">Services</a>
-      <a href="#plans" style="color:#637063; text-decoration:none; font-size:0.88rem; font-weight:500;">Plans</a>
-      <a href="#about" style="color:#637063; text-decoration:none; font-size:0.88rem; font-weight:500;">About</a>
+      <a href="#services" style="color:#4a564a; text-decoration:none; font-size:0.88rem; font-weight:500;">Services</a>
+      <a href="#plans" style="color:#4a564a; text-decoration:none; font-size:0.88rem; font-weight:500;">Plans</a>
+      <a href="#about" style="color:#4a564a; text-decoration:none; font-size:0.88rem; font-weight:500;">About</a>
       <a href="#contact" class="btn-green" style="padding:0.55rem 1.3rem; font-size:0.875rem;">Get a Free Quote</a>
     </div>
   </nav>
 </header>
 
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO — split layout -->
 <section style="padding:0; background:#faf8f3; min-height:88vh; display:grid; grid-template-columns:1fr 1fr; align-items:stretch;" aria-label="Hero">
@@ -137,7 +138,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <h1 class="serif" style="font-size:clamp(2.4rem,4.5vw,3.75rem); line-height:1.12; color:#1c2b1a; font-weight:700;">
       Get your<br /><em style="color:#2a5f2a; font-style:italic;">Saturdays</em><br />back.
     </h1>
-    <p style="font-size:1.05rem; line-height:1.75; color:#637063; max-width:28rem;">
+    <p style="font-size:1.05rem; line-height:1.75; color:#4a564a; max-width:28rem;">
       Weekly mowing, edging, and fertilization — handled by your dedicated neighborhood crew. Subscribe once, forget about it.
     </p>
     <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
@@ -149,10 +150,10 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
       <div style="display:flex; align-items:center; gap:0.25rem;" aria-label="4.9 out of 5 stars">
         <span class="star" aria-hidden="true">★★★★★</span>
         <span style="font-weight:700; font-size:0.9rem; color:#1c2b1a;">4.9</span>
-        <span style="color:#637063; font-size:0.82rem;">(312 reviews)</span>
+        <span style="color:#4a564a; font-size:0.82rem;">(312 reviews)</span>
       </div>
       <span style="color:#dde8dd;">|</span>
-      <span style="color:#637063; font-size:0.82rem;">1,400+ happy neighbors</span>
+      <span style="color:#4a564a; font-size:0.82rem;">1,400+ happy neighbors</span>
     </div>
   </div>
   <!-- Right: photo -->
@@ -168,7 +169,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
       <span style="font-size:2rem;" aria-hidden="true">🌿</span>
       <div>
         <p style="font-weight:700; font-size:0.88rem; margin:0; color:#1c2b1a;">Your crew arrives Thursdays</p>
-        <p style="color:#637063; font-size:0.78rem; margin:0;">Consistent. Rain or shine.</p>
+        <p style="color:#4a564a; font-size:0.78rem; margin:0;">Consistent. Rain or shine.</p>
       </div>
     </div>
   </div>
@@ -186,10 +187,10 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
         { n:'03', icon:'✉️', title:'Get a visit report', body:'After each visit you receive a text with what was done and a photo of your lawn.' },
       ].map(s => (
         <div class="card" style="text-align:left; position:relative;">
-          <span style="position:absolute; top:1.25rem; right:1.5rem; font-size:2.25rem; opacity:0.08; font-family:'IBM Plex Serif',serif; font-weight:700;">{s.n}</span>
+          <span aria-hidden="true" style="position:absolute; top:1.25rem; right:1.5rem; font-size:2.25rem; color:#6b8b6b; font-family:'IBM Plex Serif',serif; font-weight:700;">{s.n}</span>
           <div style="font-size:2rem; margin-bottom:0.75rem;" aria-hidden="true">{s.icon}</div>
           <h3 style="font-weight:700; font-size:1.05rem; margin-bottom:0.4rem;">{s.title}</h3>
-          <p style="color:#637063; font-size:0.9rem; line-height:1.65; margin:0;">{s.body}</p>
+          <p style="color:#4a564a; font-size:0.9rem; line-height:1.65; margin:0;">{s.body}</p>
         </div>
       ))}
     </div>
@@ -202,7 +203,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <div style="text-align:center; margin-bottom:3rem;">
       <span class="label">Weekly Lawn Plans</span>
       <h2 id="plans-h" class="serif" style="font-size:2.75rem; margin:0.25rem 0 0.75rem;">Subscribe and forget about it</h2>
-      <p style="color:#637063; max-width:36rem; margin:0 auto; line-height:1.7;">All plans include weekly mowing, edging, and blowing. No contracts — pause or cancel any month.</p>
+      <p style="color:#4a564a; max-width:36rem; margin:0 auto; line-height:1.7;">All plans include weekly mowing, edging, and blowing. No contracts — pause or cancel any month.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; align-items:start;">
       {co.plans.map((p,i) => (
@@ -211,9 +212,9 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
           <p class="label" style={i===1?'color:#2a5f2a;':''}>{p.name} Plan</p>
           <div style="display:flex; align-items:baseline; gap:0.25rem; margin:0.5rem 0 0.25rem;">
             <span class="serif" style={`font-size:3rem; font-weight:700; ${i===1?'color:#2a5f2a;':'color:#1c2b1a;'}`}>{p.price}</span>
-            <span style="color:#637063; font-size:0.9rem;">{p.period}</span>
+            <span style="color:#4a564a; font-size:0.9rem;">{p.period}</span>
           </div>
-          <p style="color:#637063; font-size:0.8rem; margin:0 0 1.25rem;">billed monthly, no contract</p>
+          <p style="color:#4a564a; font-size:0.8rem; margin:0 0 1.25rem;">billed monthly, no contract</p>
           <ul style="list-style:none; padding:0; margin:0 0 1.75rem; display:flex; flex-direction:column; gap:0.6rem;">
             {p.features.map(f => (
               <li style="display:flex; gap:0.6rem; font-size:0.9rem; align-items:flex-start;">
@@ -228,7 +229,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
         </div>
       ))}
     </div>
-    <p style="text-align:center; color:#637063; font-size:0.82rem; margin-top:2rem;">Prices include all labor and disposal. One-time setup: free. Cancel anytime by text.</p>
+    <p style="text-align:center; color:#4a564a; font-size:0.82rem; margin-top:2rem;">Prices include all labor and disposal. One-time setup: free. Cancel anytime by text.</p>
   </div>
 </section>
 
@@ -244,7 +245,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
         <div class="card">
           <span style="font-size:2rem;" aria-hidden="true">{s.icon}</span>
           <h3 style="font-weight:700; margin:0.75rem 0 0.35rem; font-size:1rem;">{s.title}</h3>
-          <p style="color:#637063; font-size:0.88rem; line-height:1.6; margin:0;">{s.description}</p>
+          <p style="color:#4a564a; font-size:0.88rem; line-height:1.6; margin:0;">{s.description}</p>
         </div>
       ))}
     </div>
@@ -293,7 +294,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
           <img src={p.img} alt={p.title} width="600" height="380" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
           <figcaption style="padding:1rem 1.25rem; background:#fff;">
             <p style="font-weight:700; font-size:0.9rem; margin:0 0 0.3rem;">{p.title}</p>
-            <p style="color:#637063; font-size:0.82rem; margin:0; line-height:1.5;">{p.description}</p>
+            <p style="color:#4a564a; font-size:0.82rem; margin:0; line-height:1.5;">{p.description}</p>
           </figcaption>
         </figure>
       ))}
@@ -305,7 +306,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
 <section style="background:#2a5f2a; padding:4rem 1.5rem;">
   <div class="inner" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:center;">
     <div>
-      <span class="label" style="color:#90cc90;">Why trust GreenScape</span>
+      <span class="label on-dark" style="color:#c8e8c8;">Why trust GreenScape</span>
       <h2 class="serif" style="font-size:2rem; color:#fff; margin:0.5rem 0 1.25rem;">Licensed, certified &amp; insured</h2>
       <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
         {co.certifications.map(c => (
@@ -317,7 +318,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
       {co.stats.map(s => (
         <div style="background:rgba(255,255,255,0.1); border-radius:10px; padding:1.25rem;">
           <p class="serif" style="font-size:2.25rem; font-weight:700; color:#fff; margin:0;">{s.value}</p>
-          <p style="color:rgba(255,255,255,0.7); font-size:0.78rem; margin:0.25rem 0 0;">{s.label}</p>
+          <p style="color:rgba(255,255,255,0.92); font-size:0.82rem; margin:0.25rem 0 0;">{s.label}</p>
         </div>
       ))}
     </div>
@@ -330,7 +331,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <div style="text-align:center; margin-bottom:2.5rem;">
       <span class="label">The neighborhood crew</span>
       <h2 id="team-h" class="serif" style="font-size:2.25rem; margin:0.25rem 0;">Meet the GreenScape team</h2>
-      <p style="color:#637063; max-width:30rem; margin:0.75rem auto 0; line-height:1.65;">We're your neighbors. We live in the communities we serve — and it shows.</p>
+      <p style="color:#4a564a; max-width:30rem; margin:0.75rem auto 0; line-height:1.65;">We're your neighbors. We live in the communities we serve — and it shows.</p>
     </div>
     <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));">
       {co.teamMembers.map(m => (
@@ -339,7 +340,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
             <span class="serif" style="color:#fff; font-size:1.75rem; font-weight:700;">{m.name[0]}</span>
           </div>
           <p style="font-weight:700; font-size:0.95rem; margin:0 0 0.2rem;">{m.name}</p>
-          <p style="color:#637063; font-size:0.82rem; margin:0;">{m.role}</p>
+          <p style="color:#4a564a; font-size:0.82rem; margin:0;">{m.role}</p>
           {m.cert && <p style="color:#2a5f2a; font-size:0.75rem; font-weight:600; margin:0.35rem 0 0;">{m.cert}</p>}
         </div>
       ))}
@@ -353,7 +354,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <div>
       <span class="label">Service area</span>
       <h2 class="serif" style="font-size:2rem; margin:0.5rem 0 1rem;">We come to you</h2>
-      <p style="color:#637063; line-height:1.7; margin-bottom:1.25rem;">Serving homeowners across North San Diego County:</p>
+      <p style="color:#4a564a; line-height:1.7; margin-bottom:1.25rem;">Serving homeowners across North San Diego County:</p>
       <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem;">
         {co.serviceArea.split(', ').map(a => (
           <li style="display:flex; align-items:center; gap:0.5rem; font-size:0.92rem;">
@@ -365,7 +366,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <div style="background:#fff; border:1px solid #dde8dd; border-radius:14px; height:280px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.6rem;">
       <span style="font-size:3rem;" aria-hidden="true">🗺️</span>
       <p style="font-weight:700; color:#1c2b1a; margin:0; font-size:0.95rem;">North San Diego County</p>
-      <p style="color:#637063; font-size:0.82rem; margin:0; text-align:center; padding:0 1.5rem;">{co.serviceArea}</p>
+      <p style="color:#4a564a; font-size:0.82rem; margin:0; text-align:center; padding:0 1.5rem;">{co.serviceArea}</p>
     </div>
   </div>
 </section>
@@ -373,7 +374,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
 <!-- ESTIMATE FORM -->
 <section id="contact" aria-labelledby="contact-h" style="background:#1c2b1a; padding:5rem 1.5rem;">
   <div style="max-width:44rem; margin:0 auto; text-align:center;">
-    <span class="label" style="color:#90cc90;">Free estimate</span>
+    <span class="label on-dark" style="color:#c8e8c8;">Free estimate</span>
     <h2 id="contact-h" class="serif" style="color:#fff; font-size:2.5rem; margin:0.4rem 0 0.75rem;">What's your address?</h2>
     <p style="color:rgba(255,255,255,0.65); margin-bottom:2.5rem; line-height:1.7;">We'll pull up satellite view, measure your lawn, and email a quote — usually in under an hour.</p>
     <form novalidate aria-label="Free estimate form" style="display:grid; gap:0.9rem; text-align:left;">
@@ -406,18 +407,19 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
       </div>
       <button type="submit" class="btn-green" style="width:100%; padding:1rem; font-size:1rem; border-radius:6px; margin-top:0.25rem;">Get My Free Quote →</button>
     </form>
-    <p style="color:rgba(255,255,255,0.35); font-size:0.78rem; margin-top:1.25rem;">Or call us: <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:rgba(255,255,255,0.55);">{co.phone}</a></p>
+    <p style="color:rgba(255,255,255,0.85); font-size:0.85rem; margin-top:1.25rem;">Or call us: <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#c8e8c8; text-decoration:underline;">{co.phone}</a></p>
   </div>
 </section>
 
 </main>
 
 <!-- FOOTER -->
-<footer style="background:#111a10; color:rgba(255,255,255,0.5); padding:2.5rem 1.5rem; text-align:center;">
+<footer style="background:#111a10; color:rgba(255,255,255,0.7); padding:2.5rem 1.5rem; text-align:center;">
   <div style="max-width:72rem; margin:0 auto; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
-    <span class="serif" style="color:#90cc90; font-size:1.1rem; font-weight:700;">GreenScape Lawn &amp; Garden</span>
-    <p style="font-size:0.8rem; margin:0;">{co.address} · <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:rgba(255,255,255,0.5);">{co.phone}</a></p>
-    <p style="font-size:0.75rem; margin:0;">&copy; {new Date().getFullYear()} GreenScape Lawn &amp; Garden. CA Licensed C-27. All rights reserved.</p>
+    <span class="serif" style="color:#a8dca8; font-size:1.1rem; font-weight:700;">GreenScape Lawn &amp; Garden</span>
+    <p style="font-size:0.85rem; margin:0; color:rgba(255,255,255,0.75);">{co.address} &middot; <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#a8dca8; text-decoration:underline;">{co.phone}</a> &middot; <a href={`mailto:${co.email}`} style="color:#a8dca8; text-decoration:underline;">{co.email}</a></p>
+    <p style="font-size:0.85rem; margin:0;"><a href="/accessibility/v1-residential-lawn" style="color:#a8dca8; text-decoration:underline;">Accessibility Statement</a></p>
+    <p style="font-size:0.78rem; margin:0; color:rgba(255,255,255,0.65);">&copy; {new Date().getFullYear()} GreenScape Lawn &amp; Garden. CA Licensed C-27. All rights reserved.</p>
   </div>
 </footer>
 

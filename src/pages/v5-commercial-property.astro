@@ -54,12 +54,12 @@ const contractTiers = [
     --navy: #0d1b3e;
     --navy-mid: #1a2d5a;
     --navy-light: #2a3f70;
-    --silver: #8394b0;
+    --silver: #5a6a86;
     --silver-light: #c8d4e8;
     --bg: #ffffff;
     --bg2: #f4f7fb;
     --text: #0d1b3e;
-    --muted: #6a7a90;
+    --muted: #4a5a70;
     --border: #c0ccd8;
   }
 
@@ -105,7 +105,7 @@ const contractTiers = [
     transition: opacity 0.18s;
   }
   .btn-white:hover { opacity: 0.92; }
-  .label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #8394b0; margin-bottom: 0.6rem; }
+  .label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #4a5874; margin-bottom: 0.6rem; }
   .card { background: #f4f7fb; border: 1px solid #c0ccd8; padding: 1.75rem; }
   section { padding: 5rem 2rem; }
   .inner { max-width: 80rem; margin: 0 auto; }
@@ -131,23 +131,23 @@ const contractTiers = [
   <nav aria-label="Main navigation" style="max-width:80rem; margin:0 auto; padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between;">
     <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:0.75rem;">
       <div style="width:36px; height:36px; background:#0d1b3e; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="10" width="16" height="8" rx="1" stroke="#8394b0" stroke-width="1.5"/><rect x="5" y="4" width="10" height="8" rx="1" stroke="#c8d4e8" stroke-width="1.5"/><rect x="8" y="1" width="4" height="5" rx="1" stroke="#fff" stroke-width="1.5"/></svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="10" width="16" height="8" rx="1" stroke="#5a6a86" stroke-width="1.5"/><rect x="5" y="4" width="10" height="8" rx="1" stroke="#c8d4e8" stroke-width="1.5"/><rect x="8" y="1" width="4" height="5" rx="1" stroke="#fff" stroke-width="1.5"/></svg>
       </div>
       <div>
         <span style="font-weight:900; font-size:1.05rem; color:#0d1b3e; display:block; line-height:1.1; letter-spacing:-0.01em;">APEX</span>
-        <span style="color:#8394b0; font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; display:block;">Commercial Landscapes</span>
+        <span style="color:#4a5874; font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; display:block;">Commercial Landscapes</span>
       </div>
     </a>
     <div style="display:flex; gap:2rem; align-items:center;">
-      <a href="#services" style="color:#6a7a90; text-decoration:none; font-size:0.85rem; font-weight:500;">Services</a>
-      <a href="#contracts" style="color:#6a7a90; text-decoration:none; font-size:0.85rem; font-weight:500;">Contracts</a>
-      <a href="#portfolio" style="color:#6a7a90; text-decoration:none; font-size:0.85rem; font-weight:500;">Portfolio</a>
+      <a href="#services" style="color:#4a5a70; text-decoration:none; font-size:0.85rem; font-weight:500;">Services</a>
+      <a href="#contracts" style="color:#4a5a70; text-decoration:none; font-size:0.85rem; font-weight:500;">Contracts</a>
+      <a href="#portfolio" style="color:#4a5a70; text-decoration:none; font-size:0.85rem; font-weight:500;">Portfolio</a>
       <a href="#contact" class="btn-navy" style="padding:0.6rem 1.5rem; font-size:0.85rem;">Request Proposal</a>
     </div>
   </nav>
 </header>
 
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO — aerial shot, corporate -->
 <section aria-label="Hero" style="min-height:86vh; background:#0a1020; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:0;">
@@ -156,9 +156,9 @@ const contractTiers = [
   <!-- content -->
   <div style="position:relative; z-index:1; max-width:80rem; margin:0 auto; padding:0 2rem 5rem; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:end;">
     <div>
-      <p style="color:#8394b0; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.25rem;">Serving 185+ commercial accounts</p>
+      <p style="color:#a8b6d0; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.25rem;">Serving 185+ commercial accounts</p>
       <h1 style="color:#fff; font-size:clamp(2.5rem,5.5vw,4.25rem); font-weight:900; line-height:1.05; margin:0 0 1.25rem; letter-spacing:-0.02em;">
-        Professional Property.<br /><span style="color:#8394b0;">Premium Presentation.</span>
+        Professional Property.<br /><span style="color:#a8b6d0;">Premium Presentation.</span>
       </h1>
       <p style="color:rgba(255,255,255,0.65); font-size:1rem; line-height:1.8; max-width:34rem; margin-bottom:2rem; font-weight:400;">
         Commercial landscape management for office campuses, retail centers, HOAs, and hospitality properties across greater San Diego. One call. One company. Total accountability.
@@ -173,7 +173,7 @@ const contractTiers = [
       {co.stats.map(s => (
         <div style="background:#0a1020; padding:1.5rem; text-align:center;">
           <p style="color:#fff; font-size:2rem; font-weight:900; margin:0 0 0.25rem; letter-spacing:-0.02em;">{s.value}</p>
-          <p style="color:#8394b0; font-size:0.72rem; margin:0; text-transform:uppercase; letter-spacing:0.1em; font-weight:500;">{s.label}</p>
+          <p style="color:#a8b6d0; font-size:0.72rem; margin:0; text-transform:uppercase; letter-spacing:0.1em; font-weight:500;">{s.label}</p>
         </div>
       ))}
     </div>
@@ -193,7 +193,7 @@ const contractTiers = [
     ].map(p => (
       <div style="text-align:center; padding:0.75rem 1.5rem; flex:1; min-width:120px;">
         <span style="font-size:2rem; display:block;" aria-hidden="true">{p.icon}</span>
-        <span style="font-size:0.75rem; font-weight:700; color:#6a7a90; text-transform:uppercase; letter-spacing:0.1em;">{p.label}</span>
+        <span style="font-size:0.75rem; font-weight:700; color:#4a5a70; text-transform:uppercase; letter-spacing:0.1em;">{p.label}</span>
       </div>
     ))}
   </div>
@@ -206,7 +206,7 @@ const contractTiers = [
       <div>
         <span class="label">What we provide</span>
         <h2 id="svc-h" style="font-size:2.25rem; font-weight:900; margin:0.25rem 0 1.25rem; letter-spacing:-0.02em;">Commercial services</h2>
-        <p style="color:#6a7a90; line-height:1.75; font-size:0.9rem; margin-bottom:1.5rem;">Scalable programs with dedicated account managers, monthly reporting, and performance SLAs.</p>
+        <p style="color:#4a5a70; line-height:1.75; font-size:0.9rem; margin-bottom:1.5rem;">Scalable programs with dedicated account managers, monthly reporting, and performance SLAs.</p>
         <a href="#contact" class="btn-navy">Get a Proposal</a>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#c0ccd8; border:1px solid #c0ccd8;">
@@ -214,7 +214,7 @@ const contractTiers = [
           <div style={`background:${i%2===0?'#fff':'#f4f7fb'}; padding:1.5rem;`}>
             <span style="font-size:1.75rem; display:block; margin-bottom:0.75rem;" aria-hidden="true">{s.icon}</span>
             <h3 style="font-size:0.95rem; font-weight:700; margin:0 0 0.4rem; color:#0d1b3e;">{s.title}</h3>
-            <p style="color:#6a7a90; font-size:0.85rem; line-height:1.65; margin:0;">{s.description}</p>
+            <p style="color:#4a5a70; font-size:0.85rem; line-height:1.65; margin:0;">{s.description}</p>
           </div>
         ))}
       </div>
@@ -226,13 +226,13 @@ const contractTiers = [
 <section style="background:#0d1b3e; padding:5rem 2rem;">
   <div class="inner" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:3rem; align-items:center;">
     <div>
-      <span class="label" style="color:#8394b0;">Seasonal specialty</span>
+      <span class="label" style="color:#a8b6d0;">Seasonal specialty</span>
       <h2 style="color:#fff; font-size:2.25rem; font-weight:900; margin:0.25rem 0 1rem; letter-spacing:-0.02em;">Snow &amp; ice<br />management</h2>
       <p style="color:rgba(255,255,255,0.6); line-height:1.8; font-size:0.95rem; margin-bottom:1.5rem;">For Northern California commercial clients, we provide pre-treatment, de-icing, salting, and snow removal with 4-hour response SLAs. Keep your property open and your tenants safe.</p>
       <ul style="list-style:none; padding:0; margin:0 0 2rem; display:flex; flex-direction:column; gap:0.6rem;">
         {['Pre-storm salt application', 'Anti-icing liquid pre-treatment', 'Snow plowing & hauling', 'Walkway hand-clearing', 'Post-storm inspection', '4-hr response SLA guarantee'].map(f => (
           <li style="display:flex; gap:0.6rem; font-size:0.9rem; color:rgba(255,255,255,0.8); align-items:flex-start;">
-            <span style="color:#8394b0; flex-shrink:0;" aria-hidden="true">❄️</span> {f}
+            <span style="color:#5a6a86; flex-shrink:0;" aria-hidden="true">❄️</span> {f}
           </li>
         ))}
       </ul>
@@ -254,22 +254,22 @@ const contractTiers = [
     <div style="text-align:center; margin-bottom:3.5rem;">
       <span class="label">Maintenance contracts</span>
       <h2 id="contracts-h" style="font-size:2.5rem; font-weight:900; margin:0.25rem 0 0.75rem; letter-spacing:-0.02em;">Landscape maintenance programs</h2>
-      <p style="color:#6a7a90; max-width:36rem; margin:0 auto; line-height:1.75; font-size:0.92rem;">All contracts include a dedicated account manager, monthly QA inspection, and photo report. SLA guarantees are in writing.</p>
+      <p style="color:#4a5a70; max-width:36rem; margin:0 auto; line-height:1.75; font-size:0.92rem;">All contracts include a dedicated account manager, monthly QA inspection, and photo report. SLA guarantees are in writing.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; align-items:start;">
       {contractTiers.map(t => (
         <div style={`background:${t.highlight?'#0d1b3e':'#fff'}; border:${t.highlight?'2px solid #0d1b3e':'1px solid #c0ccd8'}; padding:2rem; ${t.highlight?'transform:translateY(-6px);':''}`}>
-          {t.highlight && <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#8394b0; margin:0 0 0.75rem;">Most Popular</p>}
+          {t.highlight && <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#a8b6d0; margin:0 0 0.75rem;">Most Popular</p>}
           <h3 style={`font-size:1.3rem; font-weight:900; margin:0 0 0.25rem; letter-spacing:-0.01em; ${t.highlight?'color:#fff;':''}`}>{t.name}</h3>
-          <p style={`font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 1rem; ${t.highlight?'color:#8394b0;':'color:#8394b0;'}`}>SLA: {t.sla}</p>
+          <p style={`font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 1rem; ${t.highlight?'color:#a8b6d0;':'color:#4a5874;'}`}>SLA: {t.sla}</p>
           <div style="display:flex; align-items:baseline; gap:0.25rem; margin-bottom:1.5rem;">
             <span style={`font-size:2.75rem; font-weight:900; letter-spacing:-0.02em; ${t.highlight?'color:#fff;':'color:#0d1b3e;'}`}>{t.price}</span>
-            <span style={`font-size:0.85rem; ${t.highlight?'color:rgba(255,255,255,0.5);':'color:#6a7a90;'}`}>{t.period}</span>
+            <span style={`font-size:0.85rem; ${t.highlight?'color:rgba(255,255,255,0.5);':'color:#4a5a70;'}`}>{t.period}</span>
           </div>
           <ul style="list-style:none; padding:0; margin:0 0 1.75rem; display:flex; flex-direction:column; gap:0.65rem;">
             {t.features.map(f => (
               <li style="display:flex; gap:0.6rem; font-size:0.875rem; align-items:flex-start; line-height:1.5;">
-                <span style={`flex-shrink:0; font-weight:700; ${t.highlight?'color:#8394b0;':'color:#0d1b3e;'}`} aria-hidden="true">✓</span>
+                <span style={`flex-shrink:0; font-weight:700; ${t.highlight?'color:#a8b6d0;':'color:#0d1b3e;'}`} aria-hidden="true">✓</span>
                 <span style={t.highlight?'color:rgba(255,255,255,0.85);':''}>{f}</span>
               </li>
             ))}
@@ -281,7 +281,7 @@ const contractTiers = [
     <!-- SLA table -->
     <div style="margin-top:2.5rem; overflow-x:auto;">
       <table>
-        <caption style="text-align:left; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#6a7a90; padding-bottom:0.75rem;">Service Level Comparison</caption>
+        <caption style="text-align:left; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#4a5a70; padding-bottom:0.75rem;">Service Level Comparison</caption>
         <thead>
           <tr>
             <th>Feature</th>
@@ -303,7 +303,7 @@ const contractTiers = [
               {row.map((cell, ci) => (
                 ci === 0
                   ? <td style="font-weight:600; color:#0d1b3e;">{cell}</td>
-                  : <td style="color:#6a7a90;">{cell}</td>
+                  : <td style="color:#4a5a70;">{cell}</td>
               ))}
             </tr>
           ))}
@@ -326,7 +326,7 @@ const contractTiers = [
           <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:240px; object-fit:cover; display:block;" />
           <figcaption style="padding:1.5rem; background:#f4f7fb;">
             <h3 style="font-weight:700; font-size:1rem; margin:0 0 0.35rem; color:#0d1b3e;">{p.title}</h3>
-            <p style="color:#6a7a90; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
+            <p style="color:#4a5a70; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
         </figure>
       ))}
@@ -347,7 +347,7 @@ const contractTiers = [
           <h3 style="font-weight:700; font-size:0.95rem; margin-bottom:1rem; color:#0d1b3e;">{ba.label}</h3>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
             <div>
-              <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#6a7a90; margin-bottom:0.4rem;">Before</p>
+              <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#4a5a70; margin-bottom:0.4rem;">Before</p>
               <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
             </div>
             <div>
@@ -372,10 +372,10 @@ const contractTiers = [
       {co.teamMembers.map(m => (
         <div class="card" style="text-align:center;">
           <div style="width:68px; height:68px; background:#0d1b3e; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
-            <span style="color:#8394b0; font-size:1.5rem; font-weight:900;">{m.name[0]}</span>
+            <span style="color:#a8b6d0; font-size:1.5rem; font-weight:900;">{m.name[0]}</span>
           </div>
           <h3 style="font-weight:700; font-size:0.95rem; margin:0 0 0.25rem; color:#0d1b3e;">{m.name}</h3>
-          <p style="color:#6a7a90; font-size:0.82rem; margin:0;">{m.role}</p>
+          <p style="color:#4a5a70; font-size:0.82rem; margin:0;">{m.role}</p>
         </div>
       ))}
     </div>
@@ -389,7 +389,7 @@ const contractTiers = [
       <div>
         <span class="label">Standards &amp; compliance</span>
         <h2 id="trust-h" style="font-size:2rem; font-weight:900; margin:0.25rem 0 1rem; letter-spacing:-0.02em;">Why property managers choose Apex</h2>
-        <p style="color:#6a7a90; line-height:1.75; font-size:0.9rem;">Every contract includes written SLAs, $5M liability coverage, OSHA-compliant crews, and DIR-registered labor. We carry the risk — so you don't have to.</p>
+        <p style="color:#4a5a70; line-height:1.75; font-size:0.9rem;">Every contract includes written SLAs, $5M liability coverage, OSHA-compliant crews, and DIR-registered labor. We carry the risk — so you don't have to.</p>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
         {trustSignals.map(t => (
@@ -406,7 +406,7 @@ const contractTiers = [
 <!-- CONTACT — RFP FORM -->
 <section id="contact" aria-labelledby="contact-h" style="background:#0a1020; padding:5rem 2rem;">
   <div style="max-width:50rem; margin:0 auto; text-align:center;">
-    <span class="label" style="color:#8394b0;">Start a proposal</span>
+    <span class="label" style="color:#a8b6d0;">Start a proposal</span>
     <h2 id="contact-h" style="color:#fff; font-size:2.5rem; font-weight:900; margin:0.35rem 0 0.75rem; letter-spacing:-0.02em;">Request a landscape proposal</h2>
     <p style="color:rgba(255,255,255,0.55); margin-bottom:2.5rem; line-height:1.75; font-size:0.92rem;">We conduct a property walk, assess your current landscape, and deliver a custom maintenance proposal within 3 business days.</p>
     <form novalidate aria-label="Commercial landscape proposal request" style="display:grid; gap:1rem; text-align:left;">
@@ -455,17 +455,18 @@ const contractTiers = [
       </div>
       <button type="submit" class="btn-white" style="width:100%; padding:1.1rem; font-size:0.95rem; font-weight:700;">Submit for Proposal →</button>
     </form>
-    <p style="color:rgba(255,255,255,0.3); font-size:0.78rem; margin-top:1.5rem;">{co.phone} · {co.email} · proposals delivered within 3 business days</p>
+    <p style="color:rgba(255,255,255,0.78); font-size:0.78rem; margin-top:1.5rem;">{co.phone} · {co.email} · proposals delivered within 3 business days</p>
   </div>
 </section>
 
 </main>
 
-<footer style="background:#050d1a; color:rgba(255,255,255,0.35); padding:3rem 2rem; text-align:center;">
-  <div style="max-width:80rem; margin:0 auto;">
-    <p style="color:rgba(255,255,255,0.65); font-weight:900; font-size:1rem; margin-bottom:0.4rem; letter-spacing:-0.01em;">APEX Commercial Landscapes</p>
-    <p style="font-size:0.78rem; margin-bottom:0.35rem;">{co.address} · {co.phone} · {co.email}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Apex Commercial Landscapes. NALP Accredited. ISO 9001. DIR #1000000. All rights reserved.</p>
+<footer style="background:#050d1a; color:rgba(255,255,255,0.75); padding:3rem 2rem; text-align:center;">
+  <div style="max-width:80rem; margin:0 auto; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
+    <p style="color:#fff; font-weight:900; font-size:1.05rem; margin:0; letter-spacing:-0.01em;">APEX Commercial Landscapes</p>
+    <p style="font-size:0.85rem; margin:0; color:rgba(255,255,255,0.78);">{co.address} &middot; <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#b0c4e0; text-decoration:underline;">{co.phone}</a> &middot; <a href={`mailto:${co.email}`} style="color:#b0c4e0; text-decoration:underline;">{co.email}</a></p>
+    <p style="font-size:0.85rem; margin:0;"><a href="/accessibility/v5-commercial-property" style="color:#b0c4e0; text-decoration:underline;">Accessibility Statement</a></p>
+    <p style="font-size:0.78rem; margin:0; color:rgba(255,255,255,0.65);">&copy; {new Date().getFullYear()} Apex Commercial Landscapes. NALP Accredited. ISO 9001. DIR #1000000. All rights reserved.</p>
   </div>
 </footer>
 

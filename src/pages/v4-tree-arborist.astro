@@ -32,7 +32,7 @@ const serviceSpecs = [
     --parchment: #f4ede0;
     --bg: #faf8f4;
     --text: #1a2810;
-    --muted: #6a7a5a;
+    --muted: #4a5a3a;
     --border: #c4b890;
   }
 
@@ -133,7 +133,7 @@ const serviceSpecs = [
         </svg>
         <div>
           <span class="bree" style="color:#fff; font-size:1.15rem; display:block; line-height:1.1;">Canopy Tree</span>
-          <span style="color:rgba(255,255,255,0.5); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; display:block;">& Arborist Services</span>
+          <span style="color:rgba(255,255,255,0.8); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; display:block;">& Arborist Services</span>
         </div>
       </div>
     </a>
@@ -147,7 +147,7 @@ const serviceSpecs = [
   </nav>
 </header>
 
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO -->
 <section aria-label="Hero" style="min-height:88vh; background:#0f1f08; position:relative; overflow:hidden; display:flex; align-items:center; padding:0;">
@@ -189,7 +189,7 @@ const serviceSpecs = [
   <div class="inner" style="text-align:center;">
     <span class="label">Why certification matters</span>
     <h2 id="cred-h" class="bree" style="font-size:2rem; margin:0.25rem 0 1rem;">Our certifications protect you</h2>
-    <p style="color:#6a7a5a; max-width:44rem; margin:0 auto 2.5rem; line-height:1.75; font-size:0.95rem;">
+    <p style="color:#4a5a3a; max-width:44rem; margin:0 auto 2.5rem; line-height:1.75; font-size:0.95rem;">
       An ISA Certified Arborist® has passed a rigorous exam and maintains ongoing continuing education. Hiring uncertified tree workers exposes you to liability for property damage and personal injury. Every Canopy crew member is certified.
     </p>
     <div style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
@@ -220,7 +220,7 @@ const serviceSpecs = [
                 <h3 class="bree" style="font-size:1.05rem; margin:0; color:#1a2810;">{s.title}</h3>
                 <span class={`urgency-tag urgency-${urgencyClass}`}>{s.urgency}</span>
               </div>
-              <p style="color:#6a7a5a; font-size:0.88rem; margin:0 0 0.3rem; line-height:1.6;">{s.desc}</p>
+              <p style="color:#4a5a3a; font-size:0.88rem; margin:0 0 0.3rem; line-height:1.6;">{s.desc}</p>
               <p style="color:#8b5a14; font-size:0.75rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin:0;">Standard: {s.spec}</p>
             </div>
             <div style="padding-left:1.5rem; border-left:1px solid #e8dcc8; display:flex; align-items:center;">
@@ -277,7 +277,7 @@ const serviceSpecs = [
           <h3 class="bree" style={`font-size:1.5rem; margin:0 0 0.5rem; ${i===1?'color:#1e3a1e;':''}`}>{p.name}</h3>
           <div style="display:flex; align-items:baseline; gap:0.25rem; margin-bottom:1.25rem;">
             <span style={`font-size:2.5rem; font-weight:900; ${i===1?'color:#1e3a1e;':'color:#8b5a14;'}`}>{p.price}</span>
-            <span style="color:#6a7a5a; font-size:0.875rem;">{p.period}</span>
+            <span style="color:#4a5a3a; font-size:0.875rem;">{p.period}</span>
           </div>
           <ul style="list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-direction:column; gap:0.6rem;">
             {p.features.map(f => (
@@ -307,7 +307,7 @@ const serviceSpecs = [
           <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
           <figcaption style="padding:1.25rem; background:#f4ede0;">
             <p class="bree" style="font-size:1rem; margin:0 0 0.35rem; color:#1a2810;">{p.title}</p>
-            <p style="color:#6a7a5a; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
+            <p style="color:#4a5a3a; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
         </figure>
       ))}
@@ -329,7 +329,7 @@ const serviceSpecs = [
             <span class="bree" style="color:#c4b890; font-size:1.75rem;">{m.name[0]}</span>
           </div>
           <h3 class="bree" style="font-size:1.05rem; margin:0 0 0.25rem;">{m.name}</h3>
-          <p style="color:#6a7a5a; font-size:0.82rem; margin:0;">{m.role}</p>
+          <p style="color:#4a5a3a; font-size:0.82rem; margin:0;">{m.role}</p>
           {m.cert && <p style="color:#8b5a14; font-size:0.75rem; font-weight:700; margin:0.35rem 0 0;">{m.cert}</p>}
         </div>
       ))}
@@ -381,11 +381,12 @@ const serviceSpecs = [
 
 </main>
 
-<footer style="background:#060f04; color:rgba(255,255,255,0.4); padding:2.5rem 1.5rem; text-align:center;">
-  <div style="max-width:72rem; margin:0 auto;">
-    <p class="bree" style="color:#c4b890; font-size:1.05rem; margin-bottom:0.4rem;">Canopy Tree &amp; Arborist Services</p>
-    <p style="font-size:0.78rem; margin-bottom:0.35rem;">{co.address} · {co.phone} · {co.email}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Canopy Tree &amp; Arborist Services. {co.certifications[0]}.</p>
+<footer style="background:#060f04; color:rgba(255,255,255,0.75); padding:2.5rem 1.5rem; text-align:center;">
+  <div style="max-width:72rem; margin:0 auto; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
+    <p class="bree" style="color:#d8c898; font-size:1.1rem; margin:0;">Canopy Tree &amp; Arborist Services</p>
+    <p style="font-size:0.85rem; margin:0; color:rgba(255,255,255,0.78);">{co.address} &middot; <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#d8c898; text-decoration:underline;">{co.phone}</a> &middot; <a href={`mailto:${co.email}`} style="color:#d8c898; text-decoration:underline;">{co.email}</a></p>
+    <p style="font-size:0.85rem; margin:0;"><a href="/accessibility/v4-tree-arborist" style="color:#d8c898; text-decoration:underline;">Accessibility Statement</a></p>
+    <p style="font-size:0.78rem; margin:0; color:rgba(255,255,255,0.65);">&copy; {new Date().getFullYear()} Canopy Tree &amp; Arborist Services. {co.certifications[0]}.</p>
   </div>
 </footer>
 

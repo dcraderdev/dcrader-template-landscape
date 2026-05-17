@@ -26,7 +26,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
     --bg: #fffdf6;
     --bg2: #f7f0e4;
     --text: #2a1a0a;
-    --muted: #8a7a5a;
+    --muted: #5a4a30;
   }
 
   .btn-terra {
@@ -75,7 +75,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
   }
   section { padding: 5rem 1.5rem; }
   .inner { max-width: 72rem; margin: 0 auto; }
-  .label { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #4a7c59; margin-bottom: 0.75rem; }
+  .label { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #3a6649; margin-bottom: 0.75rem; }
 </style>
 
 <!-- NAV -->
@@ -92,19 +92,19 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
       </svg>
       <div>
         <span class="fran" style="color:#2a1a0a; font-size:1.15rem; font-weight:600; display:block; line-height:1.1;">Wild Roots</span>
-        <span style="color:#8a7a5a; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; display:block;">Native Gardens</span>
+        <span style="color:#5a4a30; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; display:block;">Native Gardens</span>
       </div>
     </a>
     <div style="display:flex; gap:1.75rem; align-items:center;">
-      <a href="#why" style="color:#8a7a5a; text-decoration:none; font-size:0.88rem;">Why native</a>
-      <a href="#services" style="color:#8a7a5a; text-decoration:none; font-size:0.88rem;">Services</a>
-      <a href="#work" style="color:#8a7a5a; text-decoration:none; font-size:0.88rem;">Our work</a>
+      <a href="#why" style="color:#5a4a30; text-decoration:none; font-size:0.88rem;">Why native</a>
+      <a href="#services" style="color:#5a4a30; text-decoration:none; font-size:0.88rem;">Services</a>
+      <a href="#work" style="color:#5a4a30; text-decoration:none; font-size:0.88rem;">Our work</a>
       <a href="#contact" class="btn-terra" style="padding:0.55rem 1.3rem; font-size:0.85rem;">Free consult</a>
     </div>
   </nav>
 </header>
 
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO -->
 <section aria-label="Hero" style="min-height:90vh; background:#3d1f0a; position:relative; overflow:hidden; display:flex; align-items:center; padding:0;">
@@ -160,7 +160,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
       <div style="padding-right:3rem; padding-bottom:2rem;">
         <span class="label">What we do</span>
         <h2 id="svc-h" class="fran" style="font-size:clamp(2rem,4vw,3rem); margin:0.25rem 0 1.25rem; font-weight:600;">Ecological<br /><em style="font-weight:300;">services</em></h2>
-        <p style="color:#8a7a5a; line-height:1.8; font-size:0.95rem; margin-bottom:1.5rem;">Everything we do is chemical-free, habitat-positive, and designed to build living soil over time.</p>
+        <p style="color:#5a4a30; line-height:1.8; font-size:0.95rem; margin-bottom:1.5rem;">Everything we do is chemical-free, habitat-positive, and designed to build living soil over time.</p>
         <a href="#contact" class="btn-terra">Schedule your site visit</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:0;">
@@ -170,7 +170,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
               <span style="font-size:1.75rem; flex-shrink:0; margin-top:0.1rem;" aria-hidden="true">{s.icon}</span>
               <div>
                 <h3 style="font-weight:600; font-size:1rem; margin:0 0 0.35rem; color:#2a1a0a;">{s.title}</h3>
-                <p style="color:#8a7a5a; font-size:0.88rem; line-height:1.65; margin:0;">{s.description}</p>
+                <p style="color:#5a4a30; font-size:0.88rem; line-height:1.65; margin:0;">{s.description}</p>
               </div>
             </div>
           </div>
@@ -222,7 +222,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
           <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
           <figcaption style="padding:1.25rem 1.5rem; background:#fff;">
             <p class="fran" style="font-weight:600; font-size:1.05rem; margin:0 0 0.35rem; color:#2a1a0a;">{p.title}</p>
-            <p style="color:#8a7a5a; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
+            <p style="color:#5a4a30; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
         </figure>
       ))}
@@ -233,9 +233,9 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
 <!-- MANIFESTO -->
 <section style="background:#4a7c59; padding:6rem 1.5rem; text-align:center;">
   <div style="max-width:44rem; margin:0 auto;">
-    <span class="label" style="color:#c8f0a0;">Our belief</span>
+    <span class="label" style="color:#ffffff;">Our belief</span>
     <h2 class="fran" style="color:#fff; font-size:clamp(2rem,5vw,3.5rem); font-weight:300; font-style:italic; line-height:1.25; margin:0.5rem 0 1.5rem;">"The most radical act of environmentalism is to tear out your lawn and plant something alive."</h2>
-    <p style="color:rgba(255,255,255,0.7); line-height:1.8; font-size:0.95rem; margin-bottom:2rem;">We've helped 380+ families make that choice. Each garden becomes a node in a growing ecological network — reconnecting San Diego's fragmented habitats one yard at a time.</p>
+    <p style="color:#ffffff; line-height:1.8; font-size:0.95rem; margin-bottom:2rem;">We've helped 380+ families make that choice. Each garden becomes a node in a growing ecological network — reconnecting San Diego's fragmented habitats one yard at a time.</p>
     <a href="#contact" class="btn-terra" style="background:#fff; color:#4a7c59;">Join the movement</a>
   </div>
 </section>
@@ -267,7 +267,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
             <span class="fran" style="color:#fff; font-size:1.75rem; font-weight:600;">{m.name[0]}</span>
           </div>
           <h3 class="fran" style="font-size:1.1rem; font-weight:600; margin:0 0 0.25rem;">{m.name}</h3>
-          <p style="color:#8a7a5a; font-size:0.82rem; margin:0;">{m.role}</p>
+          <p style="color:#5a4a30; font-size:0.82rem; margin:0;">{m.role}</p>
           {m.cert && <p style="color:#4a7c59; font-size:0.75rem; font-weight:600; margin:0.35rem 0 0;">{m.cert}</p>}
         </div>
       ))}
@@ -284,42 +284,43 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
     <form novalidate aria-label="Ecological consultation request" style="display:grid; gap:0.9rem; text-align:left;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.9rem;">
         <div>
-          <label for="v3-fn" style="color:rgba(255,255,255,0.7); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">First name</label>
+          <label for="v3-fn" style="color:rgba(255,255,255,0.92); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">First name</label>
           <input id="v3-fn" name="first_name" type="text" required autocomplete="given-name" style="width:100%; padding:0.75rem; border-radius:99px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.07); color:#fff; font-size:0.95rem; font-family:'Inter',sans-serif;" />
         </div>
         <div>
-          <label for="v3-ln" style="color:rgba(255,255,255,0.7); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Last name</label>
+          <label for="v3-ln" style="color:rgba(255,255,255,0.92); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Last name</label>
           <input id="v3-ln" name="last_name" type="text" required autocomplete="family-name" style="width:100%; padding:0.75rem; border-radius:99px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.07); color:#fff; font-size:0.95rem; font-family:'Inter',sans-serif;" />
         </div>
       </div>
       <div>
-        <label for="v3-email" style="color:rgba(255,255,255,0.7); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Email</label>
+        <label for="v3-email" style="color:rgba(255,255,255,0.92); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Email</label>
         <input id="v3-email" name="email" type="email" required autocomplete="email" style="width:100%; padding:0.75rem; border-radius:99px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.07); color:#fff; font-size:0.95rem; font-family:'Inter',sans-serif;" />
       </div>
       <div>
-        <label for="v3-interest" style="color:rgba(255,255,255,0.7); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">I'm most interested in…</label>
+        <label for="v3-interest" style="color:rgba(255,255,255,0.92); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">I'm most interested in…</label>
         <select id="v3-interest" name="interest" style="width:100%; padding:0.75rem; border-radius:99px; border:1px solid rgba(255,255,255,0.15); background:rgba(61,31,10,0.95); color:#fff; font-size:0.95rem; font-family:'Inter',sans-serif;">
           <option value="">Select…</option>
           {co.services.map(s => <option value={s.title}>{s.title}</option>)}
         </select>
       </div>
       <div>
-        <label for="v3-tell" style="color:rgba(255,255,255,0.7); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Tell us about your space</label>
+        <label for="v3-tell" style="color:rgba(255,255,255,0.92); font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Tell us about your space</label>
         <textarea id="v3-tell" name="message" rows={4} style="width:100%; padding:0.875rem; border-radius:16px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.07); color:#fff; font-size:0.95rem; font-family:'Inter',sans-serif; resize:vertical;"></textarea>
       </div>
       <button type="submit" class="btn-sage" style="width:100%; padding:1rem; font-size:0.95rem; border-radius:99px; background:#4a7c59; color:#fff; border:none; cursor:pointer;">Book my free site visit →</button>
     </form>
-    <p style="color:rgba(255,255,255,0.35); font-size:0.78rem; margin-top:1.5rem;">{co.phone} · {co.email}</p>
+    <p style="color:rgba(255,255,255,0.78); font-size:0.78rem; margin-top:1.5rem;">{co.phone} · {co.email}</p>
   </div>
 </section>
 
 </main>
 
-<footer style="background:#1e0e04; color:rgba(255,255,255,0.4); padding:2.5rem 1.5rem; text-align:center;">
-  <div style="max-width:72rem; margin:0 auto;">
-    <p class="fran" style="color:#c8d8a0; font-size:1.1rem; margin-bottom:0.4rem; font-weight:600;">Wild Roots Native Gardens</p>
-    <p style="font-size:0.78rem; margin-bottom:0.35rem;">{co.address} · {co.phone}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Wild Roots Native Gardens. Chemical-free. Earth-first.</p>
+<footer style="background:#1e0e04; color:rgba(255,255,255,0.75); padding:2.5rem 1.5rem; text-align:center;">
+  <div style="max-width:72rem; margin:0 auto; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
+    <p class="fran" style="color:#d8e8b0; font-size:1.15rem; margin:0; font-weight:600;">{co.name}</p>
+    <p style="font-size:0.85rem; margin:0; color:rgba(255,255,255,0.78);">{co.address} &middot; <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#d8e8b0; text-decoration:underline;">{co.phone}</a> &middot; <a href={`mailto:${co.email}`} style="color:#d8e8b0; text-decoration:underline;">{co.email}</a></p>
+    <p style="font-size:0.85rem; margin:0;"><a href="/accessibility/v3-eco-native" style="color:#d8e8b0; text-decoration:underline;">Accessibility Statement</a></p>
+    <p style="font-size:0.78rem; margin:0; color:rgba(255,255,255,0.65);">&copy; {new Date().getFullYear()} {co.name}. Chemical-free. Earth-first.</p>
   </div>
 </footer>
 
