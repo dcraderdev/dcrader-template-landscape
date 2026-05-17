@@ -1,9 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v3 as co } from '../data/company';
+import { pic } from '../data/images';
 const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Inter:wght@400;500;600&display=swap";
-
-
+const heroImg = pic('1416879595882-3373a0480b5b');
 ---
 
 <LandscapeLayout
@@ -108,7 +109,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
 
 <!-- HERO -->
 <section aria-label="Hero" style="min-height:90vh; background:#3d1f0a; position:relative; overflow:hidden; display:flex; align-items:center; padding:0;">
-  <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&q=85" alt="Wild California native flower meadow" width="1800" height="1200" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;" />
+  <Image src={heroImg} alt="Wild California native flower meadow" widths={[768, 1280, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" decoding="async" format="webp" quality={78} style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;" />
   <!-- Botanical SVG overlay -->
   <svg style="position:absolute; right:0; top:0; width:40%; height:100%; opacity:0.07;" viewBox="0 0 400 800" fill="none" aria-hidden="true">
     <path d="M200 0 Q250 200 180 400 Q120 600 200 800" stroke="#fff" stroke-width="3" fill="none"/>
@@ -190,15 +191,15 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem;">
       {co.beforeAfter.map(ba => (
         <div class="card-organic" style="padding:0; overflow:hidden;">
-          <div style="display:grid; grid-template-columns:1fr 1fr;">
-            <div style="position:relative;">
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block; filter:saturate(0.6);" />
+          <div class="ba-pair">
+            <figure>
+              <Image src={pic(ba.before)} alt={`Before: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} style="filter:saturate(0.6);" />
               <span style="position:absolute; top:0.6rem; left:0.6rem; background:rgba(0,0,0,0.6); color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Lawn</span>
-            </div>
-            <div style="position:relative;">
-              <img src={ba.after} alt={`After: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+            </figure>
+            <figure>
+              <Image src={pic(ba.after)} alt={`After: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
               <span style="position:absolute; top:0.6rem; left:0.6rem; background:#4a7c59; color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Life</span>
-            </div>
+            </figure>
           </div>
           <div style="padding:1.25rem 1.5rem;">
             <p style="font-weight:600; margin:0; color:#2a1a0a; font-size:0.9rem;">{ba.label}</p>
@@ -216,11 +217,13 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
       <span class="label">Garden stories</span>
       <h2 id="work-h" class="fran" style="font-size:2.75rem; margin:0.25rem 0; font-weight:600;">Gardens we've grown</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem;">
+    <div class="gallery-grid">
       {co.portfolio.map(p => (
-        <figure style="margin:0; border-radius:20px; overflow:hidden; border:1px solid #e0d4b8;">
-          <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
-          <figcaption style="padding:1.25rem 1.5rem; background:#fff;">
+        <figure style="margin:0; border-radius:20px; overflow:hidden; border:1px solid #e0d4b8; background:#fff;">
+          <div class="gallery-tile" style="border-radius:0;">
+            <Image src={pic(p.img)} alt={p.title} widths={[400, 600, 900]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" format="webp" quality={75} />
+          </div>
+          <figcaption style="padding:1.25rem 1.5rem;">
             <p class="fran" style="font-weight:600; font-size:1.05rem; margin:0 0 0.35rem; color:#2a1a0a;">{p.title}</p>
             <p style="color:#8a7a5a; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
