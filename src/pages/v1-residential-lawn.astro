@@ -1,7 +1,11 @@
 ---
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
 import { v1 as co } from '../data/company';
 const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap";
+const heroBase = "/images/landscape/lawn-fresh-mowed";
+const heroPreloadSrcset = `${heroBase}-320.avif 320w, ${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`;
+const heroPreloadSizes = "(max-width: 900px) 100vw, 50vw";
 ---
 
 <LandscapeLayout
@@ -9,6 +13,15 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
   description="GreenScape provides weekly mowing, fertilization, and lawn care subscriptions for homeowners across Oceanside, Vista, San Marcos, and Carlsbad."
   fonts={fonts}
 >
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    fetchpriority="high"
+    type="image/avif"
+    imagesrcset={heroPreloadSrcset}
+    imagesizes={heroPreloadSizes}
+  />
 
 <style>
   *, *::before, *::after { box-sizing: border-box; }
@@ -157,12 +170,15 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
   </div>
   <!-- Right: photo -->
   <div style="position:relative; overflow:hidden;">
-    <img
-      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85"
+    <ResponsiveImage
+      src="/images/landscape/lawn-fresh-mowed.jpg"
       alt="Lush green residential lawn freshly mowed"
-      width="900" height="700"
-      style="width:100%; height:100%; object-fit:cover; display:block;"
+      width={900} height={700}
+      sizes="(max-width: 900px) 100vw, 50vw"
+      loading="eager"
       fetchpriority="high"
+      decoding="sync"
+      style="width:100%; height:100%; object-fit:cover; display:block;"
     />
     <div style="position:absolute; bottom:2rem; left:2rem; background:#fff; border-radius:12px; padding:1rem 1.25rem; box-shadow:0 8px 24px rgba(0,0,0,0.12); display:flex; align-items:center; gap:0.75rem;">
       <span style="font-size:2rem;" aria-hidden="true">🌿</span>
@@ -263,11 +279,11 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
         <div class="card" style="padding:0; overflow:hidden;">
           <div style="display:grid; grid-template-columns:1fr 1fr;">
             <div style="position:relative;">
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="300" height="220" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
+              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={300} height={220} sizes="(max-width: 768px) 50vw, 300px" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
               <span style="position:absolute; bottom:0.5rem; left:0.5rem; background:rgba(0,0,0,0.55); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Before</span>
             </div>
             <div style="position:relative;">
-              <img src={ba.after} alt={`After: ${ba.label}`} width="300" height="220" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
+              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={300} height={220} sizes="(max-width: 768px) 50vw, 300px" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
               <span style="position:absolute; bottom:0.5rem; left:0.5rem; background:#2a5f2a; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">After</span>
             </div>
           </div>
@@ -290,7 +306,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <div class="grid-3">
       {co.portfolio.map(p => (
         <figure style="margin:0; border-radius:12px; overflow:hidden; border:1px solid #dde8dd;">
-          <img src={p.img} alt={p.title} width="600" height="380" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+          <ResponsiveImage src={p.img} alt={p.title} width={600} height={380} sizes="(max-width: 768px) 100vw, 33vw" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
           <figcaption style="padding:1rem 1.25rem; background:#fff;">
             <p style="font-weight:700; font-size:0.9rem; margin:0 0 0.3rem;">{p.title}</p>
             <p style="color:#637063; font-size:0.82rem; margin:0; line-height:1.5;">{p.description}</p>
