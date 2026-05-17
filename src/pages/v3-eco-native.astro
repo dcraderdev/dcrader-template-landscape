@@ -3,12 +3,7 @@ import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v3 as co } from '../data/company';
 const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Inter:wght@400;500;600&display=swap";
 
-const pillars = [
-  { icon: "🦋", stat: "73%", label: "of North American birds depend on native plants for nesting", color: "#6b8e23" },
-  { icon: "💧", stat: "70%", label: "less water needed vs. traditional turf once established", color: "#5a8a7a" },
-  { icon: "🐝", stat: "1/3", label: "of our food supply depends on pollinators — most need native habitat", color: "#c07a20" },
-  { icon: "🌍", stat: "40M", label: "acres of lawn in the US — the largest irrigated crop we grow", color: "#8b4513" },
-];
+
 ---
 
 <LandscapeLayout
@@ -157,24 +152,6 @@ const pillars = [
 </section>
 
 <!-- WHY NATIVE — ecological pillars -->
-<section id="why" aria-labelledby="why-h" style="background:#fffdf6; padding:6rem 1.5rem;">
-  <div class="inner">
-    <div style="text-align:center; margin-bottom:3.5rem;">
-      <span class="label">The case for native plants</span>
-      <h2 id="why-h" class="fran" style="font-size:clamp(2rem,5vw,3.5rem); margin:0.25rem 0 1rem; font-weight:600;">Why it matters</h2>
-      <p style="color:#8a7a5a; max-width:32rem; margin:0 auto; line-height:1.75; font-size:0.95rem;">The American lawn is an ecological desert. Native plants transform it into something extraordinary.</p>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem;">
-      {pillars.map(p => (
-        <div class="card-organic" style={`border-top:4px solid ${p.color};`}>
-          <div style="font-size:2.5rem; margin-bottom:1rem;" aria-hidden="true">{p.icon}</div>
-          <p class="fran" style={`font-size:3rem; font-weight:600; color:${p.color}; margin:0 0 0.5rem; line-height:1;`}>{p.stat}</p>
-          <p style="color:#8a7a5a; font-size:0.88rem; line-height:1.65; margin:0;">{p.label}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
 <!-- SERVICES — organic flowing layout -->
 <section id="services" aria-labelledby="svc-h" style="background:#f7f0e4; padding:6rem 1.5rem;">
