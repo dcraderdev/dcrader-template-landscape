@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v1 as co } from '../data/company';
+import { pic } from '../data/images';
 const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap";
+const heroImg = pic('1558618666-fcd25c85cd64');
 ---
 
 <LandscapeLayout
@@ -19,16 +22,17 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     margin: 0;
   }
   .serif { font-family: 'IBM Plex Serif', Georgia, serif; }
-  /* tokens */
-  --green: #2a5f2a;
-  --green-mid: #3d7a3d;
-  --green-light: #d4ecd4;
-  --cream: #faf8f3;
-  --cream-dark: #f0ebe0;
-  --gold: #c8a84b;
-  --text: #1c2b1a;
-  --muted: #637063;
-  --border: #dde8dd;
+  :root {
+    --green: #2a5f2a;
+    --green-mid: #3d7a3d;
+    --green-light: #d4ecd4;
+    --cream: #faf8f3;
+    --cream-dark: #f0ebe0;
+    --gold: #c8a84b;
+    --text: #1c2b1a;
+    --muted: #637063;
+    --border: #dde8dd;
+  }
 
   .btn-green {
     display: inline-block;
@@ -157,12 +161,17 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
   </div>
   <!-- Right: photo -->
   <div style="position:relative; overflow:hidden;">
-    <img
-      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85"
+    <Image
+      src={heroImg}
       alt="Lush green residential lawn freshly mowed"
-      width="900" height="700"
-      style="width:100%; height:100%; object-fit:cover; display:block;"
+      widths={[480, 800, 1200, 1600]}
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      loading="eager"
       fetchpriority="high"
+      decoding="async"
+      format="webp"
+      quality={78}
+      style="width:100%; height:100%; object-fit:cover; display:block;"
     />
     <div style="position:absolute; bottom:2rem; left:2rem; background:#fff; border-radius:12px; padding:1rem 1.25rem; box-shadow:0 8px 24px rgba(0,0,0,0.12); display:flex; align-items:center; gap:0.75rem;">
       <span style="font-size:2rem;" aria-hidden="true">🌿</span>
@@ -261,15 +270,15 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
     <div class="grid-2">
       {co.beforeAfter.map(ba => (
         <div class="card" style="padding:0; overflow:hidden;">
-          <div style="display:grid; grid-template-columns:1fr 1fr;">
-            <div style="position:relative;">
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="300" height="220" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
+          <div class="ba-pair">
+            <figure>
+              <Image src={pic(ba.before)} alt={`Before: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 768px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
               <span style="position:absolute; bottom:0.5rem; left:0.5rem; background:rgba(0,0,0,0.55); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Before</span>
-            </div>
-            <div style="position:relative;">
-              <img src={ba.after} alt={`After: ${ba.label}`} width="300" height="220" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
+            </figure>
+            <figure>
+              <Image src={pic(ba.after)} alt={`After: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 768px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
               <span style="position:absolute; bottom:0.5rem; left:0.5rem; background:#2a5f2a; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">After</span>
-            </div>
+            </figure>
           </div>
           <div style="padding:1rem 1.25rem;">
             <p style="font-weight:700; font-size:0.9rem; margin:0; color:#1c2b1a;">{ba.label}</p>
@@ -287,11 +296,13 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
       <span class="label">Portfolio</span>
       <h2 id="port-h" class="serif" style="font-size:2.25rem; margin:0.25rem 0;">Lawns we're proud of</h2>
     </div>
-    <div class="grid-3">
+    <div class="gallery-grid">
       {co.portfolio.map(p => (
-        <figure style="margin:0; border-radius:12px; overflow:hidden; border:1px solid #dde8dd;">
-          <img src={p.img} alt={p.title} width="600" height="380" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-          <figcaption style="padding:1rem 1.25rem; background:#fff;">
+        <figure style="margin:0; border-radius:12px; overflow:hidden; border:1px solid #dde8dd; background:#fff;">
+          <div class="gallery-tile" style="border-radius:0; aspect-ratio:4/3;">
+            <Image src={pic(p.img)} alt={p.title} widths={[400, 600, 900]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" format="webp" quality={75} />
+          </div>
+          <figcaption style="padding:1rem 1.25rem;">
             <p style="font-weight:700; font-size:0.9rem; margin:0 0 0.3rem;">{p.title}</p>
             <p style="color:#637063; font-size:0.82rem; margin:0; line-height:1.5;">{p.description}</p>
           </figcaption>

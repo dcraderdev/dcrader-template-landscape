@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v5 as co } from '../data/company';
+import { pic } from '../data/images';
 const fonts = "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap";
+const heroImg = pic('1486325212027-8081e485255e');
 
 const trustSignals = [
   { label: "$5M General Liability", icon: "🛡️" },
@@ -151,7 +154,7 @@ const contractTiers = [
 
 <!-- HERO — aerial shot, corporate -->
 <section aria-label="Hero" style="min-height:86vh; background:#0a1020; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:0;">
-  <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=85" alt="Aerial view of maintained commercial office park grounds" width="1800" height="1100" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.42;" />
+  <Image src={heroImg} alt="Aerial view of maintained commercial office park grounds" widths={[768, 1280, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" decoding="async" format="webp" quality={78} style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.42;" />
   <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,16,32,0.95) 0%, rgba(10,16,32,0.45) 55%, rgba(10,16,32,0.15) 100%);"></div>
   <!-- content -->
   <div style="position:relative; z-index:1; max-width:80rem; margin:0 auto; padding:0 2rem 5rem; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:end;">
@@ -320,11 +323,13 @@ const contractTiers = [
       <span class="label">Client showcase</span>
       <h2 id="port-h" style="font-size:2.25rem; font-weight:900; margin:0.25rem 0; letter-spacing:-0.02em;">Selected accounts</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.5rem;">
+    <div class="gallery-grid">
       {co.portfolio.map(p => (
-        <figure style="margin:0; border:1px solid #c0ccd8;">
-          <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:240px; object-fit:cover; display:block;" />
-          <figcaption style="padding:1.5rem; background:#f4f7fb;">
+        <figure style="margin:0; border:1px solid #c0ccd8; background:#f4f7fb;">
+          <div class="gallery-tile" style="border-radius:0;">
+            <Image src={pic(p.img)} alt={p.title} widths={[400, 600, 900]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" format="webp" quality={75} />
+          </div>
+          <figcaption style="padding:1.5rem;">
             <h3 style="font-weight:700; font-size:1rem; margin:0 0 0.35rem; color:#0d1b3e;">{p.title}</h3>
             <p style="color:#6a7a90; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
@@ -345,15 +350,15 @@ const contractTiers = [
       {co.beforeAfter.map(ba => (
         <div>
           <h3 style="font-weight:700; font-size:0.95rem; margin-bottom:1rem; color:#0d1b3e;">{ba.label}</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
-            <div>
-              <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#6a7a90; margin-bottom:0.4rem;">Before</p>
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
-            </div>
-            <div>
-              <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d1b3e; margin-bottom:0.4rem;">After</p>
-              <img src={ba.after} alt={`After: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
-            </div>
+          <div class="ba-pair">
+            <figure>
+              <Image src={pic(ba.before)} alt={`Before: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
+              <span style="position:absolute; top:0.5rem; left:0.5rem; font-size:0.66rem; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:#fff; background:rgba(13,27,62,0.7); padding:0.25rem 0.55rem;">Before</span>
+            </figure>
+            <figure>
+              <Image src={pic(ba.after)} alt={`After: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
+              <span style="position:absolute; top:0.5rem; left:0.5rem; font-size:0.66rem; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:#fff; background:#0d1b3e; padding:0.25rem 0.55rem;">After</span>
+            </figure>
           </div>
         </div>
       ))}

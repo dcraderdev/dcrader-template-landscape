@@ -1,12 +1,15 @@
 ---
+import { Image } from 'astro:assets';
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v2 as co } from '../data/company';
+import { pic } from '../data/images';
 const fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap";
+const heroImg = pic('1600596542815-ffad4c1539a9');
 
 const projects = [
-  { name: "Casa Cielo — Rancho Santa Fe", scope: "2.4-acre formal garden, reflecting pool, rose parterre, bespoke water feature", value: "$420,000", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=85", year: "2023" },
-  { name: "Villa del Mar — La Jolla Shores", scope: "Blufftop infinity terrace, sculptural agave garden, specimen olive grove", value: "$285,000", img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=900&q=85", year: "2024" },
-  { name: "The Whitmore Estate — Del Mar", scope: "French parterre, boxwood allées, croquet lawn, custom pergola dining", value: "$340,000", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85", year: "2023" },
+  { name: "Casa Cielo — Rancho Santa Fe", scope: "2.4-acre formal garden, reflecting pool, rose parterre, bespoke water feature", value: "$420,000", img: "1600596542815-ffad4c1539a9", year: "2023" },
+  { name: "Villa del Mar — La Jolla Shores", scope: "Blufftop infinity terrace, sculptural agave garden, specimen olive grove", value: "$285,000", img: "1564501049412-61c2a3083791", year: "2024" },
+  { name: "The Whitmore Estate — Del Mar", scope: "French parterre, boxwood allées, croquet lawn, custom pergola dining", value: "$340,000", img: "1558618666-fcd25c85cd64", year: "2023" },
 ];
 
 const testimonials = [
@@ -100,11 +103,16 @@ const testimonials = [
 
 <!-- HERO — full-height editorial -->
 <section aria-label="Hero" style="position:relative; min-height:96vh; overflow:hidden; display:flex; align-items:flex-end;">
-  <img
-    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=90"
+  <Image
+    src={heroImg}
     alt="Luxury estate garden with formal pool and manicured hedges"
-    width="1800" height="1200"
+    widths={[768, 1280, 1800, 2400]}
+    sizes="100vw"
+    loading="eager"
     fetchpriority="high"
+    decoding="async"
+    format="webp"
+    quality={80}
     style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;"
   />
   <!-- gradient -->
@@ -189,8 +197,8 @@ const testimonials = [
       <div>
         {i > 0 && <hr class="divider" style="margin:0;" />}
         <div style={`display:grid; grid-template-columns:${i%2===0?'5fr 4fr':'4fr 5fr'}; gap:0; min-height:480px; ${i>0?'':'border-top:1px solid #d8cfa8;'}`}>
-          <div style={`overflow:hidden; ${i%2===1?'order:1;':''}`}>
-            <img src={p.img} alt={p.name} width="900" height="600" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" />
+          <div style={`position:relative; overflow:hidden; aspect-ratio:4/3; ${i%2===1?'order:1;':''}`}>
+            <Image src={pic(p.img)} alt={p.name} widths={[480, 800, 1200]} sizes="(min-width: 1024px) 50vw, 100vw" loading="lazy" decoding="async" format="webp" quality={78} style="width:100%; height:100%; object-fit:cover; display:block;" />
           </div>
           <div style={`padding:3.5rem; display:flex; flex-direction:column; justify-content:center; background:${i%2===0?'#fff':'#f9f7f2'}; ${i%2===1?'order:0;':''}`}>
             <p class="label-sm" style="margin-bottom:1.25rem;">{p.year}</p>
@@ -216,15 +224,15 @@ const testimonials = [
       {co.beforeAfter.map(ba => (
         <div>
           <h3 class="garam" style="font-size:1.25rem; font-weight:400; margin-bottom:1.25rem; font-style:italic;">{ba.label}</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
-            <div>
-              <p class="label-sm" style="margin-bottom:0.5rem; color:#7a7a6a;">Before</p>
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-            </div>
-            <div>
-              <p class="label-sm" style="margin-bottom:0.5rem;">After</p>
-              <img src={ba.after} alt={`After: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-            </div>
+          <div class="ba-pair">
+            <figure>
+              <Image src={pic(ba.before)} alt={`Before: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
+              <span style="position:absolute; top:0.5rem; left:0.5rem; background:rgba(10,18,10,0.7); color:#fff; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.25rem 0.6rem;">Before</span>
+            </figure>
+            <figure>
+              <Image src={pic(ba.after)} alt={`After: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
+              <span style="position:absolute; top:0.5rem; left:0.5rem; background:#c8a96a; color:#1e2b1e; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.25rem 0.6rem;">After</span>
+            </figure>
           </div>
         </div>
       ))}

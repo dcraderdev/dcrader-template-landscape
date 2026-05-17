@@ -57,7 +57,7 @@ export const v1: CompanyData = {
   ],
   portfolio: [
     { title: "Hartwell Residence", description: "Full lawn renovation with Bermuda sod and smart irrigation.", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" },
-    { title: "Sunrise Estates HOA", description: "Monthly maintenance for 24-unit community common areas.", img: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80" },
+    { title: "Sunrise Estates HOA", description: "Monthly maintenance for 24-unit community common areas.", img: "https://images.unsplash.com/photo-1574691250077-03a929faece5?w=600&q=80" },
     { title: "Peterson Backyard", description: "Lush backyard transformation with raised beds and turf.", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" },
   ],
   stats: [
@@ -77,9 +77,9 @@ export const v1: CompanyData = {
     card: "#f9f6f0",
     border: "#d4e6d4",
   },
-  heroImage: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=1600&q=85",
+  heroImage: "https://images.unsplash.com/photo-1574691250077-03a929faece5?w=1600&q=85",
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", label: "Front Lawn Transformation" },
+    { before: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80", after: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", label: "Front Lawn Transformation" },
     { before: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", after: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80", label: "Backyard Renovation" },
   ],
 };
@@ -136,7 +136,7 @@ export const v2: CompanyData = {
   },
   heroImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85",
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", label: "Estate Garden Transformation" },
+    { before: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80", after: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", label: "Estate Garden Transformation" },
     { before: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", after: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80", label: "Blufftop Redesign" },
   ],
 };
@@ -172,7 +172,7 @@ export const v3: CompanyData = {
   portfolio: [
     { title: "Cardiff Pollinator Haven", description: "500 sq ft lawn removed; now a certified monarch waystation.", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" },
     { title: "Encinitas Hillside", description: "Erosion-prone slope stabilized with deep-rooted native groundcovers.", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80" },
-    { title: "Leucadia Food Forest", description: "Edible native landscape with lemonade berry, manzanita, and sage.", img: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80" },
+    { title: "Leucadia Food Forest", description: "Edible native landscape with lemonade berry, manzanita, and sage.", img: "https://images.unsplash.com/photo-1574691250077-03a929faece5?w=600&q=80" },
   ],
   stats: [
     { label: "Lawns Removed", value: "380+" },
@@ -193,8 +193,8 @@ export const v3: CompanyData = {
   },
   heroImage: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=85",
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", label: "Lawn to Native Garden" },
-    { before: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80", after: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80", label: "Hillside Restoration" },
+    { before: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80", after: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", label: "Lawn to Native Garden" },
+    { before: "https://images.unsplash.com/photo-1574691250077-03a929faece5?w=600&q=80", after: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80", label: "Hillside Restoration" },
   ],
 };
 
@@ -250,7 +250,7 @@ export const v4: CompanyData = {
   },
   heroImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=1600&q=85",
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80", label: "Heritage Oak Restoration" },
+    { before: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80", after: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80", label: "Heritage Oak Restoration" },
     { before: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80", after: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=600&q=80", label: "Canopy Elevation" },
   ],
 };
@@ -307,7 +307,7 @@ export const v5: CompanyData = {
   },
   heroImage: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=85",
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", label: "Office Park Transformation" },
+    { before: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80", after: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", label: "Office Park Transformation" },
     { before: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", after: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80", label: "Retail Curb Appeal" },
   ],
 };

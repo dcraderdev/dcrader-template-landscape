@@ -1,7 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import { v4 as co } from '../data/company';
+import { pic } from '../data/images';
 const fonts = "https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap";
+const heroImg = pic('1448375240586-882707db888b');
 
 const serviceSpecs = [
   { title: "Tree Pruning & Shaping", spec: "ANSI A300 Part 1 compliant", urgency: "Routine", icon: "✂️", desc: "Structure pruning, crown cleaning, and elevation to ANSI standards. We never top trees." },
@@ -151,7 +154,7 @@ const serviceSpecs = [
 
 <!-- HERO -->
 <section aria-label="Hero" style="min-height:88vh; background:#0f1f08; position:relative; overflow:hidden; display:flex; align-items:center; padding:0;">
-  <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1800&q=85" alt="Ancient oak tree canopy viewed from below" width="1800" height="1100" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.45;" />
+  <Image src={heroImg} alt="Ancient oak tree canopy viewed from below" widths={[768, 1280, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" decoding="async" format="webp" quality={78} style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.45;" />
   <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(15,31,8,0.95) 0%, rgba(15,31,8,0.5) 60%, transparent 100%);"></div>
   <div style="position:relative; z-index:1; max-width:72rem; margin:0 auto; padding:5rem 1.5rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
     <div>
@@ -244,15 +247,15 @@ const serviceSpecs = [
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem;">
       {co.beforeAfter.map(ba => (
         <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(196,184,144,0.2);">
-          <div style="display:grid; grid-template-columns:1fr 1fr;">
-            <div style="position:relative;">
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+          <div class="ba-pair" style="border-radius:0;">
+            <figure>
+              <Image src={pic(ba.before)} alt={`Before: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
               <span style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 0.75rem; text-align:center;">Before</span>
-            </div>
-            <div style="position:relative;">
-              <img src={ba.after} alt={`After: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+            </figure>
+            <figure>
+              <Image src={pic(ba.after)} alt={`After: ${ba.label}`} widths={[300, 600]} sizes="(min-width: 1024px) 25vw, 50vw" loading="lazy" decoding="async" format="webp" quality={72} />
               <span style="position:absolute; bottom:0; left:0; right:0; background:rgba(30,58,30,0.8); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 0.75rem; text-align:center;">After</span>
-            </div>
+            </figure>
           </div>
           <div style="padding:1rem 1.25rem; background:rgba(255,255,255,0.04);">
             <p class="bree" style="color:#fff; font-size:0.95rem; margin:0;">{ba.label}</p>
@@ -301,11 +304,13 @@ const serviceSpecs = [
       <span class="label">Notable projects</span>
       <h2 id="port-h" class="bree" style="font-size:2.25rem; margin:0.25rem 0;">Our work</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem;">
+    <div class="gallery-grid">
       {co.portfolio.map(p => (
-        <figure style="margin:0; border-radius:6px; overflow:hidden; border:1px solid #c4b890;">
-          <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
-          <figcaption style="padding:1.25rem; background:#f4ede0;">
+        <figure style="margin:0; border-radius:6px; overflow:hidden; border:1px solid #c4b890; background:#f4ede0;">
+          <div class="gallery-tile" style="border-radius:0;">
+            <Image src={pic(p.img)} alt={p.title} widths={[400, 600, 900]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" format="webp" quality={75} />
+          </div>
+          <figcaption style="padding:1.25rem;">
             <p class="bree" style="font-size:1rem; margin:0 0 0.35rem; color:#1a2810;">{p.title}</p>
             <p style="color:#6a7a5a; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
