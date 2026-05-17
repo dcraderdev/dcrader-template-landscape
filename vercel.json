@@ -1,0 +1,55 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "greenscapelawn.dcrader.dev"
+        }
+      ],
+      "destination": "/v1-residential-lawn/$1"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "meridiandesignbuild.dcrader.dev"
+        }
+      ],
+      "destination": "/v2-luxury-design-build/$1"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "tierravivagardens.dcrader.dev"
+        }
+      ],
+      "destination": "/v3-eco-native/$1"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "canopytreearborist.dcrader.dev"
+        }
+      ],
+      "destination": "/v4-tree-arborist/$1"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "apexcommerciallandscapes.dcrader.dev"
+        }
+      ],
+      "destination": "/v5-commercial-property/$1"
+    }
+  ]
+}
