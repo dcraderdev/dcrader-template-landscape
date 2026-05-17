@@ -1,0 +1,63 @@
+---
+/**
+ * ResponsiveImage - emits <picture> with AVIF + WebP + JPEG fallback.
+ * src must be a path to a JPEG/PNG that has matching `-{w}.webp/.avif` variants
+ * generated under public/images/landscape/ (see scripts/gen-responsive.mjs).
+ *
+ * Example: src="/images/landscape/lawn-fresh-mowed.jpg"
+ */
+export interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes?: string;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'sync' | 'async' | 'auto';
+  class?: string;
+  style?: string;
+  widths?: number[];
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  sizes = '100vw',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  decoding = 'async',
+  class: className,
+  style,
+  widths = [320, 640, 1024, 1920],
+} = Astro.props;
+
+// strip extension to derive the base path
+const dot = src.lastIndexOf('.');
+const base = dot >= 0 ? src.slice(0, dot) : src;
+
+const buildSrcset = (ext: string) =>
+  widths.map((w) => `${base}-${w}.${ext} ${w}w`).join(', ');
+
+const avifSrcset = buildSrcset('avif');
+const webpSrcset = buildSrcset('webp');
+// JPEG fallback uses the largest size as default
+const fallback = `${base}-${widths[widths.length - 1]}.webp`;
+---
+<picture>
+  <source type="image/avif" srcset={avifSrcset} sizes={sizes} />
+  <source type="image/webp" srcset={webpSrcset} sizes={sizes} />
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding={decoding}
+    fetchpriority={fetchpriority}
+    class={className}
+    style={style}
+  />
+</picture>

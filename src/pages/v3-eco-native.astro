@@ -1,9 +1,12 @@
 ---
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
 import { v3 as co } from '../data/company';
 const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Inter:wght@400;500;600&display=swap";
 
-
+const heroBase = "/images/landscape/wild-meadow";
+const heroPreloadSrcset = `${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`;
+const heroPreloadSizes = "100vw";
 ---
 
 <LandscapeLayout
@@ -11,6 +14,15 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
   description="Wild Roots Native Gardens transforms San Diego yards into thriving native plant ecosystems. Lawn removal, habitat gardens, and ecological design."
   fonts={fonts}
 >
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    fetchpriority="high"
+    type="image/avif"
+    imagesrcset={heroPreloadSrcset}
+    imagesizes={heroPreloadSizes}
+  />
 
 <style>
   *, *::before, *::after { box-sizing: border-box; }
@@ -108,7 +120,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
 
 <!-- HERO -->
 <section aria-label="Hero" style="min-height:90vh; background:#3d1f0a; position:relative; overflow:hidden; display:flex; align-items:center; padding:0;">
-  <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&q=85" alt="Wild California native flower meadow" width="1800" height="1200" fetchpriority="high" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;" />
+  <ResponsiveImage src="/images/landscape/wild-meadow.jpg" alt="Wild California native flower meadow" width={1800} height={1200} sizes="100vw" loading="eager" fetchpriority="high" decoding="sync" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;" />
   <!-- Botanical SVG overlay -->
   <svg style="position:absolute; right:0; top:0; width:40%; height:100%; opacity:0.07;" viewBox="0 0 400 800" fill="none" aria-hidden="true">
     <path d="M200 0 Q250 200 180 400 Q120 600 200 800" stroke="#fff" stroke-width="3" fill="none"/>
@@ -192,11 +204,11 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
         <div class="card-organic" style="padding:0; overflow:hidden;">
           <div style="display:grid; grid-template-columns:1fr 1fr;">
             <div style="position:relative;">
-              <img src={ba.before} alt={`Before: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block; filter:saturate(0.6);" />
+              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block; filter:saturate(0.6);" />
               <span style="position:absolute; top:0.6rem; left:0.6rem; background:rgba(0,0,0,0.6); color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Lawn</span>
             </div>
             <div style="position:relative;">
-              <img src={ba.after} alt={`After: ${ba.label}`} width="400" height="280" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
+              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
               <span style="position:absolute; top:0.6rem; left:0.6rem; background:#4a7c59; color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Life</span>
             </div>
           </div>
@@ -219,7 +231,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem;">
       {co.portfolio.map(p => (
         <figure style="margin:0; border-radius:20px; overflow:hidden; border:1px solid #e0d4b8;">
-          <img src={p.img} alt={p.title} width="600" height="400" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
+          <ResponsiveImage src={p.img} alt={p.title} width={600} height={400} sizes="(max-width: 768px) 100vw, 33vw" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
           <figcaption style="padding:1.25rem 1.5rem; background:#fff;">
             <p class="fran" style="font-weight:600; font-size:1.05rem; margin:0 0 0.35rem; color:#2a1a0a;">{p.title}</p>
             <p style="color:#8a7a5a; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>

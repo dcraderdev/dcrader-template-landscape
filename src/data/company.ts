@@ -27,6 +27,10 @@ export interface CompanyData {
   beforeAfter: { before: string; after: string; label: string }[];
 }
 
+// All images live in /public/images/landscape/ with responsive WebP/AVIF
+// variants at widths 320/640/1024/1920 (see scripts/gen-responsive.mjs).
+const IMG = "/images/landscape";
+
 export const v1: CompanyData = {
   name: "GreenScape Lawn & Garden",
   tagline: "Your Neighborhood Lawn Experts",
@@ -56,9 +60,9 @@ export const v1: CompanyData = {
     { name: "Premium", price: "$229", period: "/month", features: ["Weekly mowing", "Full fertilization program", "Pest & weed control", "Irrigation check", "Seasonal cleanup", "Dedicated tech"] },
   ],
   portfolio: [
-    { title: "Hartwell Residence", description: "Full lawn renovation with Bermuda sod and smart irrigation.", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" },
-    { title: "Sunrise Estates HOA", description: "Monthly maintenance for 24-unit community common areas.", img: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80" },
-    { title: "Peterson Backyard", description: "Lush backyard transformation with raised beds and turf.", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" },
+    { title: "Hartwell Residence", description: "Full lawn renovation with Bermuda sod and smart irrigation.", img: `${IMG}/lawn-fresh-mowed.jpg` },
+    { title: "Sunrise Estates HOA", description: "Monthly maintenance for 24-unit community common areas.", img: `${IMG}/sunrise-estates.jpg` },
+    { title: "Peterson Backyard", description: "Lush backyard transformation with raised beds and turf.", img: `${IMG}/wild-meadow.jpg` },
   ],
   stats: [
     { label: "Years in Business", value: "20+" },
@@ -77,10 +81,10 @@ export const v1: CompanyData = {
     card: "#f9f6f0",
     border: "#d4e6d4",
   },
-  heroImage: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=1600&q=85",
+  heroImage: `${IMG}/sunrise-estates.jpg`,
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", label: "Front Lawn Transformation" },
-    { before: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", after: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80", label: "Backyard Renovation" },
+    { before: `${IMG}/dry-lawn-before.jpg`, after: `${IMG}/lawn-fresh-mowed.jpg`, label: "Front Lawn Transformation" },
+    { before: `${IMG}/wild-meadow.jpg`, after: `${IMG}/lawn-renovation.jpg`, label: "Backyard Renovation" },
   ],
 };
 
@@ -113,9 +117,9 @@ export const v2: CompanyData = {
     { name: "Legacy", price: "Custom", period: "", features: ["Full estate management", "24/7 concierge line", "Annual redesign consultation", "Priority storm response", "Unlimited visits"] },
   ],
   portfolio: [
-    { title: "Rancho Santa Fe Estate", description: "2-acre formal garden with reflecting pool and rose garden.", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" },
-    { title: "La Jolla Blufftop", description: "Dramatic coastal garden with sculptural succulents and infinity edge.", img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" },
-    { title: "Del Mar Residence", description: "French-inspired parterre with boxwood hedges and gravel allées.", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" },
+    { title: "Rancho Santa Fe Estate", description: "2-acre formal garden with reflecting pool and rose garden.", img: `${IMG}/formal-estate.jpg` },
+    { title: "La Jolla Blufftop", description: "Dramatic coastal garden with sculptural succulents and infinity edge.", img: `${IMG}/coastal-blufftop.jpg` },
+    { title: "Del Mar Residence", description: "French-inspired parterre with boxwood hedges and gravel allées.", img: `${IMG}/lawn-fresh-mowed.jpg` },
   ],
   stats: [
     { label: "Design Awards", value: "18" },
@@ -134,10 +138,10 @@ export const v2: CompanyData = {
     card: "#f5f0e4",
     border: "#d8cfa8",
   },
-  heroImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85",
+  heroImage: `${IMG}/formal-estate.jpg`,
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", label: "Estate Garden Transformation" },
-    { before: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", after: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80", label: "Blufftop Redesign" },
+    { before: `${IMG}/dry-lawn-before.jpg`, after: `${IMG}/formal-estate.jpg`, label: "Estate Garden Transformation" },
+    { before: `${IMG}/wild-meadow.jpg`, after: `${IMG}/coastal-blufftop.jpg`, label: "Blufftop Redesign" },
   ],
 };
 
@@ -170,9 +174,9 @@ export const v3: CompanyData = {
     { name: "Watershed", price: "$295", period: "/month", features: ["Full ecological stewardship", "Rainwater system maintenance", "Quarterly planting refreshes", "Annual habitat report", "Priority drought response"] },
   ],
   portfolio: [
-    { title: "Cardiff Pollinator Haven", description: "500 sq ft lawn removed; now a certified monarch waystation.", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" },
-    { title: "Encinitas Hillside", description: "Erosion-prone slope stabilized with deep-rooted native groundcovers.", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80" },
-    { title: "Leucadia Food Forest", description: "Edible native landscape with lemonade berry, manzanita, and sage.", img: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80" },
+    { title: "Cardiff Pollinator Haven", description: "500 sq ft lawn removed; now a certified monarch waystation.", img: `${IMG}/wild-meadow.jpg` },
+    { title: "Encinitas Hillside", description: "Erosion-prone slope stabilized with deep-rooted native groundcovers.", img: `${IMG}/lawn-renovation.jpg` },
+    { title: "Leucadia Food Forest", description: "Edible native landscape with lemonade berry, manzanita, and sage.", img: `${IMG}/sunrise-estates.jpg` },
   ],
   stats: [
     { label: "Lawns Removed", value: "380+" },
@@ -191,10 +195,10 @@ export const v3: CompanyData = {
     card: "#faf5e8",
     border: "#d4c4a0",
   },
-  heroImage: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=85",
+  heroImage: `${IMG}/wild-meadow.jpg`,
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", label: "Lawn to Native Garden" },
-    { before: "https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=600&q=80", after: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80", label: "Hillside Restoration" },
+    { before: `${IMG}/dry-lawn-before.jpg`, after: `${IMG}/wild-meadow.jpg`, label: "Lawn to Native Garden" },
+    { before: `${IMG}/sunrise-estates.jpg`, after: `${IMG}/lawn-renovation.jpg`, label: "Hillside Restoration" },
   ],
 };
 
@@ -227,9 +231,9 @@ export const v4: CompanyData = {
     { name: "Municipal", price: "Custom", period: "", features: ["Inventory & GIS mapping", "Ongoing maintenance contract", "ANSI-compliant reports", "24/7 emergency dispatch", "Liability documentation"] },
   ],
   portfolio: [
-    { title: "Balboa Park Heritage Oaks", description: "Preservation pruning on 80-year-old coast live oaks for the City of San Diego.", img: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80" },
-    { title: "Hillcrest Estate Eucalyptus", description: "Hazardous 90-ft eucalyptus safely removed in tight residential setting.", img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80" },
-    { title: "Chula Vista HOA Canopy", description: "Street tree program maintaining 340 trees across 3 neighborhoods.", img: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=600&q=80" },
+    { title: "Balboa Park Heritage Oaks", description: "Preservation pruning on 80-year-old coast live oaks for the City of San Diego.", img: `${IMG}/heritage-oak.jpg` },
+    { title: "Hillcrest Estate Eucalyptus", description: "Hazardous 90-ft eucalyptus safely removed in tight residential setting.", img: `${IMG}/eucalyptus-removal.jpg` },
+    { title: "Chula Vista HOA Canopy", description: "Street tree program maintaining 340 trees across 3 neighborhoods.", img: `${IMG}/canopy-street.jpg` },
   ],
   stats: [
     { label: "ISA Certified Arborists", value: "8" },
@@ -248,10 +252,10 @@ export const v4: CompanyData = {
     card: "#f0e8d8",
     border: "#c4b890",
   },
-  heroImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=1600&q=85",
+  heroImage: `${IMG}/heritage-oak.jpg`,
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&q=80", label: "Heritage Oak Restoration" },
-    { before: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=80", after: "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?w=600&q=80", label: "Canopy Elevation" },
+    { before: `${IMG}/dry-lawn-before.jpg`, after: `${IMG}/heritage-oak.jpg`, label: "Heritage Oak Restoration" },
+    { before: `${IMG}/eucalyptus-removal.jpg`, after: `${IMG}/canopy-street.jpg`, label: "Canopy Elevation" },
   ],
 };
 
@@ -284,9 +288,9 @@ export const v5: CompanyData = {
     { name: "Enterprise", price: "Custom", period: "", features: ["Multi-site management", "Custom SLA agreements", "24/7 operations line", "Dedicated crew", "Sustainability reporting"] },
   ],
   portfolio: [
-    { title: "Mission Valley Office Park", description: "Full-campus maintenance for 12-acre mixed-use development.", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" },
-    { title: "Kearny Mesa Retail Center", description: "Curb-appeal program covering 8 anchor tenants and 400 parking spaces.", img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" },
-    { title: "Downtown Hilton San Diego", description: "Luxury hotel grounds and event lawn maintained to 5-star standards.", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" },
+    { title: "Mission Valley Office Park", description: "Full-campus maintenance for 12-acre mixed-use development.", img: `${IMG}/office-park.jpg` },
+    { title: "Kearny Mesa Retail Center", description: "Curb-appeal program covering 8 anchor tenants and 400 parking spaces.", img: `${IMG}/coastal-blufftop.jpg` },
+    { title: "Downtown Hilton San Diego", description: "Luxury hotel grounds and event lawn maintained to 5-star standards.", img: `${IMG}/formal-estate.jpg` },
   ],
   stats: [
     { label: "Commercial Accounts", value: "185+" },
@@ -305,9 +309,9 @@ export const v5: CompanyData = {
     card: "#f4f7fa",
     border: "#c0ccd8",
   },
-  heroImage: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=85",
+  heroImage: `${IMG}/office-park.jpg`,
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1558618047-f32a4a6e7cc2?w=600&q=80", after: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", label: "Office Park Transformation" },
-    { before: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", after: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80", label: "Retail Curb Appeal" },
+    { before: `${IMG}/dry-lawn-before.jpg`, after: `${IMG}/office-park.jpg`, label: "Office Park Transformation" },
+    { before: `${IMG}/wild-meadow.jpg`, after: `${IMG}/coastal-blufftop.jpg`, label: "Retail Curb Appeal" },
   ],
 };
