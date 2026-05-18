@@ -316,31 +316,31 @@ const testimonials = [
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.1rem;">
         <div>
           <label for="v2-fn" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">First name</label>
-          <input id="v2-fn" name="first_name" type="text" required autocomplete="given-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+          <input id="v2-fn" name="first_name" type="text" required autocomplete="given-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
         </div>
         <div>
           <label for="v2-ln" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Last name</label>
-          <input id="v2-ln" name="last_name" type="text" required autocomplete="family-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+          <input id="v2-ln" name="last_name" type="text" required autocomplete="family-name" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
         </div>
       </div>
       <div>
         <label for="v2-email" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Email address</label>
-        <input id="v2-email" name="email" type="email" required autocomplete="email" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+        <input id="v2-email" name="email" type="email" required autocomplete="email" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e;" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
       </div>
       <div>
         <label for="v2-loc" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Property location</label>
-        <input id="v2-loc" name="location" type="text" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none;" placeholder="City or neighborhood" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
+        <input id="v2-loc" name="location" type="text" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e;" placeholder="City or neighborhood" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'" />
       </div>
       <div>
         <label for="v2-scope" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Project scope</label>
-        <select id="v2-scope" name="scope" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; outline:none; appearance:auto;">
+        <select id="v2-scope" name="scope" style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; appearance:auto;">
           <option value="">Please select…</option>
           {co.services.map(s => <option value={s.title}>{s.title}</option>)}
         </select>
       </div>
       <div>
         <label for="v2-vision" style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:#7a7a6a; display:block; margin-bottom:0.5rem;">Your vision</label>
-        <textarea id="v2-vision" name="vision" rows={5} style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; resize:vertical; outline:none;" placeholder="Tell us about your property, your aspirations, and what you hope to create…" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'"></textarea>
+        <textarea id="v2-vision" name="vision" rows={5} style="width:100%; padding:0.875rem; border:1px solid #d8cfa8; border-radius:0; background:#fff; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:#1e2b1e; resize:vertical;" placeholder="Tell us about your property, your aspirations, and what you hope to create…" onfocus="this.style.borderColor='#c8a96a'" onblur="this.style.borderColor='#d8cfa8'"></textarea>
       </div>
       <button type="submit" class="btn-inquire" style="width:100%; padding:1.1rem; font-size:0.85rem;">Submit Inquiry</button>
     </form>
@@ -355,6 +355,7 @@ const testimonials = [
     <p class="garam" style="color:#c8a96a; font-size:1.1rem; font-weight:400; margin-bottom:0.5rem;">Meridian Design + Build</p>
     <p style="font-size:0.78rem; margin-bottom:0.4rem;">{co.address}</p>
     <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Meridian Design + Build. All rights reserved. CA Licensed.</p>
+    <p style="font-size:0.72rem; margin-top:0.4rem;"><a href="/accessibility" style="color:rgba(255,255,255,0.75); text-decoration:underline;">Accessibility Statement</a></p>
   </div>
 </footer>
 
