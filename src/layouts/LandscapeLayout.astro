@@ -22,6 +22,7 @@ const { title, description, fonts } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {fonts && <link href={fonts} rel="stylesheet" />}
     <slot name="head" />
+    <script src="/template-topheader.js" defer></script>
   </head>
   <body>
     <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:fixed;top:1rem;left:1rem;z-index:9999;padding:0.5rem 1rem;background:white;color:black;font-weight:700;border-radius:4px;text-decoration:none;width:auto;height:auto;overflow:visible;'">
