@@ -261,31 +261,82 @@ const serviceSpecs = [
   </div>
 </section>
 
-<!-- BEFORE/AFTER — tree removal showcase -->
+<!-- JOB REPORTS — single-photo case file with technical readout -->
 <section aria-labelledby="ba-h" style="background:#1e3a1e; padding:5rem 1.5rem;">
   <div class="inner">
     <div style="text-align:center; margin-bottom:3rem;">
-      <span class="label" style="color:#c4b890;">Before &amp; after</span>
-      <h2 id="ba-h" class="bree" style="color:#fff; font-size:2.25rem; margin:0.25rem 0;">Tree removal &amp; restoration</h2>
-      <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; margin-top:0.5rem;">Safe removal with minimal site impact — and a plan for what comes next.</p>
+      <span class="label" style="color:#c4b890;">Recent job reports</span>
+      <h2 id="ba-h" class="bree" style="color:#fff; font-size:2.25rem; margin:0.25rem 0;">Removals, climbs, and restorations</h2>
+      <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; margin-top:0.5rem;">A written report follows every job — DBH, species, work scope, crew sign-off.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem;">
-      {co.beforeAfter.map(ba => (
-        <div style="border-radius:8px; overflow:hidden; border:1px solid rgba(196,184,144,0.2);">
-          <div style="display:grid; grid-template-columns:1fr 1fr;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:1.75rem;">
+      {co.beforeAfter.map((ba, i) => {
+        const reports = [
+          { jobNo:'CT-2438', date:'05/12/26', species:'Quercus agrifolia', dbh:'34"', height:'48 ft', scope:'Structure prune, deadwood removal, end-weight reduction', standard:'ANSI A300 Part 1', crew:'Ed K., Felicia R.', hours:'6.5' },
+          { jobNo:'CT-2441', date:'05/14/26', species:'Eucalyptus camaldulensis', dbh:'52"', height:'88 ft', scope:'Sectional removal in tight residential, full grind, debris hauled', standard:'OSHA 29 CFR 1910.266', crew:'Felicia R., M. Chen', hours:'14' },
+        ];
+        const r = reports[i] || reports[0];
+        return (
+          <article style="background:#142a14; border:1px solid rgba(196,184,144,0.22); border-left:4px solid #c4b890; border-radius:6px; overflow:hidden;">
             <div style="position:relative;">
-              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-              <span style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 0.75rem; text-align:center;">Before</span>
+              <ResponsiveImage src={ba.after} alt={`Job ${r.jobNo}: ${ba.label}`} width={700} height={420} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;" />
+              <span style="position:absolute; top:0.75rem; left:0.75rem; background:#c0392b; color:#fff; font-size:0.66rem; font-weight:900; letter-spacing:0.14em; text-transform:uppercase; padding:0.3rem 0.7rem; border-radius:3px;">Job complete</span>
+              <span style="position:absolute; top:0.75rem; right:0.75rem; background:rgba(0,0,0,0.7); color:#c4b890; font-family:monospace; font-size:0.78rem; font-weight:700; padding:0.3rem 0.6rem; border-radius:3px;">#{r.jobNo}</span>
             </div>
-            <div style="position:relative;">
-              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-              <span style="position:absolute; bottom:0; left:0; right:0; background:rgba(30,58,30,0.8); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 0.75rem; text-align:center;">After</span>
+            <div style="padding:1.5rem 1.5rem 1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:0.75rem;">
+                <h3 class="bree" style="color:#fff; font-size:1.1rem; margin:0; line-height:1.2;">{ba.label}</h3>
+                <span style="color:rgba(255,255,255,0.45); font-size:0.75rem; font-family:monospace;">{r.date}</span>
+              </div>
+              <dl style="display:grid; grid-template-columns:auto 1fr; gap:0.4rem 1rem; margin:0 0 1rem; font-size:0.78rem; line-height:1.5;">
+                <dt style="color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; font-size:0.66rem;">Species</dt>
+                <dd style="color:rgba(255,255,255,0.85); margin:0; font-style:italic;">{r.species}</dd>
+                <dt style="color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; font-size:0.66rem;">DBH / height</dt>
+                <dd style="color:rgba(255,255,255,0.85); margin:0;">{r.dbh} &middot; {r.height}</dd>
+                <dt style="color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; font-size:0.66rem;">Scope</dt>
+                <dd style="color:rgba(255,255,255,0.85); margin:0;">{r.scope}</dd>
+                <dt style="color:rgba(255,255,255,0.45); letter-spacing:0.08em; text-transform:uppercase; font-size:0.66rem;">Standard</dt>
+                <dd style="color:#c4b890; margin:0; font-weight:600;">{r.standard}</dd>
+              </dl>
+              <p style="margin:0; padding-top:0.85rem; border-top:1px solid rgba(196,184,144,0.18); font-size:0.74rem; color:rgba(255,255,255,0.55); display:flex; justify-content:space-between; gap:1rem;">
+                <span>Crew: <span style="color:#c4b890;">{r.crew}</span></span>
+                <span>{r.hours} crew-hrs</span>
+              </p>
             </div>
-          </div>
-          <div style="padding:1rem 1.25rem; background:rgba(255,255,255,0.04);">
-            <p class="bree" style="color:#fff; font-size:0.95rem; margin:0;">{ba.label}</p>
-          </div>
-        </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE TICKETS — testimonial as work-order quotes -->
+<section aria-labelledby="tickets-h" style="background:#faf8f4; padding:5rem 1.5rem;">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="label">Service tickets</span>
+      <h2 id="tickets-h" class="bree" style="font-size:2.25rem; margin:0.25rem 0;">What our clients write back</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.25rem;">
+      {[
+        { ticket:'CT-2401', urgency:'24/7 Emergency', urgencyColor:'#842029', urgencyBg:'#f8d7da', quote:'Eucalyptus came down across our driveway at 11 PM. Canopy was on-site by 1:15 AM. By morning the road was clear and they’d already filed with our insurance.', name:'Eli M.', loc:'Hillcrest', service:'Storm response' },
+        { ticket:'CT-2389', urgency:'Routine', urgencyColor:'#1e3a1e', urgencyBg:'#d4ecd4', quote:'Ed walked the property with my arborist report and explained every cut before it happened. The old jacaranda has never looked better — he never topped it.', name:'Karen W.', loc:'Mission Hills', service:'Structure pruning' },
+        { ticket:'CT-2367', urgency:'Priority', urgencyColor:'#856404', urgencyBg:'#fff3cd', quote:'They produced a TRAQ assessment for the insurance carrier in 48 hours. Other companies quoted a week. The carrier accepted the report without follow-up.', name:'Marcus L.', loc:'La Mesa HOA', service:'Hazard assessment' },
+      ].map(t => (
+        <article style="background:#fff; border:1px solid #c4b890; border-radius:6px; padding:1.5rem 1.5rem 1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <header style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; padding-bottom:0.85rem; border-bottom:1px dashed #c4b890;">
+            <span style="font-family:monospace; font-size:0.78rem; color:#8b5a14; font-weight:700;">#{t.ticket}</span>
+            <span class="urgency-tag" style={`background:${t.urgencyBg}; color:${t.urgencyColor};`}>{t.urgency}</span>
+          </header>
+          <p style="font-size:0.9rem; line-height:1.7; color:#1a2810; margin:0; flex:1;">&ldquo;{t.quote}&rdquo;</p>
+          <footer style="padding-top:0.85rem; border-top:1px solid #e8dcc8; display:flex; justify-content:space-between; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+            <span>
+              <span style="display:block; font-weight:700; color:#1e3a1e; font-size:0.85rem;">{t.name}</span>
+              <span style="color:#6a7a5a; font-size:0.72rem;">{t.loc}</span>
+            </span>
+            <span style="color:#8b5a14; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;">{t.service}</span>
+          </footer>
+        </article>
       ))}
     </div>
   </div>
@@ -343,24 +394,31 @@ const serviceSpecs = [
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- TEAM — credentials card row (no avatar circle) -->
 <section aria-labelledby="team-h" style="background:#f4ede0; padding:5rem 1.5rem;">
   <div class="inner">
     <div style="text-align:center; margin-bottom:3rem;">
-      <span class="label">Certified arborists</span>
-      <h2 id="team-h" class="bree" style="font-size:2.25rem; margin:0.25rem 0;">The team</h2>
+      <span class="label">Certified arborists on staff</span>
+      <h2 id="team-h" class="bree" style="font-size:2.25rem; margin:0.25rem 0;">Eight certifications. One crew.</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem;">
-      {co.teamMembers.map(m => (
-        <div class="card" style="text-align:center;">
-          <div style="width:70px; height:70px; border-radius:50%; background:#1e3a1e; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
-            <span class="bree" style="color:#c4b890; font-size:1.75rem;">{m.name[0]}</span>
-          </div>
-          <h3 class="bree" style="font-size:1.05rem; margin:0 0 0.25rem;">{m.name}</h3>
-          <p style="color:#6a7a5a; font-size:0.82rem; margin:0;">{m.role}</p>
-          {m.cert && <p style="color:#8b5a14; font-size:0.75rem; font-weight:700; margin:0.35rem 0 0;">{m.cert}</p>}
-        </div>
-      ))}
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem;">
+      {co.teamMembers.map((m, i) => {
+        const codes = ['ISA BCMA','ISA WC-5821A','ASCA','OSHA 30'];
+        const yearsField = [27, 14, 19, 9];
+        return (
+          <article style="background:#fff; border:1px solid #c4b890; border-left:4px solid #8b5a14; border-radius:4px; padding:1.25rem 1.25rem 1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:start; gap:0.5rem; margin-bottom:0.5rem;">
+              <span class="isa-badge" style="padding:0.3rem 0.6rem; font-size:0.62rem; border-left-width:3px;">{codes[i] || 'CERTIFIED'}</span>
+              <span style="font-family:monospace; color:#8b5a14; font-size:0.72rem; font-weight:700;">{yearsField[i] || 5} yr in field</span>
+            </div>
+            <h3 class="bree" style="font-size:1.1rem; margin:0.5rem 0 0.2rem; color:#1a2810;">{m.name}</h3>
+            <p style="color:#6a7a5a; font-size:0.8rem; margin:0 0 0.75rem; font-style:italic;">{m.role}</p>
+            <p style="margin:0; padding-top:0.75rem; border-top:1px solid #e8dcc8; font-size:0.72rem; line-height:1.55; color:#1a2810;">
+              {['Specs every prune. Signs every report.','Lead climber. ISA exam grader emeritus.','Litigation arborist. Court-qualified expert.','Dispatch, billing, the calls that come at 2 AM.'][i] || 'Field operations'}
+            </p>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
@@ -409,13 +467,57 @@ const serviceSpecs = [
 
 </main>
 
-<footer style="background:#060f04; color:rgba(255,255,255,0.4); padding:2.5rem 1.5rem; text-align:center;">
-  <div style="max-width:72rem; margin:0 auto;">
-    <p class="bree" style="color:#c4b890; font-size:1.05rem; margin-bottom:0.4rem;">Canopy Tree &amp; Arborist Services</p>
-    <p style="font-size:0.78rem; margin-bottom:0.35rem;">{co.address} · {co.phone} · {co.email}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Canopy Tree &amp; Arborist Services. {co.certifications[0]}.</p>
-    <p style="font-size:0.72rem; margin-top:0.4rem;"><a href="/accessibility" style="color:rgba(255,255,255,0.75); text-decoration:underline;">Accessibility Statement</a></p>
-    <p style="font-size:0.7rem; margin-top:0.4rem; color:rgba(255,255,255,0.3);">Built by <a href="https://dcrader.dev" style="color:rgba(196,184,144,0.75); text-decoration:underline;">Donovan Crader · dcrader.dev</a></p>
+<!-- FOOTER — dispatch-style with 24/7 emergency band -->
+<footer style="background:#060f04; color:rgba(255,255,255,0.55); padding:0 0 1.5rem;">
+  <!-- Emergency dispatch band -->
+  <div style="background:#c0392b; color:#fff; padding:1.25rem 1.5rem;">
+    <div style="max-width:72rem; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <span aria-hidden="true" style="font-size:1.6rem;">🚨</span>
+        <div>
+          <p style="font-size:0.7rem; font-weight:900; letter-spacing:0.16em; text-transform:uppercase; margin:0; color:rgba(255,255,255,0.85);">24/7 Emergency Dispatch</p>
+          <p style="font-size:0.78rem; margin:0.15rem 0 0; color:rgba(255,255,255,0.75);">2-hour response anywhere in San Diego County</p>
+        </div>
+      </div>
+      <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="background:#fff; color:#c0392b; font-family:'Bree Serif',Georgia,serif; font-size:1.5rem; font-weight:700; padding:0.75rem 1.5rem; text-decoration:none; border-radius:4px; letter-spacing:0.01em;">{co.phone}</a>
+    </div>
+  </div>
+  <div style="max-width:72rem; margin:0 auto; padding:3rem 1.5rem 0;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; padding-bottom:2rem; border-bottom:1px solid rgba(196,184,144,0.18);">
+      <div>
+        <p class="bree" style="color:#c4b890; font-size:1.1rem; margin:0 0 0.5rem;">Canopy Tree</p>
+        <p style="font-size:0.78rem; margin:0; color:rgba(255,255,255,0.45); line-height:1.6;">ISA Certified Arborist owned &middot; TCIA Accredited<br/>Est. {co.founded}</p>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:#c4b890; font-weight:700; margin:0 0 0.6rem;">Yard / dispatch</p>
+        <p style="font-size:0.78rem; margin:0; line-height:1.7; color:rgba(255,255,255,0.5);">
+          {co.address}<br/>
+          <a href={`mailto:${co.email}`} style="color:#c4b890; text-decoration:none;">{co.email}</a>
+        </p>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:#c4b890; font-weight:700; margin:0 0 0.6rem;">Licenses on file</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.74rem; color:rgba(255,255,255,0.55); font-family:monospace;">
+          <li>ISA WC-5821A</li>
+          <li>CA C-61 / D-49 · #891204</li>
+          <li>$2M GL · WC Insured</li>
+          <li>DIR Registered</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:#c4b890; font-weight:700; margin:0 0 0.6rem;">Pages</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.78rem;">
+          <li><a href="#services" style="color:rgba(255,255,255,0.55); text-decoration:none;">ANSI service catalog</a></li>
+          <li><a href="#credentials" style="color:rgba(255,255,255,0.55); text-decoration:none;">Credentials</a></li>
+          <li><a href="#portfolio" style="color:rgba(255,255,255,0.55); text-decoration:none;">Project reports</a></li>
+          <li><a href="/accessibility" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin:1.25rem 0 0; font-size:0.72rem; color:rgba(255,255,255,0.3); display:flex; justify-content:space-between; gap:0.75rem; flex-wrap:wrap;">
+      <span>&copy; {new Date().getFullYear()} Canopy Tree &amp; Arborist Services. ISA Certified Arborist&reg;.</span>
+      <span>Built by <a href="https://dcrader.dev" style="color:rgba(196,184,144,0.75); text-decoration:underline;">Donovan Crader</a></span>
+    </p>
   </div>
 </footer>
 

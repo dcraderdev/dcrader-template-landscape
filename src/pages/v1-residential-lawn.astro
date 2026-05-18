@@ -267,30 +267,73 @@ const heroPreloadSizes = "(max-width: 900px) 100vw, 50vw";
   </div>
 </section>
 
-<!-- BEFORE/AFTER -->
+<!-- THIS WEEK ON THE BLOCK — neighborhood log strip -->
+<section aria-labelledby="block-h" style="background:#faf8f3; padding:4rem 1.5rem;">
+  <div class="inner">
+    <div style="display:flex; justify-content:space-between; align-items:end; gap:1rem; flex-wrap:wrap; margin-bottom:1.75rem;">
+      <div>
+        <span class="label">This week on the block</span>
+        <h2 id="block-h" class="serif" style="font-size:1.75rem; margin:0.3rem 0 0;">What the crew did, where</h2>
+      </div>
+      <p style="color:#637063; font-size:0.8rem; max-width:18rem; line-height:1.6; margin:0;">A live log of recent visits across our route. Your neighbors are on the schedule too.</p>
+    </div>
+    <ol style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0;">
+      {[
+        { day:'Thu', date:'May 16', street:'S. Coast Hwy, Oceanside', job:'Weekly mow + fertilize, Standard plan', crew:'Crew 2 — Mike & Diego' },
+        { day:'Thu', date:'May 16', street:'Brookhaven Dr, Vista', job:'Sod patch & overseed (front yard)', crew:'Crew 4 — Luis & Sara' },
+        { day:'Wed', date:'May 15', street:'Mar Vista Way, Carlsbad', job:'Spring irrigation tune-up, 6 zones', crew:'Crew 1 — Pam & Marco' },
+        { day:'Wed', date:'May 15', street:'Aviara Pkwy, Carlsbad', job:'Bi-weekly mow + edge, Basic plan', crew:'Crew 2 — Mike & Diego' },
+        { day:'Tue', date:'May 14', street:'Twin Oaks Valley, San Marcos', job:'Pre-emergent app + bed cleanup', crew:'Crew 3 — Antonio & Trish' },
+      ].map(r => (
+        <li style="display:grid; grid-template-columns:auto 1fr auto; gap:1.25rem; padding:1rem 0; border-bottom:1px dashed #dde8dd; align-items:baseline;">
+          <span style="background:#2a5f2a; color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.7rem; border-radius:4px; min-width:5.5rem; text-align:center; line-height:1.2;">{r.day} · {r.date}</span>
+          <span>
+            <span style="display:block; font-weight:700; color:#1c2b1a; font-size:0.92rem;">{r.street}</span>
+            <span style="display:block; color:#637063; font-size:0.82rem; margin-top:0.15rem;">{r.job}</span>
+          </span>
+          <span style="color:#3d7a3d; font-size:0.78rem; font-weight:600; white-space:nowrap;">{r.crew}</span>
+        </li>
+      ))}
+    </ol>
+    <p style="margin:1.25rem 0 0; color:#637063; font-size:0.78rem;">On your street next? <a href="#contact" style="color:#2a5f2a; font-weight:700; text-decoration:underline;">Add your address to the route →</a></p>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER — full-width slider strip (single hero pair, narrative under each) -->
 <section aria-labelledby="ba-h" style="background:#f0ebe0; padding:5rem 1.5rem;">
   <div class="inner">
     <div style="text-align:center; margin-bottom:2.5rem;">
-      <span class="label">Results</span>
-      <h2 id="ba-h" class="serif" style="font-size:2.25rem; margin:0.25rem 0;">Real lawns. Real transformations.</h2>
+      <span class="label">Lawn diary</span>
+      <h2 id="ba-h" class="serif" style="font-size:2.25rem; margin:0.25rem 0;">Six weeks later.</h2>
+      <p style="color:#637063; max-width:30rem; margin:0.75rem auto 0; line-height:1.7; font-size:0.92rem;">Same lawn. Same camera angle. Six weeks of consistent Thursdays.</p>
     </div>
-    <div class="grid-2">
-      {co.beforeAfter.map(ba => (
-        <div class="card" style="padding:0; overflow:hidden;">
-          <div style="display:grid; grid-template-columns:1fr 1fr;">
-            <div style="position:relative;">
-              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={300} height={220} sizes="(max-width: 768px) 50vw, 300px" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
-              <span style="position:absolute; bottom:0.5rem; left:0.5rem; background:rgba(0,0,0,0.55); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Before</span>
+    <div style="display:flex; flex-direction:column; gap:2rem;">
+      {co.beforeAfter.map((ba, i) => (
+        <article style="background:#fff; border:1px solid #dde8dd; border-radius:14px; overflow:hidden; box-shadow:0 1px 0 #dde8dd;">
+          <div style="display:grid; grid-template-columns:80px 1fr; gap:0;">
+            <div style="background:#2a5f2a; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.25rem 0.5rem; gap:0.4rem;">
+              <span class="serif" style="font-size:1.65rem; font-weight:700; line-height:1;">#{String(i+1).padStart(2,'0')}</span>
+              <span style="font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; opacity:0.7; text-align:center;">Week<br/>0 → 6</span>
             </div>
-            <div style="position:relative;">
-              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={300} height={220} sizes="(max-width: 768px) 50vw, 300px" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
-              <span style="position:absolute; bottom:0.5rem; left:0.5rem; background:#2a5f2a; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">After</span>
+            <div>
+              <div style="position:relative; display:grid; grid-template-columns:1fr 1fr;">
+                <figure style="margin:0; position:relative;">
+                  <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={600} height={420} sizes="(max-width: 768px) 50vw, 400px" loading="lazy" style="width:100%; height:240px; object-fit:cover; display:block; filter:saturate(0.7) brightness(0.95);" />
+                  <figcaption style="position:absolute; top:0.6rem; left:0.6rem; background:rgba(0,0,0,0.6); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.25rem 0.7rem; border-radius:99px;">Day 0</figcaption>
+                </figure>
+                <figure style="margin:0; position:relative;">
+                  <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={600} height={420} sizes="(max-width: 768px) 50vw, 400px" loading="lazy" style="width:100%; height:240px; object-fit:cover; display:block;" />
+                  <figcaption style="position:absolute; top:0.6rem; left:0.6rem; background:#2a5f2a; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.25rem 0.7rem; border-radius:99px;">Week 6</figcaption>
+                </figure>
+                <span aria-hidden="true" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#c8a84b; color:#1c2b1a; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; box-shadow:0 4px 12px rgba(0,0,0,0.25);">→</span>
+              </div>
+              <div style="padding:1.1rem 1.4rem;">
+                <p style="font-weight:700; font-size:0.95rem; margin:0; color:#1c2b1a;">{ba.label}</p>
+                <p style="color:#637063; font-size:0.82rem; margin:0.25rem 0 0; line-height:1.5;">Standard plan · Thursday route · {i===0?'Sodded + fertilized week 2':'Overseeded + irrigation tuned week 1'}</p>
+              </div>
             </div>
           </div>
-          <div style="padding:1rem 1.25rem;">
-            <p style="font-weight:700; font-size:0.9rem; margin:0; color:#1c2b1a;">{ba.label}</p>
-          </div>
-        </div>
+        </article>
       ))}
     </div>
   </div>
@@ -353,25 +396,40 @@ const heroPreloadSizes = "(max-width: 900px) 100vw, 50vw";
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- TEAM — crew roster card (a single shop-floor "who's on the truck" panel) -->
 <section id="about" aria-labelledby="team-h" style="background:#faf8f3; padding:5rem 1.5rem;">
   <div class="inner">
-    <div style="text-align:center; margin-bottom:2.5rem;">
-      <span class="label">The neighborhood crew</span>
-      <h2 id="team-h" class="serif" style="font-size:2.25rem; margin:0.25rem 0;">Meet the GreenScape team</h2>
-      <p style="color:#637063; max-width:30rem; margin:0.75rem auto 0; line-height:1.65;">We're your neighbors. We live in the communities we serve — and it shows.</p>
-    </div>
-    <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr));">
-      {co.teamMembers.map(m => (
-        <div class="card" style="text-align:center;">
-          <div style="width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,#3d7a3d,#2a5f2a); margin:0 auto 1rem; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
-            <span class="serif" style="color:#fff; font-size:1.75rem; font-weight:700;">{m.name[0]}</span>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2.5rem; align-items:center; margin-bottom:2rem;">
+      <div>
+        <span class="label">The neighborhood crew</span>
+        <h2 id="team-h" class="serif" style="font-size:2.25rem; margin:0.4rem 0 1rem;">Same faces every Thursday.</h2>
+        <p style="color:#637063; line-height:1.7; font-size:0.95rem;">No rotating contractors. Your address is assigned to a 2-person crew, and they keep it for as long as you're on the plan. They learn your gate code. They wave at your kids.</p>
+        <div style="margin-top:1.5rem; display:flex; gap:1.5rem; flex-wrap:wrap;">
+          <div>
+            <span class="serif" style="font-size:2rem; color:#2a5f2a; font-weight:700; line-height:1;">4</span>
+            <p style="font-size:0.75rem; color:#637063; letter-spacing:0.1em; text-transform:uppercase; margin:0.25rem 0 0;">Active crews</p>
           </div>
-          <p style="font-weight:700; font-size:0.95rem; margin:0 0 0.2rem;">{m.name}</p>
-          <p style="color:#637063; font-size:0.82rem; margin:0;">{m.role}</p>
-          {m.cert && <p style="color:#2a5f2a; font-size:0.75rem; font-weight:600; margin:0.35rem 0 0;">{m.cert}</p>}
+          <div>
+            <span class="serif" style="font-size:2rem; color:#2a5f2a; font-weight:700; line-height:1;">8 yrs</span>
+            <p style="font-size:0.75rem; color:#637063; letter-spacing:0.1em; text-transform:uppercase; margin:0.25rem 0 0;">Avg crew tenure</p>
+          </div>
         </div>
-      ))}
+      </div>
+      <ul style="list-style:none; margin:0; padding:0; background:#fff; border:1px solid #dde8dd; border-radius:14px; overflow:hidden;">
+        {co.teamMembers.map((m, i) => (
+          <li style={`display:grid; grid-template-columns:auto 1fr auto; gap:1rem; align-items:center; padding:1rem 1.25rem; ${i<co.teamMembers.length-1?'border-bottom:1px solid #f0ebe0;':''}`}>
+            <span aria-hidden="true" class="serif" style="background:#f0ebe0; color:#2a5f2a; font-size:1.15rem; font-weight:700; width:42px; height:42px; border-radius:8px; display:flex; align-items:center; justify-content:center;">{m.name[0]}</span>
+            <span style="display:flex; flex-direction:column;">
+              <span style="font-weight:700; color:#1c2b1a; font-size:0.95rem;">{m.name}</span>
+              <span style="color:#637063; font-size:0.8rem;">{m.role}</span>
+            </span>
+            {m.cert
+              ? <span style="background:#d4ecd4; color:#2a5f2a; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.3rem 0.65rem; border-radius:99px; white-space:nowrap;">{m.cert}</span>
+              : <span style="color:#9aa89a; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase;">Crew {i+1}</span>
+            }
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
 </section>
@@ -441,14 +499,40 @@ const heroPreloadSizes = "(max-width: 900px) 100vw, 50vw";
 
 </main>
 
-<!-- FOOTER -->
-<footer style="background:#111a10; color:rgba(255,255,255,0.5); padding:2.5rem 1.5rem; text-align:center;">
-  <div style="max-width:72rem; margin:0 auto; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
-    <span class="serif" style="color:#90cc90; font-size:1.1rem; font-weight:700;">GreenScape Lawn &amp; Garden</span>
-    <p style="font-size:0.8rem; margin:0;">{co.address} · <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:rgba(255,255,255,0.5);">{co.phone}</a></p>
-    <p style="font-size:0.75rem; margin:0;">&copy; {new Date().getFullYear()} GreenScape Lawn &amp; Garden. CA Licensed C-27. All rights reserved.</p>
-    <p style="font-size:0.75rem; margin:0;"><a href="/accessibility" style="color:rgba(255,255,255,0.75); text-decoration:underline;">Accessibility Statement</a></p>
-    <p style="font-size:0.72rem; margin:0; color:rgba(255,255,255,0.35);">Built by <a href="https://dcrader.dev" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Donovan Crader · dcrader.dev</a></p>
+<!-- FOOTER — neighborhood three-column with route schedule -->
+<footer style="background:#111a10; color:rgba(255,255,255,0.55); padding:3rem 1.5rem 1.5rem;">
+  <div style="max-width:72rem; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; padding-bottom:2rem; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div>
+        <span class="serif" style="color:#90cc90; font-size:1.15rem; font-weight:700; display:block; margin-bottom:0.4rem;">GreenScape</span>
+        <p style="font-size:0.8rem; line-height:1.6; margin:0 0 0.75rem;">Weekly lawn care for North County homeowners since 2004.</p>
+        <p style="font-size:0.78rem; margin:0;"><a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#90cc90; text-decoration:underline;">{co.phone}</a></p>
+        <p style="font-size:0.78rem; margin:0.2rem 0 0; color:rgba(255,255,255,0.4);">{co.address}</p>
+      </div>
+      <div>
+        <p style="color:#90cc90; font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; margin:0 0 0.75rem;">Route schedule</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.35rem; font-size:0.8rem;">
+          <li><span style="color:rgba(255,255,255,0.45);">Mon</span> · Escondido</li>
+          <li><span style="color:rgba(255,255,255,0.45);">Tue</span> · San Marcos</li>
+          <li><span style="color:rgba(255,255,255,0.45);">Wed</span> · Carlsbad &amp; Vista</li>
+          <li><span style="color:rgba(255,255,255,0.45);">Thu</span> · Oceanside</li>
+          <li><span style="color:rgba(255,255,255,0.45);">Fri</span> · Touch-ups + new starts</li>
+        </ul>
+      </div>
+      <div>
+        <p style="color:#90cc90; font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; margin:0 0 0.75rem;">Quick links</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.35rem; font-size:0.8rem;">
+          <li><a href="#plans" style="color:rgba(255,255,255,0.55); text-decoration:none;">See plans &amp; pricing</a></li>
+          <li><a href="#services" style="color:rgba(255,255,255,0.55); text-decoration:none;">Services included</a></li>
+          <li><a href="#contact" style="color:rgba(255,255,255,0.55); text-decoration:none;">Get free quote</a></li>
+          <li><a href="/accessibility" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Accessibility statement</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding-top:1.25rem; gap:1rem; flex-wrap:wrap;">
+      <p style="font-size:0.74rem; margin:0; color:rgba(255,255,255,0.35);">&copy; {new Date().getFullYear()} GreenScape Lawn &amp; Garden · CA Licensed C-27</p>
+      <p style="font-size:0.72rem; margin:0; color:rgba(255,255,255,0.35);">Built by <a href="https://dcrader.dev" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Donovan Crader</a></p>
+    </div>
   </div>
 </footer>
 

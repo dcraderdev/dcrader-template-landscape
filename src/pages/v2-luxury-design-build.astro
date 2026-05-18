@@ -250,30 +250,36 @@ const testimonials = [
   </div>
 </section>
 
-<!-- BEFORE/AFTER -->
-<section aria-labelledby="ba-h" style="background:#f9f7f2; padding:6rem 3rem;">
+<!-- PROCESS — A studio's seven movements (replaces generic B/A) -->
+<section aria-labelledby="ba-h" style="background:#f9f7f2; padding:7rem 3rem;">
   <div style="max-width:88rem; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:4rem;">
-      <p class="label-sm">Transformations</p>
-      <h2 id="ba-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0;">Before &amp; after</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:4rem; align-items:start; margin-bottom:4rem;">
+      <div>
+        <p class="label-sm">Studio process</p>
+        <h2 id="ba-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0 1.25rem; line-height:1.05;">Seven<br/><em>movements</em></h2>
+        <div class="rule"></div>
+      </div>
+      <p style="color:#7a7a6a; font-size:0.95rem; line-height:1.85; font-weight:300; margin:0; padding-top:0.5rem;">
+        Every commission moves through a deliberate sequence&mdash;from the first walk of your land to the season we hand it over and beyond. A typical estate occupies the studio for fourteen to twenty-two months. Some longer.
+      </p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:2.5rem;">
-      {co.beforeAfter.map(ba => (
-        <div>
-          <h3 class="garam" style="font-size:1.25rem; font-weight:400; margin-bottom:1.25rem; font-style:italic;">{ba.label}</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
-            <div>
-              <p class="label-sm" style="margin-bottom:0.5rem; color:#7a7a6a;">Before</p>
-              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-            </div>
-            <div>
-              <p class="label-sm" style="margin-bottom:0.5rem;">After</p>
-              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-            </div>
-          </div>
-        </div>
+    <ol style="list-style:none; margin:0; padding:0; counter-reset:movement;">
+      {[
+        { roman:'I', name:'The Walk', detail:'A half-day on your land. We sketch grade, sun arcs, sight lines, and the trees that must stay.' },
+        { roman:'II', name:'The Brief', detail:'A written manifesto of the garden you want&mdash;and the one your land is asking for. Often these are different.' },
+        { roman:'III', name:'Conceptual Plan', detail:'Hand-rendered masterplan in watercolor and pencil. Presented in our La Jolla studio over an unhurried morning.' },
+        { roman:'IV', name:'Construction Documents', detail:'CAD, grading, irrigation, lighting, planting palettes. Drawings precise enough that the masonry contractor never has to call.' },
+        { roman:'V', name:'Build', detail:'Our own crews, our own equipment yard. Single point of accountability through inspection.' },
+        { roman:'VI', name:'Planting & Lighting', detail:'Specimen trees first, sourced from California growers. Lighting calibrated by hand after dark on three consecutive evenings.' },
+        { roman:'VII', name:'Stewardship', detail:'Weekly white-glove care. Care logs, a named horticulturist, and an annual walk to keep the design intentional.' },
+      ].map((m, i) => (
+        <li style={`display:grid; grid-template-columns:80px 200px 1fr; gap:3rem; align-items:start; padding:2rem 0; ${i>0?'border-top:1px solid #d8cfa8;':''}`}>
+          <span class="garam" style="font-size:2.5rem; font-weight:300; color:#c8a96a; line-height:1; font-style:italic;">{m.roman}</span>
+          <h3 class="garam" style="font-size:1.35rem; font-weight:400; margin:0; line-height:1.15; padding-top:0.25rem;">{m.name}</h3>
+          <p style="color:#7a7a6a; font-size:0.92rem; line-height:1.85; font-weight:300; margin:0.25rem 0 0; max-width:42rem;">{m.detail}</p>
+        </li>
       ))}
-    </div>
+    </ol>
   </div>
 </section>
 
@@ -309,25 +315,31 @@ const testimonials = [
   </div>
 </section>
 
-<!-- TEAM -->
-<section id="studio" aria-labelledby="team-h" style="background:#f9f7f2; padding:6rem 3rem;">
+<!-- TEAM — masthead style, no avatars -->
+<section id="studio" aria-labelledby="team-h" style="background:#f9f7f2; padding:7rem 3rem;">
   <div style="max-width:88rem; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:4rem;">
-      <p class="label-sm">The people</p>
-      <h2 id="team-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0;">The Studio</h2>
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:3.5rem; padding-bottom:1.5rem; border-bottom:1px solid #d8cfa8;">
+      <div>
+        <p class="label-sm">Masthead</p>
+        <h2 id="team-h" class="garam" style="font-size:3rem; font-weight:400; margin:0.5rem 0 0;">The Studio</h2>
+      </div>
+      <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300; font-style:italic;">Issue {new Date().getFullYear() - 2009}</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem;">
-      {co.teamMembers.map(m => (
-        <div style="text-align:center;">
-          <div style="width:88px; height:88px; border-radius:50%; background:#2e4a2e; margin:0 auto 1.25rem; display:flex; align-items:center; justify-content:center; border:1px solid #c8a96a;" aria-hidden="true">
-            <span class="garam" style="color:#c8a96a; font-size:2.25rem; font-weight:600; line-height:1;">{m.name[0]}</span>
-          </div>
-          <h3 class="garam" style="font-size:1.2rem; font-weight:400; margin:0 0 0.25rem;">{m.name}</h3>
-          <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300; margin:0;">{m.role}</p>
-          {m.cert && <p style="color:#c8a96a; font-size:0.75rem; font-weight:500; margin:0.35rem 0 0; letter-spacing:0.04em;">{m.cert}</p>}
-        </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:0;">
+      {co.teamMembers.map((m, i) => (
+        <article style={`padding:2rem 1.5rem; ${i>0?'border-left:1px solid #d8cfa8;':''} ${i===0?'padding-left:0;':''}`}>
+          <p class="label-sm" style="margin-bottom:1rem;">{['Direction','Craft','Horticulture','Operations'][i] || 'Studio'}</p>
+          <h3 class="garam" style="font-size:1.45rem; font-weight:400; margin:0 0 0.35rem; line-height:1.15;">{m.name}</h3>
+          <p style="color:#7a7a6a; font-size:0.85rem; font-weight:300; margin:0 0 0.85rem; font-style:italic;">{m.role}</p>
+          {m.cert && (
+            <p style="color:#1e2b1e; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; margin:0; padding-top:0.85rem; border-top:1px solid #d8cfa8; font-weight:500;">— {m.cert}</p>
+          )}
+        </article>
       ))}
     </div>
+    <p style="color:#7a7a6a; font-size:0.82rem; font-weight:300; margin:3rem 0 0; max-width:36rem; line-height:1.85; font-style:italic;">
+      Together the studio has thirty-eight years of practice. We accept four to six new commissions per calendar year.
+    </p>
   </div>
 </section>
 
@@ -378,13 +390,46 @@ const testimonials = [
 
 </main>
 
-<footer style="background:#111a11; color:rgba(255,255,255,0.4); padding:3rem; text-align:center;">
+<!-- FOOTER — colophon style, three columns left-aligned, sage on cream rule -->
+<footer style="background:#111a11; color:rgba(255,255,255,0.5); padding:4rem 3rem 1.75rem;">
   <div style="max-width:88rem; margin:0 auto;">
-    <p class="garam" style="color:#c8a96a; font-size:1.1rem; font-weight:400; margin-bottom:0.5rem;">Meridian Design + Build</p>
-    <p style="font-size:0.78rem; margin-bottom:0.4rem;">{co.address}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Meridian Design + Build. All rights reserved. CA Licensed.</p>
-    <p style="font-size:0.72rem; margin-top:0.4rem;"><a href="/accessibility" style="color:rgba(255,255,255,0.75); text-decoration:underline;">Accessibility Statement</a></p>
-    <p class="garam" style="font-size:0.7rem; margin-top:0.4rem; color:rgba(255,255,255,0.3);">Built by <a href="https://dcrader.dev" style="color:rgba(200,169,106,0.7); text-decoration:underline;">Donovan Crader · dcrader.dev</a></p>
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(200,169,106,0.25);">
+      <div>
+        <p class="garam" style="color:#c8a96a; font-size:1.5rem; font-weight:400; margin:0 0 0.6rem; letter-spacing:0.02em;">Meridian</p>
+        <p style="font-size:0.78rem; line-height:1.7; margin:0 0 1rem; color:rgba(255,255,255,0.45); font-style:italic; max-width:20rem;">A design-build studio creating estate gardens of singular beauty.</p>
+        <p style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.35);">Est. {co.founded}</p>
+      </div>
+      <div>
+        <p style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:#c8a96a; margin:0 0 1rem;">Studio</p>
+        <p style="font-size:0.82rem; line-height:1.85; margin:0; color:rgba(255,255,255,0.55);">
+          {co.address.split(', ')[0]}<br/>
+          {co.address.split(', ').slice(1).join(', ')}<br/>
+          <span style="color:rgba(255,255,255,0.35); font-size:0.74rem;">By appointment</span>
+        </p>
+      </div>
+      <div>
+        <p style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:#c8a96a; margin:0 0 1rem;">Inquiries</p>
+        <p style="font-size:0.82rem; line-height:1.85; margin:0; color:rgba(255,255,255,0.55);">
+          <a href={`mailto:${co.email}`} style="color:rgba(255,255,255,0.7); text-decoration:none;">{co.email}</a><br/>
+          <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:rgba(255,255,255,0.7); text-decoration:none;">{co.phone}</a><br/>
+          <span style="color:rgba(255,255,255,0.35); font-size:0.74rem;">Mon – Fri · 9 to 5</span>
+        </p>
+      </div>
+      <div>
+        <p style="font-size:0.68rem; letter-spacing:0.22em; text-transform:uppercase; color:#c8a96a; margin:0 0 1rem;">Index</p>
+        <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.4rem; font-size:0.82rem;">
+          <li><a href="#services" style="color:rgba(255,255,255,0.55); text-decoration:none;">Services</a></li>
+          <li><a href="#portfolio" style="color:rgba(255,255,255,0.55); text-decoration:none;">Selected work</a></li>
+          <li><a href="#studio" style="color:rgba(255,255,255,0.55); text-decoration:none;">The studio</a></li>
+          <li><a href="#contact" style="color:rgba(255,255,255,0.55); text-decoration:none;">Begin</a></li>
+          <li><a href="/accessibility" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding-top:1.25rem; gap:1rem; flex-wrap:wrap;">
+      <p style="font-size:0.72rem; margin:0; color:rgba(255,255,255,0.3); font-style:italic;" class="garam">&copy; {new Date().getFullYear()} Meridian Design + Build &middot; CA Licensed C-27</p>
+      <p style="font-size:0.7rem; margin:0; color:rgba(255,255,255,0.3);" class="garam">Built by <a href="https://dcrader.dev" style="color:rgba(200,169,106,0.7); text-decoration:underline;">Donovan Crader</a></p>
+    </div>
   </div>
 </footer>
 

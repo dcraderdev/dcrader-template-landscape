@@ -357,50 +357,150 @@ const contractTiers = [
   </div>
 </section>
 
-<!-- BEFORE/AFTER -->
+<!-- ACCOUNT KPIs — pure metric-shift cards (no B/A image grid) -->
 <section aria-labelledby="ba-h" style="background:#f4f7fb; padding:5rem 2rem;">
   <div class="inner">
-    <div style="text-align:center; margin-bottom:3rem;">
-      <span class="label">Property transformations</span>
-      <h2 id="ba-h" style="font-size:2.25rem; font-weight:900; margin:0.25rem 0; letter-spacing:-0.02em;">Before &amp; after</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:end; margin-bottom:3rem; padding-bottom:1.25rem; border-bottom:2px solid #0d1b3e;">
+      <div>
+        <span class="label">Account performance</span>
+        <h2 id="ba-h" style="font-size:2.25rem; font-weight:900; margin:0.4rem 0 0; letter-spacing:-0.02em;">What changes after takeover</h2>
+      </div>
+      <p style="color:#6a7a90; font-size:0.9rem; line-height:1.75; margin:0;">Three live accounts, first twelve months. Numbers pulled directly from QA reports and tenant ticket logs.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:2rem;">
-      {co.beforeAfter.map(ba => (
-        <div>
-          <h3 style="font-weight:700; font-size:0.95rem; margin-bottom:1rem; color:#0d1b3e;">{ba.label}</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
-            <div>
-              <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#6a7a90; margin-bottom:0.4rem;">Before</p>
-              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
-            </div>
-            <div>
-              <p style="font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0d1b3e; margin-bottom:0.4rem;">After</p>
-              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:180px; object-fit:cover; display:block;" />
-            </div>
-          </div>
-        </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.25rem;">
+      {[
+        {
+          site:'Mission Valley Office Park',
+          type:'12-acre mixed-use · 4 buildings',
+          metrics:[
+            { label:'Water budget vs. baseline', before:'+18% over', after:'−24% under', good:true },
+            { label:'Tenant complaint tickets / mo', before:'14', after:'2', good:true },
+            { label:'Curb-appeal QA score', before:'62', after:'94', good:true },
+            { label:'Avg response time', before:'5.2 days', after:'18 hrs', good:true },
+          ],
+        },
+        {
+          site:'Kearny Mesa Retail Center',
+          type:'400-stall retail · 8 anchors',
+          metrics:[
+            { label:'Parking-lot weed coverage', before:'~22%', after:'<2%', good:true },
+            { label:'Seasonal color rotations / yr', before:'1', after:'4', good:true },
+            { label:'Anchor-tenant renewals', before:'5 of 8', after:'8 of 8', good:true },
+            { label:'Annual irrigation cost', before:'$48K', after:'$31K', good:true },
+          ],
+        },
+        {
+          site:'Downtown Hilton San Diego',
+          type:'448 keys · event lawn + entry',
+          metrics:[
+            { label:'Event-lawn ready days / yr', before:'214', after:'358', good:true },
+            { label:'Guest landscape comments', before:'mixed', after:'92% positive', good:true },
+            { label:'Crew on-site at event setup', before:'On call', after:'Pre-scheduled', good:true },
+            { label:'AAA inspection score', before:'4 diamond', after:'5 diamond', good:true },
+          ],
+        },
+      ].map(account => (
+        <article style="background:#fff; border:1px solid #c0ccd8; padding:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+          <header style="border-bottom:1px solid #c0ccd8; padding-bottom:0.85rem;">
+            <h3 style="font-size:1rem; font-weight:700; margin:0; color:#0d1b3e;">{account.site}</h3>
+            <p style="font-size:0.74rem; color:#8394b0; margin:0.25rem 0 0; letter-spacing:0.06em; text-transform:uppercase;">{account.type}</p>
+          </header>
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th style="background:transparent; color:#8394b0; font-weight:700; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; text-align:left; padding:0 0 0.4rem; border-bottom:1px solid #e0e5ec;">KPI</th>
+                <th style="background:transparent; color:#8394b0; font-weight:700; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; text-align:right; padding:0 0 0.4rem; border-bottom:1px solid #e0e5ec;">Pre</th>
+                <th style="background:transparent; color:#0d1b3e; font-weight:900; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; text-align:right; padding:0 0 0.4rem; border-bottom:1px solid #e0e5ec;">w/ Apex</th>
+              </tr>
+            </thead>
+            <tbody>
+              {account.metrics.map(m => (
+                <tr>
+                  <td style="font-size:0.78rem; color:#0d1b3e; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec;">{m.label}</td>
+                  <td style="font-size:0.78rem; color:#6a7a90; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec; text-align:right; font-family:monospace;">{m.before}</td>
+                  <td style="font-size:0.78rem; color:#0d1b3e; font-weight:900; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec; text-align:right; font-family:monospace;">{m.after}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p style="margin:auto 0 0; padding-top:0.5rem; font-size:0.7rem; color:#8394b0; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;">Year-over-year &middot; QA verified</p>
+        </article>
       ))}
     </div>
   </div>
 </section>
 
-<!-- TEAM -->
-<section aria-labelledby="team-h" style="background:#fff; padding:5rem 2rem;">
+<!-- PROPERTY-MANAGER VOICES — logo strip + 2 quotes -->
+<section aria-labelledby="pm-h" style="background:#fff; padding:5rem 2rem;">
   <div class="inner">
-    <div style="text-align:center; margin-bottom:3rem;">
-      <span class="label">Leadership</span>
-      <h2 id="team-h" style="font-size:2rem; font-weight:900; margin:0.25rem 0; letter-spacing:-0.02em;">Our team</h2>
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="label">Property managers on record</span>
+      <h2 id="pm-h" style="font-size:2rem; font-weight:900; margin:0.25rem 0; letter-spacing:-0.02em;">Trusted by the people who run buildings</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.5rem;">
-      {co.teamMembers.map(m => (
-        <div class="card" style="text-align:center;">
-          <div style="width:68px; height:68px; background:#0d1b3e; margin:0 auto 1rem; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
-            <span style="color:#8394b0; font-size:1.5rem; font-weight:900;">{m.name[0]}</span>
-          </div>
-          <h3 style="font-weight:700; font-size:0.95rem; margin:0 0 0.25rem; color:#0d1b3e;">{m.name}</h3>
-          <p style="color:#6a7a90; font-size:0.82rem; margin:0;">{m.role}</p>
+    <!-- Logo-style monogram strip -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:0; border-top:1px solid #c0ccd8; border-bottom:1px solid #c0ccd8; margin-bottom:3rem;">
+      {[
+        { mono:'CBRE', sub:'PM, San Diego' },
+        { mono:'JLL', sub:'Office portfolios' },
+        { mono:'KILROY', sub:'Mixed-use' },
+        { mono:'IRVINE', sub:'Campus PM' },
+        { mono:'HINES', sub:'Class-A retail' },
+        { mono:'GREYSTAR', sub:'Multifamily' },
+      ].map((l, i) => (
+        <div style={`padding:1.25rem 0.75rem; text-align:center; ${i<5?'border-right:1px solid #c0ccd8;':''} display:flex; flex-direction:column; gap:0.15rem; justify-content:center;`}>
+          <span style="font-size:0.95rem; font-weight:900; color:#0d1b3e; letter-spacing:0.04em;">{l.mono}</span>
+          <span style="font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:#8394b0;">{l.sub}</span>
         </div>
       ))}
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.5rem;">
+      {[
+        { quote:'Apex took over a 12-acre office park mid-contract from a competitor and stabilized it in six weeks. The QA reports replaced three different vendor reports I used to chase. One inbox, one number.', name:'Patricia Vega', title:'Senior Property Manager', firm:'CBRE · Mission Valley portfolio' },
+        { quote:'Snow event in 2024, they had crews pre-positioned. Our tenants opened on time when three other centers in the corridor didn’t. The SLA is in writing and they’ve never missed it.', name:'Derek Chu', title:'Director of Operations', firm:'JLL · Greater San Diego' },
+      ].map(t => (
+        <article style="background:#f4f7fb; border-left:4px solid #0d1b3e; padding:1.75rem 1.75rem 1.5rem;">
+          <p style="font-size:0.95rem; line-height:1.7; color:#0d1b3e; margin:0 0 1.25rem;">&ldquo;{t.quote}&rdquo;</p>
+          <p style="margin:0; padding-top:1rem; border-top:1px solid #c0ccd8;">
+            <span style="display:block; font-weight:900; font-size:0.85rem; color:#0d1b3e; letter-spacing:-0.01em;">{t.name}</span>
+            <span style="display:block; font-size:0.75rem; color:#8394b0; letter-spacing:0.08em; text-transform:uppercase; margin-top:0.15rem;">{t.title}</span>
+            <span style="display:block; font-size:0.78rem; color:#6a7a90; margin-top:0.2rem;">{t.firm}</span>
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP — org-chart roster, no avatars -->
+<section aria-labelledby="team-h" style="background:#fff; padding:5rem 2rem;">
+  <div class="inner">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:start; margin-bottom:2.5rem;">
+      <div>
+        <span class="label">Leadership</span>
+        <h2 id="team-h" style="font-size:2rem; font-weight:900; margin:0.4rem 0 0.75rem; letter-spacing:-0.02em;">Your accountable team</h2>
+        <p style="color:#6a7a90; font-size:0.9rem; line-height:1.75; margin:0;">Every commercial account is assigned a named Account Executive, an Operations lead, and a QA contact. No call-center handoffs.</p>
+      </div>
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="border-bottom:2px solid #0d1b3e;">
+            <th style="background:transparent; color:#0d1b3e; font-weight:900; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; padding:0 0 0.6rem; text-align:left;">Role</th>
+            <th style="background:transparent; color:#0d1b3e; font-weight:900; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; padding:0 0 0.6rem; text-align:left;">Name</th>
+            <th style="background:transparent; color:#0d1b3e; font-weight:900; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; padding:0 0 0.6rem; text-align:right;">Direct</th>
+          </tr>
+        </thead>
+        <tbody>
+          {co.teamMembers.map((m, i) => {
+            const ext = ['x101','x204','x115','x132'];
+            return (
+              <tr>
+                <td style="font-size:0.78rem; color:#6a7a90; padding:0.85rem 0; border-bottom:1px solid #c0ccd8; letter-spacing:0.04em;">{m.role}</td>
+                <td style="font-size:0.88rem; color:#0d1b3e; font-weight:700; padding:0.85rem 0; border-bottom:1px solid #c0ccd8;">{m.name}</td>
+                <td style="font-size:0.78rem; color:#0d1b3e; padding:0.85rem 0; border-bottom:1px solid #c0ccd8; font-family:monospace; text-align:right;">{co.phone} <span style="color:#8394b0;">{ext[i] || ''}</span></td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -484,13 +584,62 @@ const contractTiers = [
 
 </main>
 
-<footer style="background:#050d1a; color:rgba(255,255,255,0.35); padding:3rem 2rem; text-align:center;">
-  <div style="max-width:80rem; margin:0 auto;">
-    <p style="color:rgba(255,255,255,0.65); font-weight:900; font-size:1rem; margin-bottom:0.4rem; letter-spacing:-0.01em;">APEX Commercial Landscapes</p>
-    <p style="font-size:0.78rem; margin-bottom:0.35rem;">{co.address} · {co.phone} · {co.email}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Apex Commercial Landscapes. NALP Accredited. ISO 9001. DIR #1000000. All rights reserved.</p>
-    <p style="font-size:0.72rem; margin-top:0.4rem;"><a href="/accessibility" style="color:rgba(255,255,255,0.75); text-decoration:underline;">Accessibility Statement</a></p>
-    <p style="font-size:0.7rem; margin-top:0.4rem; color:rgba(255,255,255,0.3);">Built by <a href="https://dcrader.dev" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Donovan Crader · dcrader.dev</a></p>
+<!-- FOOTER — corporate compliance grid with sitemap and SLA strip -->
+<footer style="background:#050d1a; color:rgba(255,255,255,0.5); padding:0 0 1.5rem;">
+  <!-- Operations SLA bar -->
+  <div style="background:#0d1b3e; padding:1rem 2rem; border-top:1px solid rgba(131,148,176,0.18);">
+    <div style="max-width:80rem; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:0.85rem;">
+        <span aria-hidden="true" style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#3fb950; box-shadow:0 0 8px rgba(63,185,80,0.6);"></span>
+        <span style="font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.85);">Operations · Open</span>
+        <span style="font-size:0.74rem; color:rgba(255,255,255,0.5);">Mon – Fri · 06:00 – 18:00 PT</span>
+      </div>
+      <div style="display:flex; gap:1.25rem; font-size:0.74rem; color:rgba(255,255,255,0.55); letter-spacing:0.04em;">
+        <span>Account line: <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#fff; font-family:monospace; text-decoration:none;">{co.phone}</a></span>
+        <span>RFP: <a href={`mailto:${co.email}`} style="color:#fff; text-decoration:none;">{co.email}</a></span>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:80rem; margin:0 auto; padding:3rem 2rem 0;">
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2rem; padding-bottom:2rem; border-bottom:1px solid rgba(131,148,176,0.15);">
+      <div>
+        <p style="color:#fff; font-weight:900; font-size:1.1rem; margin:0 0 0.4rem; letter-spacing:-0.01em;">APEX <span style="font-weight:400; color:#8394b0;">Commercial Landscapes</span></p>
+        <p style="font-size:0.78rem; line-height:1.65; margin:0 0 1rem; color:rgba(255,255,255,0.45);">Commercial-only landscape management for San Diego property managers since 1998. One vendor, one SLA, one invoice.</p>
+        <p style="font-size:0.72rem; margin:0; color:rgba(255,255,255,0.4);">{co.address}</p>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.2em; text-transform:uppercase; color:#8394b0; font-weight:700; margin:0 0 0.7rem;">Services</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.78rem;">
+          <li><a href="#contracts" style="color:rgba(255,255,255,0.55); text-decoration:none;">Maintenance contracts</a></li>
+          <li><a href="#services" style="color:rgba(255,255,255,0.55); text-decoration:none;">Service catalog</a></li>
+          <li><a href="#portfolio" style="color:rgba(255,255,255,0.55); text-decoration:none;">Portfolio</a></li>
+          <li><a href="#contact" style="color:rgba(255,255,255,0.55); text-decoration:none;">Request proposal</a></li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.2em; text-transform:uppercase; color:#8394b0; font-weight:700; margin:0 0 0.7rem;">Compliance</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.74rem; color:rgba(255,255,255,0.55); font-family:monospace;">
+          <li>NALP Accredited &middot; 2018</li>
+          <li>ISO 9001:2015</li>
+          <li>DIR #1000000</li>
+          <li>$5M GL &middot; $2M Auto</li>
+          <li>OSHA 10 / 30 crews</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.2em; text-transform:uppercase; color:#8394b0; font-weight:700; margin:0 0 0.7rem;">Resources</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.78rem;">
+          <li><a href="#" style="color:rgba(255,255,255,0.55); text-decoration:none;">COI request</a></li>
+          <li><a href="#" style="color:rgba(255,255,255,0.55); text-decoration:none;">W-9 / vendor packet</a></li>
+          <li><a href="#" style="color:rgba(255,255,255,0.55); text-decoration:none;">Sustainability ESG</a></li>
+          <li><a href="/accessibility" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin:1.25rem 0 0; font-size:0.7rem; color:rgba(255,255,255,0.3); display:flex; justify-content:space-between; gap:0.75rem; flex-wrap:wrap; letter-spacing:0.03em;">
+      <span>&copy; {new Date().getFullYear()} Apex Commercial Landscapes &middot; All SLAs in writing &middot; All rights reserved</span>
+      <span>Built by <a href="https://dcrader.dev" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Donovan Crader</a></span>
+    </p>
   </div>
 </footer>
 

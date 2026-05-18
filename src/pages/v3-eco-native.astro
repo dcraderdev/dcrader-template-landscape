@@ -209,30 +209,81 @@ const heroPreloadSizes = "100vw";
   </div>
 </section>
 
-<!-- BEFORE/AFTER — lawn to life -->
+<!-- BEFORE/AFTER — vertical seasonal narrative w/ habitat tags -->
 <section aria-labelledby="ba-h" style="background:#fffdf6; padding:6rem 1.5rem;">
   <div class="inner">
     <div style="text-align:center; margin-bottom:3rem;">
-      <span class="label">Transformations</span>
-      <h2 id="ba-h" class="fran" style="font-size:2.75rem; margin:0.25rem 0; font-weight:600;">From lawn to life</h2>
+      <span class="label">From lawn to life</span>
+      <h2 id="ba-h" class="fran" style="font-size:2.75rem; margin:0.25rem 0; font-weight:600;">Year-one transformations</h2>
+      <p style="color:#8a7a5a; max-width:32rem; margin:0.75rem auto 0; line-height:1.7; font-size:0.92rem;">Native plants need a full season to settle their roots. Here&apos;s what year-one looks like.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:2rem;">
-      {co.beforeAfter.map(ba => (
-        <div class="card-organic" style="padding:0; overflow:hidden;">
-          <div style="display:grid; grid-template-columns:1fr 1fr;">
-            <div style="position:relative;">
-              <ResponsiveImage src={ba.before} alt={`Before: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block; filter:saturate(0.6);" />
-              <span style="position:absolute; top:0.6rem; left:0.6rem; background:rgba(0,0,0,0.6); color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Lawn</span>
+    <div style="display:flex; flex-direction:column; gap:3rem;">
+      {co.beforeAfter.map((ba, i) => {
+        const timeline = i === 0
+          ? [
+              { season:'Month 0', label:'Lawn removed', species:'—', water:'80 gal/week' },
+              { season:'Month 3', label:'Plants establish', species:'18 natives planted', water:'Drip only' },
+              { season:'Month 12', label:'Habitat thriving', species:'24 species, 4 bee families spotted', water:'Rainfall sufficient' },
+            ]
+          : [
+              { season:'Month 0', label:'Bare slope, erosion', species:'—', water:'Runoff loss high' },
+              { season:'Month 4', label:'Groundcovers rooted', species:'Ceanothus + monkeyflower in', water:'Drip twice / week' },
+              { season:'Month 14', label:'Slope stabilized', species:'Living mulch holds the hill', water:'Storm capture only' },
+            ];
+        return (
+          <article style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; align-items:stretch; padding:1.5rem; border:1px solid #e0d4b8; border-radius:20px; background:#fff;">
+            <div style="position:relative; border-radius:14px; overflow:hidden; min-height:280px;">
+              <ResponsiveImage src={ba.after} alt={ba.label} width={700} height={500} sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; min-height:280px;" />
+              <div style="position:absolute; inset:auto 0 0 0; padding:1rem; background:linear-gradient(transparent, rgba(42,26,10,0.78)); color:#fff;">
+                <p class="fran" style="font-size:1.05rem; margin:0; font-weight:600;">{ba.label}</p>
+                <p style="font-size:0.75rem; margin:0.25rem 0 0; color:#c8d8a0; letter-spacing:0.06em; text-transform:uppercase;">Encinitas · Cardiff watershed</p>
+              </div>
             </div>
-            <div style="position:relative;">
-              <ResponsiveImage src={ba.after} alt={`After: ${ba.label}`} width={400} height={280} sizes="(max-width: 768px) 50vw, 200px" loading="lazy" style="width:100%; height:200px; object-fit:cover; display:block;" />
-              <span style="position:absolute; top:0.6rem; left:0.6rem; background:#4a7c59; color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:4px;">Life</span>
+            <div>
+              <p class="label" style="margin-bottom:1rem;">Field log · year one</p>
+              <ol style="list-style:none; margin:0; padding:0;">
+                {timeline.map((t, ti) => (
+                  <li style={`display:grid; grid-template-columns:auto 1fr; gap:1rem; padding:0.85rem 0; ${ti<2?'border-bottom:1px dashed #e0d4b8;':''} position:relative;`}>
+                    <span aria-hidden="true" style={`display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:${ti===0?'#8b4513':ti===1?'#c07a20':'#4a7c59'}; color:#fff; font-size:0.78rem; font-weight:700;`}>{ti+1}</span>
+                    <div>
+                      <p style="font-weight:600; font-size:0.9rem; margin:0; color:#2a1a0a;"><span class="fran" style="font-style:italic; color:#4a7c59; font-weight:400; margin-right:0.45rem;">{t.season}</span>{t.label}</p>
+                      <p style="font-size:0.78rem; margin:0.2rem 0 0; color:#8a7a5a; line-height:1.55;">{t.species} · <span style="color:#4a7c59;">{t.water}</span></p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — field-journal style hand-written voice cards -->
+<section aria-labelledby="voices-h" style="background:#fffdf6; padding:5rem 1.5rem;">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="label">Field journal</span>
+      <h2 id="voices-h" class="fran" style="font-size:2.25rem; margin:0.25rem 0; font-weight:600;">Letters from the gardens</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+      {[
+        { quote:'The first hummingbird showed up the week the monkeyflower bloomed. My kid screamed. In a good way.', name:'Amelia P.', place:'Cardiff · Pollinator Haven', species:'42 species blooming' },
+        { quote:'Tore out 1,800 sq ft of fescue and saved $640 on the first quarterly water bill. The rebate paid for the install.', name:'Devin & Mara K.', place:'Encinitas · Hillside slope', species:'$1,200 SDCWA rebate' },
+        { quote:'Rosa drew a planting plan that respected the old olive tree, the cat&apos;s sun-spot, and my husband&apos;s view of the neighbor&apos;s shed. Magic.', name:'Theresa L.', place:'Leucadia · Food Forest', species:'18 edible natives' },
+      ].map(t => (
+        <article style="background:#f7f0e4; border:1px solid #e0d4b8; border-radius:20px; padding:1.75rem 1.5rem; position:relative;">
+          <span aria-hidden="true" style="position:absolute; top:1rem; right:1.25rem; font-size:2.5rem; color:#4a7c59; opacity:0.25; font-family:serif; line-height:1;">&ldquo;</span>
+          <p class="fran" style="font-style:italic; font-size:1.05rem; line-height:1.7; color:#2a1a0a; margin:0 0 1.5rem; font-weight:400;">&ldquo;{t.quote}&rdquo;</p>
+          <div style="display:flex; justify-content:space-between; align-items:end; gap:1rem; padding-top:1rem; border-top:1px solid #d4c4a0;">
+            <div>
+              <p style="font-weight:600; font-size:0.88rem; margin:0; color:#2a1a0a;">{t.name}</p>
+              <p style="color:#8a7a5a; font-size:0.78rem; margin:0.15rem 0 0;">{t.place}</p>
+            </div>
+            <span style="background:#4a7c59; color:#fff; font-size:0.66rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.3rem 0.7rem; border-radius:99px; white-space:nowrap;">{t.species}</span>
           </div>
-          <div style="padding:1.25rem 1.5rem;">
-            <p style="font-weight:600; margin:0; color:#2a1a0a; font-size:0.9rem;">{ba.label}</p>
-          </div>
-        </div>
+        </article>
       ))}
     </div>
   </div>
@@ -282,24 +333,35 @@ const heroPreloadSizes = "100vw";
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- TEAM — seed-packet card row -->
 <section aria-labelledby="team-h" style="background:#f7f0e4; padding:5rem 1.5rem;">
   <div class="inner">
     <div style="text-align:center; margin-bottom:3rem;">
       <span class="label">The stewards</span>
-      <h2 id="team-h" class="fran" style="font-size:2.5rem; margin:0.25rem 0; font-weight:600;">Meet the team</h2>
+      <h2 id="team-h" class="fran" style="font-size:2.5rem; margin:0.25rem 0; font-weight:600;">Hands in the soil</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem;">
-      {co.teamMembers.map(m => (
-        <div class="card-organic" style="text-align:center;">
-          <div style="width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,#8b4513,#4a7c59); margin:0 auto 1rem; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
-            <span class="fran" style="color:#fff; font-size:1.75rem; font-weight:600;">{m.name[0]}</span>
-          </div>
-          <h3 class="fran" style="font-size:1.1rem; font-weight:600; margin:0 0 0.25rem;">{m.name}</h3>
-          <p style="color:#8a7a5a; font-size:0.82rem; margin:0;">{m.role}</p>
-          {m.cert && <p style="color:#4a7c59; font-size:0.75rem; font-weight:600; margin:0.35rem 0 0;">{m.cert}</p>}
-        </div>
-      ))}
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem;">
+      {co.teamMembers.map((m, i) => {
+        const swatch = ['#9aa6e8','#d97a5a','#6a8a4a','#e6a04a'][i % 4];
+        const specialty = ['Master plans, soil maps, watershed routing','Removal, slope work, swale construction','Drip systems, rainwater capture, audits','Plant rescues, school workshops, walks'][i] || 'Studio practice';
+        return (
+          <article style="background:#fff; border:1px solid #d4c4a0; border-radius:20px; padding:0; overflow:hidden; display:flex; flex-direction:column;">
+            <header style={`background:${swatch}; padding:1.25rem 1.25rem 1.5rem; position:relative;`}>
+              <p style="font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin:0 0 0.5rem;">Steward · No. 0{i+1}</p>
+              <h3 class="fran" style="color:#fff; font-size:1.35rem; font-weight:600; margin:0; line-height:1.1;">{m.name}</h3>
+              <p style="color:rgba(255,255,255,0.85); font-size:0.78rem; margin:0.35rem 0 0; font-style:italic;">{m.role}</p>
+              <svg aria-hidden="true" style="position:absolute; right:0.75rem; bottom:-1px; opacity:0.45;" width="36" height="40" viewBox="0 0 36 40" fill="none">
+                <path d="M18 38 Q24 28 24 18 Q24 8 18 2 Q12 8 12 18 Q12 28 18 38 Z" fill="#fff"/>
+                <line x1="18" y1="2" x2="18" y2="38" stroke={swatch} stroke-width="1"/>
+              </svg>
+            </header>
+            <div style="padding:1rem 1.25rem 1.25rem; flex:1; display:flex; flex-direction:column; gap:0.65rem;">
+              <p style="font-size:0.82rem; color:#2a1a0a; line-height:1.6; margin:0;">{specialty}.</p>
+              {m.cert && <p style="font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; color:#4a7c59; font-weight:700; margin:auto 0 0;">— {m.cert}</p>}
+            </div>
+          </article>
+        );
+      })}
     </div>
   </div>
 </section>
@@ -344,13 +406,52 @@ const heroPreloadSizes = "100vw";
 
 </main>
 
-<footer style="background:#1e0e04; color:rgba(255,255,255,0.4); padding:2.5rem 1.5rem; text-align:center;">
+<!-- FOOTER — watershed-stat impact strip, sage rule, soil colors -->
+<footer style="background:#1e0e04; color:rgba(255,255,255,0.5); padding:3rem 1.5rem 1.5rem;">
   <div style="max-width:72rem; margin:0 auto;">
-    <p class="fran" style="color:#c8d8a0; font-size:1.1rem; margin-bottom:0.4rem; font-weight:600;">Wild Roots Native Gardens</p>
-    <p style="font-size:0.78rem; margin-bottom:0.35rem;">{co.address} · {co.phone}</p>
-    <p style="font-size:0.72rem;">&copy; {new Date().getFullYear()} Wild Roots Native Gardens. Chemical-free. Earth-first.</p>
-    <p style="font-size:0.72rem; margin-top:0.4rem;"><a href="/accessibility" style="color:rgba(255,255,255,0.75); text-decoration:underline;">Accessibility Statement</a></p>
-    <p style="font-size:0.7rem; margin-top:0.4rem; color:rgba(255,255,255,0.3);">Built by <a href="https://dcrader.dev" style="color:rgba(200,216,160,0.7); text-decoration:underline;">Donovan Crader · dcrader.dev</a></p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1.5rem; padding-bottom:2.5rem; border-bottom:1px solid rgba(200,216,160,0.18); margin-bottom:1.75rem;">
+      {[
+        { v:'2.4M', l:'gal saved / yr' },
+        { v:'380+', l:'lawns removed' },
+        { v:'42', l:'native species used' },
+        { v:'$480K', l:'in rebates secured' },
+      ].map(s => (
+        <div style="text-align:left;">
+          <p class="fran" style="color:#c8d8a0; font-size:1.75rem; font-weight:600; margin:0; line-height:1;">{s.v}</p>
+          <p style="font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin:0.4rem 0 0;">{s.l}</p>
+        </div>
+      ))}
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; align-items:start;">
+      <div>
+        <p class="fran" style="color:#c8d8a0; font-size:1.15rem; font-weight:600; margin:0 0 0.35rem;">Wild Roots</p>
+        <p style="font-size:0.78rem; color:rgba(255,255,255,0.45); line-height:1.65; margin:0 0 0.5rem; font-style:italic;">No lawns. Just life.</p>
+        <p style="font-size:0.76rem; margin:0; color:rgba(255,255,255,0.55);">{co.address}</p>
+        <p style="font-size:0.76rem; margin:0.2rem 0 0;"><a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#c8d8a0; text-decoration:none;">{co.phone}</a></p>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:#c8d8a0; margin:0 0 0.6rem;">Practice</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.78rem; color:rgba(255,255,255,0.5);">
+          <li>Chemical-free maintenance</li>
+          <li>Bay-Friendly certified</li>
+          <li>Carbon-negative installs</li>
+          <li>Sourced from regional growers</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:#c8d8a0; margin:0 0 0.6rem;">Visit / read</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; font-size:0.78rem;">
+          <li><a href="#services" style="color:rgba(255,255,255,0.55); text-decoration:none;">Services</a></li>
+          <li><a href="#work" style="color:rgba(255,255,255,0.55); text-decoration:none;">Garden stories</a></li>
+          <li><a href="#contact" style="color:rgba(255,255,255,0.55); text-decoration:none;">Book a site walk</a></li>
+          <li><a href="/accessibility" style="color:rgba(255,255,255,0.55); text-decoration:underline;">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin:2rem 0 0; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,0.08); font-size:0.72rem; color:rgba(255,255,255,0.3); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+      <span>&copy; {new Date().getFullYear()} Wild Roots Native Gardens · Earth-first since 2015</span>
+      <span>Built by <a href="https://dcrader.dev" style="color:rgba(200,216,160,0.75); text-decoration:underline;">Donovan Crader</a></span>
+    </p>
   </div>
 </footer>
 
