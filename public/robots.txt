@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dcrader-template-landscape.vercel.app/sitemap-index.xml
