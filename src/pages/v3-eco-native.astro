@@ -1,12 +1,9 @@
 ---
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
+import ServicesTilesHero from '../components/landscape/ServicesTilesHero.astro';
 import { v3 as co } from '../data/company';
 const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Inter:wght@400;500;600&display=swap";
-
-const heroBase = "/images/landscape/wild-meadow";
-const heroPreloadSrcset = `${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`;
-const heroPreloadSizes = "100vw";
 ---
 
 <LandscapeLayout
@@ -14,16 +11,6 @@ const heroPreloadSizes = "100vw";
   description="Wild Roots Native Gardens transforms San Diego yards into thriving native plant ecosystems. Lawn removal, habitat gardens, and ecological design."
   fonts={fonts}
 >
-  <link
-    slot="head"
-    rel="preload"
-    as="image"
-    fetchpriority="high"
-    type="image/avif"
-    imagesrcset={heroPreloadSrcset}
-    imagesizes={heroPreloadSizes}
-  />
-
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; background: #fffdf6; color: #2a1a0a; margin: 0; }
@@ -118,33 +105,17 @@ const heroPreloadSizes = "100vw";
 
 <main id="main-content">
 
-<!-- HERO -->
-<section aria-label="Hero" style="min-height:90vh; background:#3d1f0a; position:relative; overflow:hidden; display:flex; align-items:center; padding:0;">
-  <ResponsiveImage src="/images/landscape/wild-meadow.jpg" alt="Wild California native flower meadow" width={1800} height={1200} sizes="100vw" loading="eager" fetchpriority="high" decoding="sync" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;" />
-  <!-- Botanical SVG overlay -->
-  <svg style="position:absolute; right:0; top:0; width:40%; height:100%; opacity:0.07;" viewBox="0 0 400 800" fill="none" aria-hidden="true">
-    <path d="M200 0 Q250 200 180 400 Q120 600 200 800" stroke="#fff" stroke-width="3" fill="none"/>
-    <path d="M200 150 Q300 100 380 180" stroke="#fff" stroke-width="2" fill="none"/>
-    <path d="M190 280 Q100 240 40 300" stroke="#fff" stroke-width="2" fill="none"/>
-    <path d="M185 400 Q280 370 340 430" stroke="#fff" stroke-width="2" fill="none"/>
-    <path d="M195 520 Q110 490 60 560" stroke="#fff" stroke-width="2" fill="none"/>
-    <circle cx="380" cy="180" r="20" stroke="#fff" stroke-width="1.5" fill="none"/>
-    <circle cx="40" cy="300" r="15" stroke="#fff" stroke-width="1.5" fill="none"/>
-    <circle cx="340" cy="430" r="18" stroke="#fff" stroke-width="1.5" fill="none"/>
-    <circle cx="60" cy="560" r="12" stroke="#fff" stroke-width="1.5" fill="none"/>
-  </svg>
-  <div style="position:relative; z-index:1; max-width:72rem; margin:0 auto; padding:6rem 1.5rem;">
-    <span class="pill" style="background:rgba(107,142,35,0.25); border:1px solid rgba(107,142,35,0.5); color:#c8f0a0; margin-bottom:1.5rem; display:inline-block;">Bay-Friendly Certified · Carbon Negative</span>
-    <h1 class="fran" style="color:#fff; font-size:clamp(3.5rem,8vw,7rem); line-height:0.97; font-weight:600; margin:0 0 1.5rem; max-width:14ch;">
-      No lawns.<br /><em style="font-weight:300; color:#c8d8a0;">Just life.</em>
-    </h1>
-    <p style="color:rgba(255,255,255,0.75); font-size:1.1rem; line-height:1.8; max-width:28rem; margin-bottom:2.25rem; font-weight:400;">We convert lawns into thriving native plant ecosystems — for your family, your local wildlife, and the watershed you live in.</p>
-    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-      <a href="#contact" class="btn-terra">Book a free site visit</a>
-      <a href="#why" class="btn-sage" style="border-color:rgba(255,255,255,0.4); color:#fff;">Why native plants?</a>
-    </div>
-  </div>
-</section>
+<!-- HERO — services tiles (variant 3) -->
+<ServicesTilesHero
+  brand={co.name}
+  eyebrow="Bay-Friendly Certified · Carbon Negative"
+  headline="No lawns."
+  headlineEm="Just life."
+  body="We convert lawns into thriving native plant ecosystems — for your family, your local wildlife, and the watershed you live in. Each tile is a service we lead with."
+  services={co.services}
+  ctaPrimary={{ href: '#contact', label: 'Book a free site visit' }}
+  ctaSecondary={{ href: '#why', label: 'Why native plants?' }}
+/>
 
 <!-- PLANT PALETTE — Tierra Viva's signature natives -->
 <section aria-labelledby="palette-h" style="background:#2a1a0a; padding:4.5rem 1.5rem;">

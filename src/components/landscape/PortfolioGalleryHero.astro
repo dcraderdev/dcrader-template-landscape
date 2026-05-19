@@ -1,0 +1,92 @@
+---
+/**
+ * PortfolioGalleryHero — variant 2 treatment.
+ *
+ * Project-image grid IS the hero. A 2x3 photo gallery occupies the
+ * right half of the viewport; the left half holds an editorial caption
+ * stack with project names and meta. No solo hero photo — every visible
+ * image is a portfolio plate.
+ */
+import ResponsiveImage from '../ResponsiveImage.astro';
+
+interface PortfolioItem {
+  title: string;
+  description?: string;
+  img: string;
+  year?: string;
+}
+interface Props {
+  brand: string;
+  eyebrow?: string;
+  headline: string;
+  headlineEm?: string;
+  body: string;
+  items: PortfolioItem[];
+  ctaPrimary?: { href: string; label: string };
+  ctaSecondary?: { href: string; label: string };
+}
+const {
+  brand,
+  eyebrow = 'Selected work',
+  headline,
+  headlineEm,
+  body,
+  items,
+  ctaPrimary = { href: '#contact', label: 'Begin a project' },
+  ctaSecondary = { href: '#portfolio', label: 'View full portfolio' },
+} = Astro.props as Props;
+
+// Pad/slice to 6 for the grid; reuse first item to fill if needed.
+const tiles = [...items];
+while (tiles.length < 6 && items.length > 0) tiles.push(items[tiles.length % items.length]);
+const grid = tiles.slice(0, 6);
+---
+
+<section aria-label="Hero" style="background:#1e2b1e; color:#fff; position:relative; min-height:96vh; display:grid; grid-template-columns:minmax(0, 0.85fr) minmax(0, 1.15fr); gap:0;">
+  <!-- LEFT: editorial caption stack -->
+  <div style="padding:5rem 3.5rem; display:flex; flex-direction:column; justify-content:center; background:#1a2618; border-right:1px solid rgba(200,169,106,0.2);">
+    <p style="font-size:0.68rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:#c8a96a; margin:0 0 1.25rem;">{eyebrow} · {brand}</p>
+    <h1 style="font-family:'Cormorant Garamond', Georgia, serif; font-size:clamp(2.6rem,4.5vw,4.25rem); font-weight:300; line-height:1.05; margin:0 0 1.5rem; letter-spacing:-0.01em;">
+      {headline}{headlineEm && <><br /><em>{headlineEm}</em></>}
+    </h1>
+    <div style="width:48px; height:1px; background:#c8a96a; margin:0 0 1.5rem;"></div>
+    <p style="color:rgba(255,255,255,0.72); font-size:0.98rem; line-height:1.85; font-weight:300; max-width:26rem; margin:0 0 2rem;">{body}</p>
+    <div style="display:flex; gap:1.25rem; align-items:center; margin-bottom:3rem; flex-wrap:wrap;">
+      <a href={ctaPrimary.href} style="display:inline-block; background:#c8a96a; color:#1e2b1e; font-weight:600; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 2.25rem; text-decoration:none;">{ctaPrimary.label}</a>
+      <a href={ctaSecondary.href} style="color:rgba(255,255,255,0.75); font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid rgba(200,169,106,0.5); padding-bottom:0.25rem;">{ctaSecondary.label} →</a>
+    </div>
+
+    <!-- Plate caption list -->
+    <ol style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:0.65rem; max-width:30rem;">
+      {grid.slice(0,3).map((p, i) => (
+        <li style="display:grid; grid-template-columns:auto 1fr auto; gap:0.9rem; align-items:baseline; padding:0.55rem 0; border-top:1px solid rgba(200,169,106,0.15);">
+          <span style="color:#c8a96a; font-size:0.7rem; letter-spacing:0.14em;">PL · {String(i+1).padStart(2,'0')}</span>
+          <span style="color:#fff; font-size:0.92rem; font-weight:400;">{p.title}</span>
+          {p.year && <span style="color:rgba(255,255,255,0.5); font-size:0.78rem;">{p.year}</span>}
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <!-- RIGHT: 2x3 photo grid -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:repeat(3, 1fr); gap:1px; background:rgba(200,169,106,0.25); min-height:96vh;">
+    {grid.map((p, i) => (
+      <figure style="margin:0; position:relative; overflow:hidden; background:#0f1a0f;">
+        <ResponsiveImage
+          src={p.img}
+          alt={p.title}
+          width={900}
+          height={700}
+          sizes="(max-width: 900px) 50vw, 30vw"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : 'auto'}
+          decoding={i === 0 ? 'sync' : 'async'}
+          style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;"
+        />
+        <figcaption style="position:absolute; bottom:0; left:0; right:0; padding:0.7rem 0.9rem; background:linear-gradient(to top, rgba(0,0,0,0.7), transparent); color:#fff; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500;">
+          <span style="color:#c8a96a;">{String(i+1).padStart(2,'0')}</span> · {p.title}
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

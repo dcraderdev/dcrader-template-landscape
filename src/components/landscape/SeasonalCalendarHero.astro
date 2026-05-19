@@ -1,0 +1,89 @@
+---
+/**
+ * SeasonalCalendarHero — variant 4 treatment.
+ *
+ * A four-season schedule visualization IS the hero. Spring / Summer /
+ * Fall / Winter each get a column with the service work scheduled in
+ * that quarter — for an arborist that's pruning windows, soil care,
+ * dormant-season removal, etc. Headline sits left of the calendar.
+ */
+interface SeasonBlock {
+  title: string;        // "Spring", "Summer", etc.
+  months: string;       // "Mar – May"
+  accent: string;       // color string
+  services: string[];   // bullet items
+}
+interface Props {
+  brand: string;
+  eyebrow?: string;
+  headline: string;
+  headlineEm?: string;
+  body: string;
+  ctaPrimary?: { href: string; label: string };
+  ctaSecondary?: { href: string; label: string };
+  seasons?: SeasonBlock[];
+}
+
+const defaultSeasons: SeasonBlock[] = [
+  { title: 'Spring', months: 'Mar – May', accent: '#7fb96a', services: ['Structural pruning', 'Soil health & deep root feed', 'Pest scouting walk', 'Cabling & bracing checks'] },
+  { title: 'Summer', months: 'Jun – Aug', accent: '#e6a04a', services: ['Crown thinning for storm prep', 'Drought stress monitoring', 'Targeted insect treatment', 'Hazard limb removal'] },
+  { title: 'Fall', months: 'Sep – Nov', accent: '#c0522b', services: ['Leaf & debris cleanup', 'Soil aeration & mulching', 'Selective elevation pruning', 'Pre-storm risk assessment'] },
+  { title: 'Winter', months: 'Dec – Feb', accent: '#8aa6c0', services: ['Dormant-season removal', 'Hardwood structural cuts', 'Cable inspection & retorque', 'Storm-damage triage 24/7'] },
+];
+
+const {
+  brand,
+  eyebrow = 'Seasonal arborist calendar',
+  headline,
+  headlineEm,
+  body,
+  ctaPrimary = { href: '#contact', label: 'Schedule assessment' },
+  ctaSecondary = { href: '#services', label: 'View all services' },
+  seasons = defaultSeasons,
+} = Astro.props as Props;
+---
+
+<section aria-label="Hero" style="background:#0f1f08; color:#fff; padding:5rem 1.5rem; position:relative;">
+  <div style="max-width:78rem; margin:0 auto;">
+    <!-- Headline row -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:end; margin-bottom:2.5rem;">
+      <div>
+        <p style="color:#c4b890; font-size:0.7rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 1.1rem;">{eyebrow} · {brand}</p>
+        <h1 style="font-family:'Bree Serif', Georgia, serif; color:#fff; font-size:clamp(2.4rem,4.8vw,3.85rem); line-height:1.08; font-weight:400; margin:0;">
+          {headline}{headlineEm && <><br /><em style="color:#c4b890; font-style:italic;">{headlineEm}</em></>}
+        </h1>
+      </div>
+      <div>
+        <p style="color:rgba(255,255,255,0.72); font-size:0.98rem; line-height:1.8; margin:0 0 1.5rem; max-width:32rem;">{body}</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href={ctaPrimary.href} style="display:inline-block; background:#c4b890; color:#0f1f08; font-weight:700; padding:0.85rem 1.85rem; text-decoration:none; font-size:0.88rem; letter-spacing:0.02em;">{ctaPrimary.label}</a>
+          <a href={ctaSecondary.href} style="display:inline-block; border:1.5px solid rgba(196,184,144,0.5); color:#fff; font-weight:600; padding:0.8rem 1.75rem; text-decoration:none; font-size:0.88rem;">{ctaSecondary.label}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar grid -->
+    <div role="table" aria-label="Year-round service calendar" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:rgba(196,184,144,0.25); border:1px solid rgba(196,184,144,0.25);">
+      <div role="row" style="display:contents;">
+        {seasons.map(s => (
+          <div role="cell" style={`background:#1a2e10; padding:1.5rem 1.4rem; display:flex; flex-direction:column; border-top:4px solid ${s.accent}; min-height:280px;`}>
+            <header style="display:flex; align-items:baseline; justify-content:space-between; gap:0.5rem; margin-bottom:1.1rem;">
+              <span style="font-family:'Bree Serif',Georgia,serif; font-size:1.55rem; color:#fff;">{s.title}</span>
+              <span style={`font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:${s.accent}; font-weight:700;`}>{s.months}</span>
+            </header>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+              {s.services.map(item => (
+                <li style="display:grid; grid-template-columns:auto 1fr; gap:0.5rem; font-size:0.82rem; color:rgba(255,255,255,0.82); line-height:1.5;">
+                  <span aria-hidden="true" style={`width:6px; height:6px; border-radius:50%; background:${s.accent}; margin-top:0.55em;`}></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p style="margin:auto 0 0; padding-top:1rem; border-top:1px dashed rgba(196,184,144,0.2); font-size:0.7rem; color:rgba(255,255,255,0.45); letter-spacing:0.06em;">Booking now</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.5); font-size:0.78rem; margin:1.25rem 0 0;">All work supervised by an ISA Certified Arborist. <a href={ctaPrimary.href} style="color:#c4b890; text-decoration:underline;">Reserve your season →</a></p>
+  </div>
+</section>

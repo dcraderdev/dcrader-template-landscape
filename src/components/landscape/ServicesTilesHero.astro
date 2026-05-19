@@ -1,0 +1,79 @@
+---
+/**
+ * ServicesTilesHero — variant 3 treatment.
+ *
+ * Service categories (lawn / tree / hardscape / design — or whatever
+ * the company offers) rendered as a tile grid that IS the hero.
+ * Each tile is clickable, surfaces an icon and one-line description.
+ * Headline sits above; the tiles fill the visual weight of the hero.
+ */
+interface ServiceTile {
+  title: string;
+  description?: string;
+  icon: string;
+  href?: string;
+}
+interface Props {
+  brand: string;
+  eyebrow?: string;
+  headline: string;
+  headlineEm?: string;
+  body: string;
+  services: ServiceTile[];
+  ctaPrimary?: { href: string; label: string };
+  ctaSecondary?: { href: string; label: string };
+}
+const {
+  brand,
+  eyebrow = 'Full-service ecological landscape',
+  headline,
+  headlineEm,
+  body,
+  services,
+  ctaPrimary = { href: '#contact', label: 'Book a site visit' },
+  ctaSecondary = { href: '#services', label: 'All services' },
+} = Astro.props as Props;
+
+// Use first 4 services for the hero tile grid.
+const tiles = services.slice(0, 4);
+---
+
+<section aria-label="Hero" style="background:linear-gradient(180deg,#3d1f0a 0%, #2a1a0a 100%); padding:5rem 1.5rem 6rem; position:relative; overflow:hidden;">
+  <!-- Subtle botanical lines -->
+  <svg aria-hidden="true" style="position:absolute; top:-40px; right:-40px; width:340px; opacity:0.06;" viewBox="0 0 200 200" fill="none">
+    <circle cx="100" cy="100" r="80" stroke="#fff" stroke-width="1"/>
+    <circle cx="100" cy="100" r="50" stroke="#fff" stroke-width="1"/>
+    <path d="M100 20 V180 M20 100 H180" stroke="#fff" stroke-width="1"/>
+  </svg>
+
+  <div style="max-width:78rem; margin:0 auto; position:relative; z-index:1;">
+    <!-- Headline row -->
+    <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:3rem; align-items:end; margin-bottom:3rem;">
+      <div>
+        <p style="font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#c8d8a0; margin:0 0 1.25rem;">{eyebrow} · {brand}</p>
+        <h1 style="font-family:'Fraunces', Georgia, serif; color:#fff; font-size:clamp(2.6rem,5.5vw,4.75rem); line-height:1; font-weight:600; margin:0; letter-spacing:-0.015em;">
+          {headline}{headlineEm && <><br /><em style="font-weight:300; color:#c8d8a0;">{headlineEm}</em></>}
+        </h1>
+      </div>
+      <div>
+        <p style="color:rgba(255,255,255,0.78); font-size:1rem; line-height:1.8; margin:0 0 1.5rem;">{body}</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href={ctaPrimary.href} style="display:inline-block; background:#8b4513; color:#fff; font-weight:600; padding:0.85rem 1.85rem; border-radius:99px; text-decoration:none; font-size:0.9rem;">{ctaPrimary.label}</a>
+          <a href={ctaSecondary.href} style="display:inline-block; border:1.5px solid rgba(255,255,255,0.5); color:#fff; font-weight:600; padding:0.8rem 1.75rem; border-radius:99px; text-decoration:none; font-size:0.9rem;">{ctaSecondary.label}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tile grid -->
+    <div role="list" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+      {tiles.map((s, i) => (
+        <a role="listitem" href={s.href ?? '#services'} style="display:flex; flex-direction:column; gap:0.85rem; padding:2rem 1.6rem; background:rgba(255,253,246,0.05); border:1px solid rgba(200,216,160,0.2); border-radius:20px; color:#fff; text-decoration:none; transition:background 0.18s, transform 0.18s;" onmouseover="this.style.background='rgba(200,216,160,0.12)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255,253,246,0.05)'; this.style.transform='translateY(0)'">
+          <span aria-hidden="true" style="font-size:2.6rem; line-height:1;">{s.icon}</span>
+          <span style="font-family:'Fraunces',Georgia,serif; font-size:1.35rem; font-weight:600; line-height:1.2;">{s.title}</span>
+          {s.description && <span style="color:rgba(255,255,255,0.65); font-size:0.85rem; line-height:1.5;">{s.description}</span>}
+          <span style="margin-top:auto; padding-top:0.85rem; border-top:1px solid rgba(200,216,160,0.18); color:#c8d8a0; font-size:0.72rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;">Tile {String(i+1).padStart(2,'0')} →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

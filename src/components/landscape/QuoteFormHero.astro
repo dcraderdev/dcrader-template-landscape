@@ -1,0 +1,127 @@
+---
+/**
+ * QuoteFormHero — variant 5 treatment.
+ *
+ * An instant-quote request form occupies the hero's primary content
+ * area. Headline and trust signals sit left; a structured RFQ form
+ * with property-type, site-size, service-bundle, and contact fields
+ * sits right inside a high-contrast card. For commercial accounts.
+ */
+interface PropertyType { value: string; label: string; }
+interface Props {
+  brand: string;
+  eyebrow?: string;
+  headline: string;
+  headlineEm?: string;
+  body: string;
+  phone?: string;
+  trustLabels?: string[];
+  propertyTypes?: PropertyType[];
+  formId?: string;
+}
+
+const defaultPropertyTypes: PropertyType[] = [
+  { value: 'office', label: 'Office Park / Campus' },
+  { value: 'retail', label: 'Retail Center' },
+  { value: 'hospitality', label: 'Hotel / Hospitality' },
+  { value: 'hoa', label: 'HOA Community' },
+  { value: 'industrial', label: 'Industrial / Logistics' },
+  { value: 'municipal', label: 'Municipal / Public' },
+];
+
+const {
+  brand,
+  eyebrow = 'Instant property quote',
+  headline,
+  headlineEm,
+  body,
+  phone,
+  trustLabels = ['ISO 9001 Certified', '$5M Liability Insured', 'CA Licensed C-27 #891204', '90-Person Operation · 24/7 SLA'],
+  propertyTypes = defaultPropertyTypes,
+  formId = 'hero-rfq',
+} = Astro.props as Props;
+---
+
+<section aria-label="Hero" style="background:linear-gradient(135deg, #0a1020 0%, #102040 100%); color:#fff; padding:5rem 1.5rem; position:relative; overflow:hidden;">
+  <!-- Grid overlay -->
+  <div aria-hidden="true" style="position:absolute; inset:0; background-image:linear-gradient(rgba(131,148,176,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(131,148,176,0.04) 1px, transparent 1px); background-size:48px 48px; pointer-events:none;"></div>
+
+  <div style="max-width:78rem; margin:0 auto; display:grid; grid-template-columns:1fr 1.05fr; gap:3.5rem; align-items:center; position:relative; z-index:1;">
+    <!-- LEFT: headline + trust signals -->
+    <div>
+      <p style="color:#8394b0; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin:0 0 1.25rem;">{eyebrow} · {brand}</p>
+      <h1 style="color:#fff; font-size:clamp(2.4rem,5vw,3.85rem); font-weight:900; line-height:1.06; margin:0 0 1.25rem; letter-spacing:-0.02em;">
+        {headline}{headlineEm && <><br /><span style="color:#8394b0;">{headlineEm}</span></>}
+      </h1>
+      <p style="color:rgba(255,255,255,0.7); font-size:1rem; line-height:1.8; margin:0 0 2rem; max-width:32rem;">{body}</p>
+
+      <!-- Trust ribbon -->
+      <ul style="list-style:none; margin:0 0 1.75rem; padding:0; display:flex; flex-wrap:wrap; gap:0.55rem;">
+        {trustLabels.map(t => (
+          <li style="background:rgba(131,148,176,0.12); border:1px solid rgba(131,148,176,0.28); color:#cdd6e6; font-size:0.72rem; font-weight:600; padding:0.4rem 0.85rem; border-radius:3px; letter-spacing:0.04em;">{t}</li>
+        ))}
+      </ul>
+
+      {phone && (
+        <p style="margin:0; color:rgba(255,255,255,0.55); font-size:0.85rem;">
+          Or call our RFP desk directly:
+          <a href={`tel:${phone.replace(/\D/g, '')}`} style="color:#fff; font-weight:700; text-decoration:underline; margin-left:0.3rem;">{phone}</a>
+        </p>
+      )}
+    </div>
+
+    <!-- RIGHT: RFQ form card -->
+    <form id={formId} novalidate aria-label="Instant property quote request" style="background:#ffffff; color:#0a1020; border-radius:8px; padding:2.25rem; box-shadow:0 24px 60px rgba(0,0,0,0.35); display:grid; gap:1rem;">
+      <header style="display:flex; align-items:center; justify-content:space-between; gap:0.5rem; padding-bottom:0.85rem; border-bottom:1px solid #e6ebf2;">
+        <span style="font-weight:900; font-size:1.05rem; letter-spacing:-0.005em;">Request a proposal</span>
+        <span style="background:#0a1020; color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.3rem 0.65rem; border-radius:3px;">24-hr response</span>
+      </header>
+
+      <div>
+        <label for={`${formId}-ptype`} style="display:block; font-size:0.74rem; font-weight:700; color:#48526a; margin-bottom:0.35rem; letter-spacing:0.04em; text-transform:uppercase;">Property type</label>
+        <select id={`${formId}-ptype`} name="property_type" required style="width:100%; padding:0.75rem 0.85rem; border-radius:4px; border:1px solid #cfd6e2; background:#fff; font-size:0.95rem; color:#0a1020;">
+          {propertyTypes.map(p => <option value={p.value}>{p.label}</option>)}
+        </select>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem;">
+        <div>
+          <label for={`${formId}-acres`} style="display:block; font-size:0.74rem; font-weight:700; color:#48526a; margin-bottom:0.35rem; letter-spacing:0.04em; text-transform:uppercase;">Site size (acres)</label>
+          <input id={`${formId}-acres`} name="acres" type="number" min="0.1" step="0.1" placeholder="2.5" style="width:100%; padding:0.75rem 0.85rem; border-radius:4px; border:1px solid #cfd6e2; background:#fff; font-size:0.95rem;" />
+        </div>
+        <div>
+          <label for={`${formId}-sites`} style="display:block; font-size:0.74rem; font-weight:700; color:#48526a; margin-bottom:0.35rem; letter-spacing:0.04em; text-transform:uppercase;">Number of sites</label>
+          <input id={`${formId}-sites`} name="sites" type="number" min="1" placeholder="1" style="width:100%; padding:0.75rem 0.85rem; border-radius:4px; border:1px solid #cfd6e2; background:#fff; font-size:0.95rem;" />
+        </div>
+      </div>
+
+      <fieldset style="border:none; margin:0; padding:0;">
+        <legend style="font-size:0.74rem; font-weight:700; color:#48526a; margin-bottom:0.5rem; letter-spacing:0.04em; text-transform:uppercase;">Services needed</legend>
+        <div style="display:flex; flex-wrap:wrap; gap:0.45rem;">
+          {['Mowing & Turf', 'Irrigation', 'Tree Care', 'Snow & Ice', 'Hardscape', 'Seasonal Color'].map((s, i) => (
+            <label style="display:inline-flex; align-items:center; gap:0.4rem; background:#f4f7fb; border:1px solid #cfd6e2; padding:0.4rem 0.7rem; border-radius:99px; font-size:0.78rem; cursor:pointer;">
+              <input type="checkbox" name="services" value={s} style="margin:0;" />
+              {s}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem;">
+        <div>
+          <label for={`${formId}-name`} style="display:block; font-size:0.74rem; font-weight:700; color:#48526a; margin-bottom:0.35rem; letter-spacing:0.04em; text-transform:uppercase;">Contact name <span aria-hidden="true">*</span></label>
+          <input id={`${formId}-name`} name="contact_name" type="text" required autocomplete="name" placeholder="Jane Holt" style="width:100%; padding:0.75rem 0.85rem; border-radius:4px; border:1px solid #cfd6e2; background:#fff; font-size:0.95rem;" />
+        </div>
+        <div>
+          <label for={`${formId}-email`} style="display:block; font-size:0.74rem; font-weight:700; color:#48526a; margin-bottom:0.35rem; letter-spacing:0.04em; text-transform:uppercase;">Work email <span aria-hidden="true">*</span></label>
+          <input id={`${formId}-email`} name="email" type="email" required autocomplete="email" placeholder="jane@property.com" style="width:100%; padding:0.75rem 0.85rem; border-radius:4px; border:1px solid #cfd6e2; background:#fff; font-size:0.95rem;" />
+        </div>
+      </div>
+
+      <button type="submit" style="margin-top:0.4rem; padding:1rem 1.5rem; background:#0a1020; color:#fff; font-weight:800; font-size:0.95rem; border:none; border-radius:4px; cursor:pointer; letter-spacing:0.02em;">
+        Request RFP Response →
+      </button>
+      <p style="margin:0; color:#7886a0; font-size:0.74rem; line-height:1.5;">By submitting, you'll receive a written proposal within one business day. We never share your information.</p>
+    </form>
+  </div>
+</section>

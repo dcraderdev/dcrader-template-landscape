@@ -1,17 +1,24 @@
 ---
 import LandscapeLayout from '../layouts/LandscapeLayout.astro';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
+import PortfolioGalleryHero from '../components/landscape/PortfolioGalleryHero.astro';
 import { v2 as co } from '../data/company';
 const fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap";
-
-const heroBase = "/images/landscape/formal-estate";
-const heroPreloadSrcset = `${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`;
-const heroPreloadSizes = "100vw";
 
 const projects = [
   { name: "Casa Cielo — Rancho Santa Fe", scope: "2.4-acre formal garden, reflecting pool, rose parterre, bespoke water feature", value: "$420,000", img: "/images/landscape/formal-estate.jpg", year: "2023" },
   { name: "Villa del Mar — La Jolla Shores", scope: "Blufftop infinity terrace, sculptural agave garden, specimen olive grove", value: "$285,000", img: "/images/landscape/coastal-blufftop.jpg", year: "2024" },
   { name: "The Whitmore Estate — Del Mar", scope: "French parterre, boxwood allées, croquet lawn, custom pergola dining", value: "$340,000", img: "/images/landscape/lawn-fresh-mowed.jpg", year: "2023" },
+];
+
+// Hero gallery: pull all available estate imagery for the 2x3 tile grid.
+const heroGalleryItems = [
+  { title: 'Casa Cielo — Rancho Santa Fe', img: '/images/landscape/formal-estate.jpg', year: '2023' },
+  { title: 'Villa del Mar — La Jolla Shores', img: '/images/landscape/coastal-blufftop.jpg', year: '2024' },
+  { title: 'The Whitmore Estate — Del Mar', img: '/images/landscape/lawn-fresh-mowed.jpg', year: '2023' },
+  { title: 'Hartwell Garden Wing', img: '/images/landscape/lawn-renovation.jpg', year: '2024' },
+  { title: 'Coronado Courtyard', img: '/images/landscape/wild-meadow.jpg', year: '2022' },
+  { title: 'Sunrise Estates Pavilion', img: '/images/landscape/sunrise-estates.jpg', year: '2023' },
 ];
 
 const testimonials = [
@@ -25,16 +32,6 @@ const testimonials = [
   description="Meridian Design + Build creates singular estate gardens across La Jolla, Rancho Santa Fe, Del Mar, and Coronado. Bespoke design. Enduring legacy."
   fonts={fonts}
 >
-  <link
-    slot="head"
-    rel="preload"
-    as="image"
-    fetchpriority="high"
-    type="image/avif"
-    imagesrcset={heroPreloadSrcset}
-    imagesizes={heroPreloadSizes}
-  />
-
 <style>
   *, *::before, *::after { box-sizing: border-box; }
   body { font-family: 'DM Sans', sans-serif; background: #f9f7f2; color: #1e2b1e; margin: 0; }
@@ -112,43 +109,17 @@ const testimonials = [
 
 <main id="main-content">
 
-<!-- HERO — full-height editorial -->
-<section aria-label="Hero" style="position:relative; min-height:96vh; overflow:hidden; display:flex; align-items:flex-end;">
-  <ResponsiveImage
-    src="/images/landscape/formal-estate.jpg"
-    alt="Luxury estate garden with formal pool and manicured hedges"
-    width={1800} height={1200}
-    sizes="100vw"
-    loading="eager"
-    fetchpriority="high"
-    decoding="sync"
-    style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;"
-  />
-  <!-- gradient -->
-  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,18,10,0.9) 0%, rgba(10,18,10,0.3) 50%, rgba(10,18,10,0.1) 100%);"></div>
-  <!-- content -->
-  <div style="position:relative; z-index:1; max-width:88rem; margin:0 auto; padding:0 3rem 5rem; width:100%;">
-    <div style="max-width:38rem;">
-      <p class="label-sm" style="margin-bottom:1.25rem;">La Jolla, California</p>
-      <h1 class="garam" style="color:#fff; font-size:clamp(3rem,6vw,5.5rem); font-weight:300; line-height:1.06; margin:0 0 1.5rem; letter-spacing:-0.01em;">
-        Where landscape<br /><em>becomes legacy.</em>
-      </h1>
-      <div class="rule" style="margin-bottom:1.5rem;"></div>
-      <p style="color:rgba(255,255,255,0.72); font-size:1rem; line-height:1.8; max-width:28rem; font-weight:300; margin-bottom:2rem;">
-        A design-build studio creating estate gardens of singular beauty for discerning clients across coastal San Diego.
-      </p>
-      <div style="display:flex; gap:1.25rem; align-items:center;">
-        <a href="#contact" class="btn-inquire">Begin Your Project</a>
-        <a href="#portfolio" class="btn-ghost">View Portfolio</a>
-      </div>
-    </div>
-  </div>
-  <!-- scroll cue -->
-  <div style="position:absolute; right:3rem; bottom:2.5rem; z-index:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;">
-    <span style="color:rgba(255,255,255,0.4); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; writing-mode:vertical-rl;">Scroll</span>
-    <div style="width:1px; height:40px; background:rgba(200,169,106,0.5);"></div>
-  </div>
-</section>
+<!-- HERO — portfolio gallery (variant 2) -->
+<PortfolioGalleryHero
+  brand={co.name}
+  eyebrow="Selected estate work · La Jolla"
+  headline="Where landscape"
+  headlineEm="becomes legacy."
+  body="A design-build studio creating estate gardens of singular beauty for discerning clients across coastal San Diego."
+  items={heroGalleryItems}
+  ctaPrimary={{ href: '#contact', label: 'Begin your project' }}
+  ctaSecondary={{ href: '#portfolio', label: 'View full portfolio' }}
+/>
 
 <!-- SIGNATURE INSTALLATION — featured project plate -->
 <section aria-labelledby="signature-h" style="background:#1e2b1e; padding:5rem 3rem;">
