@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page not found · Landscape Templates</title>
+    <meta name="description" content="The page you're looking for has wandered off the garden path. Head back to the Landscape Templates gallery." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Inter', sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; display: flex; flex-direction: column; }
+      .font-display { font-family: 'Playfair Display', serif; }
+      a { text-decoration: none; color: inherit; }
+      .btn-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #58a6ff;
+        color: #0d1117;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 0.85rem 1.75rem;
+        border-radius: 9999px;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      }
+      .btn-home:hover, .btn-home:focus-visible {
+        background: #79b8ff;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(88, 166, 255, 0.25);
+      }
+      .btn-home:focus-visible {
+        outline: 2px solid #f0f6fc;
+        outline-offset: 3px;
+      }
+      .code-404 {
+        font-size: clamp(6rem, 18vw, 12rem);
+        line-height: 1;
+        color: #58a6ff;
+        letter-spacing: -0.04em;
+        margin-bottom: 1.25rem;
+        text-shadow: 0 12px 48px rgba(88, 166, 255, 0.25);
+      }
+      .subhead {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        color: #f0f6fc;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+      .body-copy {
+        color: #8b949e;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        max-width: 36rem;
+        margin: 0 auto 2.25rem;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1.5rem;
+      }
+      footer {
+        border-top: 1px solid #21262d;
+        padding: 2rem;
+        text-align: center;
+        color: #8b949e;
+        font-size: 0.82rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <p class="font-display code-404" aria-hidden="true">404</p>
+        <h1 class="font-display subhead">Page not found</h1>
+        <p class="body-copy">
+          Looks like this page has gone off the garden path. Let's get you back to the templates gallery.
+        </p>
+        <a href="/" class="btn-home" aria-label="Back to home">
+          <span aria-hidden="true">←</span> Back to home
+        </a>
+      </div>
+    </main>
+    <footer>
+      <p>Landscape Templates · Built with Astro + Tailwind</p>
+    </footer>
+  </body>
+</html>
