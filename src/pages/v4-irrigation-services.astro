@@ -1,0 +1,233 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import { v4 as co } from '../data/company';
+const fonts = "https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap";
+
+const systems = [
+  {
+    code: 'DR-INJ',
+    title: 'Deep Root Injection',
+    spec: 'High-pressure soil injection · 150 psi · 12–18 inch depth',
+    pricing: 'From $185 per tree',
+    body: 'Mature trees in compacted urban soil rarely get water past the first inch. Our HydraJet probe delivers a charged solution of water, kelp extract, mycorrhizae, and a balanced fertilizer blend directly to the active feeder root zone — bypassing the lawn that is stealing your tree\'s moisture. Recommended every spring for any tree over 12-inch DBH.',
+    when: 'March – May, again in October for stressed specimens',
+    candidates: 'Mature oaks · Liquidambar · Sycamore · Magnolia · Maple',
+  },
+  {
+    code: 'DRP-LIN',
+    title: 'Subsurface Drip Lines',
+    spec: 'Netafim Techline · 0.9 GPH emitters · 18 inches on center',
+    pricing: 'From $4.20 per linear foot installed',
+    body: 'Installed below grade in concentric rings out to the dripline (the soil under the canopy edge, where the feeder roots live). Pressure-compensating emitters deliver exactly the same volume per zone regardless of slope or run length. No evaporation. No overspray on the trunk. No interference with mowing or aesthetics.',
+    when: 'Year-round install · best ordered Feb–Apr for first-summer benefit',
+    candidates: 'Heritage trees · Specimen ornamentals · Orchard installs',
+  },
+  {
+    code: 'CTRL-SM',
+    title: 'Smart Tree Controllers',
+    spec: 'Hunter Hydrawise or Rachio 3 · ET-based · weather-aware',
+    pricing: 'From $640 installed (2-zone)',
+    body: 'A tree zone needs to water differently than a lawn zone — deeper, less often, dialed to evapotranspiration data from the nearest local weather station. We program a tree-only schedule that auto-adjusts to the actual ET in your zip code and emails you a monthly water log. Most clients see a 30–45% reduction in tree-zone water in Year 1.',
+    when: 'Install any time · paired with new drip lines or as a controller-only upgrade',
+    candidates: 'Any property with dedicated tree zones',
+  },
+  {
+    code: 'AUD-WTR',
+    title: 'Water Audit & Stress Diagnosis',
+    spec: 'TDR soil-moisture probe · stem-flow gauge · canopy assessment',
+    pricing: '$340 flat rate · all SD County',
+    body: 'A two-hour visit by a certified arborist. We probe the soil at six points per tree, read trunk stress, measure canopy density, and check your current controller schedule against actual conditions. You receive a written report and a 12-month watering plan — including which zones to cut, which to add, and whether to install drip.',
+    when: 'Most useful June through September during peak demand',
+    candidates: 'Anyone with brown canopies, dieback, or sudden bill increases',
+  },
+];
+
+const stress = [
+  { sign: 'Sparse, thin canopy with extra blue sky visible through it', cause: 'Chronic underwatering or compacted soil', action: 'Deep root injection + water audit' },
+  { sign: 'Yellow leaves between green veins (interveinal chlorosis)', cause: 'Iron lockout from alkaline urban irrigation', action: 'Soil acidification + chelated iron injection' },
+  { sign: 'Crispy leaf margins curling inward (leaf scorch)', cause: 'Drought stress; salt buildup from poor drainage', action: 'Subsurface drip + flushing irrigation' },
+  { sign: 'Early autumn color in summer; premature leaf drop', cause: 'Severe water stress', action: 'Immediate hand-water + emergency deep-root program' },
+  { sign: 'Mushrooms or honey-colored conks at trunk base', cause: 'Overwatering · root rot fungus', action: 'Stop watering · soil drainage assessment · hazard inspection' },
+];
+
+const seasons = [
+  { season: 'Winter (Dec–Feb)', focus: 'Rain-fed dormancy. Service controllers, check rain sensors, replace bad emitters before the spring push.', billable: 'Light' },
+  { season: 'Spring (Mar–May)', focus: 'Deep root injections, drip installs, fertilizer charge. The single best six weeks to invest in mature trees.', billable: 'Peak' },
+  { season: 'Summer (Jun–Aug)', focus: 'Active water management. Audits, schedule adjustments, emergency response for stressed canopies.', billable: 'Heavy' },
+  { season: 'Autumn (Sep–Nov)', focus: 'Second deep-root round for stressed specimens. Pre-winter system audits. Heritage tree assessments before storm season.', billable: 'Medium' },
+];
+---
+
+<LandscapeLayout
+  title="Tree Irrigation & Deep Root Services — Canopy Tree Arborists"
+  description="Specialty tree irrigation: deep root injection, subsurface drip systems, smart controllers, and water audits for mature trees across all San Diego County."
+  fonts={fonts}
+>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'Lato', sans-serif; background: #faf8f4; color: #1a2810; margin: 0; }
+  .bree { font-family: 'Bree Serif', Georgia, serif; }
+  section { padding: 5rem 1.5rem; }
+  .inner { max-width: 72rem; margin: 0 auto; }
+  .label { display:block; font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#8b5a14; margin-bottom:0.6rem; }
+  .btn-forest { display:inline-block; background:#1e3a1e; color:#fff; font-weight:700; font-size:0.9rem; letter-spacing:0.04em; padding:0.9rem 2rem; border-radius:4px; text-decoration:none; }
+  .btn-amber { display:inline-block; background:#8b5a14; color:#fff; font-weight:700; font-size:0.9rem; padding:0.85rem 2rem; border-radius:4px; text-decoration:none; }
+  .btn-emergency { display:inline-flex; align-items:center; gap:0.5rem; background:#c0392b; color:#fff; font-weight:900; font-size:0.95rem; letter-spacing:0.04em; padding:0.9rem 2rem; border-radius:4px; text-decoration:none; }
+  .spec-card { background:#fff; border:1px solid #c4b890; border-left:6px solid #8b5a14; padding:2rem; }
+  .spec-card h3 { font-family: 'Bree Serif', serif; font-size:1.5rem; margin:0 0 0.25rem; color:#1a2810; }
+</style>
+
+<div role="alert" style="background:#c0392b; color:#fff; text-align:center; padding:0.65rem 1.5rem; font-size:0.88rem; font-weight:700;">
+  <span aria-hidden="true">🚨</span> 24/7 Emergency Tree Removal — Storm damage, failed trees, hazard response:
+  <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#fff; text-decoration:underline; font-weight:900; margin-left:0.4rem;">{co.phone}</a>
+</div>
+
+<header style="background:#1e3a1e; position:sticky; top:0; z-index:50; border-bottom:1px solid rgba(139,90,20,0.3);">
+  <nav aria-label="Main navigation" style="max-width:72rem; margin:0 auto; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v4-tree-arborist" style="text-decoration:none;">
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+          <path d="M15 2 L4 16 H11 L6 26 H24 L19 16 H26 Z" fill="#c4b890" opacity="0.8"/>
+          <line x1="15" y1="26" x2="15" y2="30" stroke="#8b5a14" stroke-width="2"/>
+        </svg>
+        <div>
+          <span class="bree" style="color:#fff; font-size:1.15rem; display:block; line-height:1.1;">Canopy Tree</span>
+          <span style="color:rgba(255,255,255,0.82); font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; display:block;">& Arborist Services</span>
+        </div>
+      </div>
+    </a>
+    <div style="display:flex; gap:1.5rem; align-items:center;">
+      <a href="/v4-tree-arborist#services" style="color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.875rem;">Services</a>
+      <a href="/v4-irrigation-services" style="color:#c4b890; text-decoration:none; font-size:0.875rem; font-weight:700;">Irrigation</a>
+      <a href="/v4-tree-arborist#credentials" style="color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.875rem;">Credentials</a>
+      <a href="/v4-tree-arborist#contact" class="btn-amber" style="padding:0.55rem 1.3rem; font-size:0.875rem;">Free Assessment</a>
+      <a href={`tel:${co.phone.replace(/\D/g,'')}`} class="btn-emergency" style="padding:0.55rem 1.3rem; font-size:0.875rem;"><span aria-hidden="true">🚨</span> Emergency</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section style="background:#0f1f08; color:#fff; padding:5rem 1.5rem 4rem;">
+  <div class="inner" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:center;">
+    <div>
+      <span class="label" style="color:#c4b890;">Tree-specific irrigation services</span>
+      <h1 class="bree" style="font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.1; margin:0.5rem 0 1.25rem; color:#fff;">Your trees need different water than your lawn.</h1>
+      <p style="color:rgba(255,255,255,0.75); font-size:1.05rem; line-height:1.8; margin:0 0 2rem;">A 60-year-old oak does not drink from sprinklers. Its feeder roots are spread out under the canopy edge, in soil that is rarely watered deeply enough to reach them. We design and install irrigation that does — drip lines, deep root injection, and smart controllers calibrated to your specific trees.</p>
+      <div style="display:flex; gap:0.85rem; flex-wrap:wrap;">
+        <a href="#systems" class="btn-amber">See four services</a>
+        <a href="/v4-tree-arborist#contact" style="display:inline-block; background:transparent; color:#c4b890; border:1px solid #c4b890; padding:0.85rem 2rem; border-radius:4px; text-decoration:none; font-weight:700; font-size:0.9rem;">Book a water audit</a>
+      </div>
+    </div>
+    <aside style="background:#1e3a1e; border-left:4px solid #8b5a14; padding:1.75rem; border-radius:4px;">
+      <span class="label" style="color:#c4b890;">In one minute</span>
+      <h2 class="bree" style="font-size:1.25rem; color:#fff; margin:0.25rem 0 1rem;">Why mature trees fail</h2>
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.85rem;">
+        <li style="display:flex; gap:0.65rem; color:rgba(255,255,255,0.85); font-size:0.92rem; line-height:1.55;"><span style="color:#c4b890; font-weight:900;">→</span>The lawn around the trunk is sucking up the water before it reaches the tree's roots.</li>
+        <li style="display:flex; gap:0.65rem; color:rgba(255,255,255,0.85); font-size:0.92rem; line-height:1.55;"><span style="color:#c4b890; font-weight:900;">→</span>Sprinklers wet the surface 1–2 inches. Tree roots are 8–18 inches down.</li>
+        <li style="display:flex; gap:0.65rem; color:rgba(255,255,255,0.85); font-size:0.92rem; line-height:1.55;"><span style="color:#c4b890; font-weight:900;">→</span>Drought stress compounds silently for years, then a tree fails in one summer.</li>
+        <li style="display:flex; gap:0.65rem; color:rgba(255,255,255,0.85); font-size:0.92rem; line-height:1.55;"><span style="color:#c4b890; font-weight:900;">→</span>Replacement cost for a mature heritage tree: $40,000 – $120,000.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- FOUR SYSTEMS -->
+<section id="systems" style="background:#faf8f4;" aria-labelledby="sys-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label">Four service codes</span>
+      <h2 id="sys-h" class="bree" style="font-size:2.4rem; margin:0.25rem 0;">What we install, inject, and program.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:1.5rem;">
+      {systems.map(s => (
+        <article class="spec-card">
+          <div style="display:flex; justify-content:space-between; align-items:start; gap:1rem; margin-bottom:0.85rem;">
+            <h3>{s.title}</h3>
+            <span style="background:#1e3a1e; color:#c4b890; font-size:0.68rem; padding:0.3rem 0.65rem; border-radius:3px; letter-spacing:0.1em; font-weight:700; white-space:nowrap;">{s.code}</span>
+          </div>
+          <p style="background:#f4ede0; border-left:3px solid #8b5a14; padding:0.55rem 0.85rem; font-size:0.8rem; margin:0 0 1rem; color:#1a2810; font-weight:700;">{s.spec}</p>
+          <p style="color:#3a4a30; line-height:1.75; font-size:0.92rem; margin:0 0 1.25rem;">{s.body}</p>
+          <dl style="display:grid; grid-template-columns:auto 1fr; gap:0.45rem 1rem; margin:0 0 1rem; padding-top:0.85rem; border-top:1px dashed #c4b890; font-size:0.82rem;">
+            <dt style="color:#8b5a14; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-size:0.7rem;">When</dt>
+            <dd style="margin:0; color:#3a4a30;">{s.when}</dd>
+            <dt style="color:#8b5a14; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-size:0.7rem;">Best for</dt>
+            <dd style="margin:0; color:#3a4a30;">{s.candidates}</dd>
+            <dt style="color:#8b5a14; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; font-size:0.7rem;">Pricing</dt>
+            <dd style="margin:0; color:#1a2810; font-weight:700;">{s.pricing}</dd>
+          </dl>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- STRESS DIAGNOSIS TABLE -->
+<section style="background:#f4ede0;" aria-labelledby="stress-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="label">Field diagnosis</span>
+      <h2 id="stress-h" class="bree" style="font-size:2.2rem; margin:0.25rem 0 0.75rem;">If your tree looks like this, do this.</h2>
+      <p style="color:#6a7a5a; max-width:38rem; margin:0 auto; line-height:1.75;">A quick visual reference. None of this replaces a real arborist on site — but it tells you whether to call us this week or this season.</p>
+    </div>
+    <div style="background:#fff; border:1px solid #c4b890; border-radius:6px; overflow:hidden;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:#1e3a1e; color:#fff;">
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:900;">What you see</th>
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:900;">Likely cause</th>
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:900;">Recommended action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stress.map((s, i) => (
+            <tr style={`${i<stress.length-1?'border-bottom:1px solid #e8dfc0;':''}`}>
+              <td style="padding:1rem 1.25rem; font-size:0.9rem; line-height:1.55; color:#1a2810; font-weight:600;">{s.sign}</td>
+              <td style="padding:1rem 1.25rem; font-size:0.88rem; color:#6a7a5a;">{s.cause}</td>
+              <td style="padding:1rem 1.25rem; font-size:0.88rem; color:#1a2810; font-weight:700;">{s.action}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ANNUAL TIMELINE -->
+<section style="background:#1e3a1e; color:#fff;" aria-labelledby="cal-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label" style="color:#c4b890;">Annual irrigation calendar</span>
+      <h2 id="cal-h" class="bree" style="color:#fff; font-size:2.4rem; margin:0.25rem 0;">When to schedule what.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0;">
+      {seasons.map((s, i) => (
+        <div style={`background:${i%2===0?'#2d4a1e':'#1e3a1e'}; padding:2rem 1.75rem; border-right:${i<seasons.length-1?'1px solid rgba(196,184,144,0.2)':'none'};`}>
+          <span style="background:#8b5a14; color:#fff; font-size:0.66rem; padding:0.25rem 0.65rem; border-radius:3px; letter-spacing:0.1em; font-weight:700; text-transform:uppercase;">{s.billable} season</span>
+          <h3 class="bree" style="font-size:1.25rem; margin:0.75rem 0 0.5rem; color:#fff;">{s.season}</h3>
+          <p style="color:rgba(255,255,255,0.75); line-height:1.7; margin:0; font-size:0.88rem;">{s.focus}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#faf8f4; text-align:center;">
+  <div class="inner" style="max-width:44rem;">
+    <span class="label">Start with an audit</span>
+    <h2 class="bree" style="font-size:2.4rem; margin:0.25rem 0 1rem;">A real diagnosis costs $340 — and saves trees that cost a hundred times that.</h2>
+    <p style="color:#6a7a5a; line-height:1.8; margin:0 0 2rem;">A certified arborist comes to your property for two hours, probes the soil, reads the trees, and writes a 12-month plan. If we install anything off the report, the audit fee is credited 1-to-1 against the install.</p>
+    <a href="/v4-tree-arborist#contact" class="btn-forest" style="padding:1rem 2.5rem;">Schedule a water audit →</a>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#0f1f08; color:rgba(255,255,255,0.55); padding:2rem 1.5rem; text-align:center;">
+  <p style="font-size:0.78rem; margin:0;"><a href="/v4-tree-arborist" style="color:#c4b890; text-decoration:underline;">← Back to Canopy Tree home</a></p>
+  <p style="font-size:0.72rem; margin:0.5rem 0 0;">&copy; {new Date().getFullYear()} Canopy Tree & Arborist Services · ISA · TCIA Accredited</p>
+</footer>
+
+</LandscapeLayout>

@@ -1,0 +1,241 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import { v1 as co } from '../data/company';
+const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap";
+
+// Month-by-month plan for residential routes
+const calendar = [
+  { months: 'Jan – Feb', name: 'Dormant prep', body: 'Pre-emergent crabgrass barrier laid before soil hits 55°F. Mower blade sharpening, irrigation winter check, soil pH sample pulled from three zones.' },
+  { months: 'Mar', name: 'Wake-up cut', body: 'First short scalping cut to clear thatch and leaf litter. Spring fertilizer round one — slow-release nitrogen, low phosphorus per CA Healthy Soils guidance.' },
+  { months: 'Apr – May', name: 'Heavy growth season', body: 'Weekly mowing locked in. Edges trimmed. Bed clean and bark mulch refresh on Standard and Premium plans. Spot-spray broadleaf weeds.' },
+  { months: 'Jun – Aug', name: 'Heat hold', body: 'Mowing height raised to 3" to shade roots. Deep-water audit on the irrigation clock. Iron application keeps color through the heat without pushing wasteful growth.' },
+  { months: 'Sep', name: 'Aerate & overseed', body: 'Core aeration on every Standard / Premium account. Overseed with drought-tolerant tall fescue blend. Premium plans get topdressed compost.' },
+  { months: 'Oct – Nov', name: 'Recovery feed', body: 'Final fertilizer — potassium-heavy to harden the lawn before winter. Tree leaves removed weekly. Sprinkler heads adjusted as days shorten.' },
+  { months: 'Dec', name: 'Winter watch', body: 'Bi-weekly visits for cleanup and frost watch. Free irrigation freeze drain on request. Your crew brings cocoa for the kids on the last visit of the year.' },
+];
+
+const inclusions = {
+  every: [
+    'Mowing with sharp reel or rotary (your choice)',
+    'String trim around posts, beds, and trees',
+    'Edge along walks, drives, and bed lines',
+    'Blow hardscape clean — never into beds',
+    'Visit photo and notes texted within an hour',
+  ],
+  monthly: [
+    'Bed weed pull (hand-pulled, not sprayed in beds)',
+    'Walkway and patio blow-off',
+    'Sprinkler head visual inspection',
+    'Photo report of any visible turf or tree stress',
+  ],
+  seasonal: [
+    'Pre-emergent crabgrass application (Feb)',
+    'Spring + fall fertilizer rounds',
+    'Core aeration and overseed (Sept)',
+    'Spring + fall bed cleanup with fresh mulch',
+    'Annual irrigation audit with written zone report',
+  ],
+};
+
+const faqs = [
+  { q: 'Do I need to be home when you visit?', a: 'No. About 80% of our route is empty during the day. We work from your gate code or lockbox, and you get a photo and a note when the crew leaves.' },
+  { q: 'What if it rains on my service day?', a: 'We bump rainy lawns to the next dry day on the same route. If the whole week washes out, we credit the visit forward — never charged for a missed cut.' },
+  { q: 'Can I pause for vacation or winter?', a: 'Yes. Pause any time by text. We restart on the next route day after you say go. No re-enrollment fee, ever.' },
+  { q: 'Do you do one-time cleanups?', a: 'For active subscribers, yes — flat add-on rate. We do not take one-off jobs from non-subscribers because our crews are routed by neighborhood.' },
+];
+---
+
+<LandscapeLayout
+  title="Year-Round Maintenance Programs — GreenScape Lawn & Garden"
+  description="A month-by-month look at what's included in every GreenScape weekly lawn maintenance plan across Oceanside, Vista, Carlsbad, and San Marcos."
+  fonts={fonts}
+>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #faf8f3; color: #1c2b1a; margin: 0; }
+  .serif { font-family: 'IBM Plex Serif', Georgia, serif; }
+  .btn-green { display:inline-block; background:#2a5f2a; color:#fff; font-weight:700; font-size:0.95rem; padding:0.85rem 2rem; border-radius:6px; text-decoration:none; transition:background 0.18s; }
+  .btn-green:hover { background:#1e4a1e; }
+  .btn-outline { display:inline-block; background:transparent; color:#2a5f2a; font-weight:600; font-size:0.95rem; padding:0.8rem 1.75rem; border-radius:6px; border:2px solid #2a5f2a; text-decoration:none; transition:all 0.18s; }
+  .btn-outline:hover { background:#2a5f2a; color:#fff; }
+  .label { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#3d7a3d; margin-bottom:0.6rem; }
+  section { padding: 5rem 1.5rem; }
+  .inner { max-width: 72rem; margin: 0 auto; }
+  .card { background:#fff; border:1px solid #dde8dd; border-radius:12px; padding:1.75rem; }
+  details { background:#fff; border:1px solid #dde8dd; border-radius:10px; padding:1.1rem 1.4rem; margin-bottom:0.85rem; }
+  details summary { cursor:pointer; font-weight:700; font-size:1.02rem; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  details summary::-webkit-details-marker { display:none; }
+  details[open] summary { color:#2a5f2a; }
+  details summary::after { content: '+'; font-family:'IBM Plex Serif',serif; font-weight:400; font-size:1.6rem; color:#3d7a3d; line-height:1; }
+  details[open] summary::after { content: '–'; }
+  details p { color:#637063; line-height:1.7; margin:0.85rem 0 0; font-size:0.93rem; }
+</style>
+
+<header style="background:#fff; border-bottom:1px solid #dde8dd; position:sticky; top:0; z-index:50; padding-top:35px;">
+  <nav aria-label="Main navigation" style="max-width:72rem; margin:0 auto; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v1-residential-lawn" style="text-decoration:none; display:flex; align-items:center; gap:0.6rem;">
+      <span style="width:34px;height:34px;background:#2a5f2a;border-radius:8px;display:flex;align-items:center;justify-content:center;" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 3.69 1.97 6.93 4.93 8.65"/><path d="M12 2c5.52 0 10 4.48 10 10a9.97 9.97 0 01-4.93 8.65"/><path d="M12 12c0 3-1.5 5.5-4 7"/><path d="M12 12c0 3 1.5 5.5 4 7"/></svg>
+      </span>
+      <span class="serif" style="font-size:1.2rem; font-weight:700; color:#1c2b1a;">GreenScape</span>
+    </a>
+    <div style="display:flex; gap:1.75rem; align-items:center;">
+      <a href="/v1-residential-lawn#services" style="color:#637063; text-decoration:none; font-size:0.88rem; font-weight:500;">Services</a>
+      <a href="/v1-residential-lawn#plans" style="color:#637063; text-decoration:none; font-size:0.88rem; font-weight:500;">Plans</a>
+      <a href="/v1-maintenance-programs" style="color:#2a5f2a; text-decoration:none; font-size:0.88rem; font-weight:700;">Programs</a>
+      <a href="/v1-residential-lawn#contact" class="btn-green" style="padding:0.55rem 1.3rem; font-size:0.875rem;">Get a Free Quote</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section style="background:linear-gradient(180deg,#f0ebe0 0%,#faf8f3 100%); padding:5rem 1.5rem 3rem;">
+  <div class="inner" style="max-width:50rem; text-align:center;">
+    <span class="label">Year-round programs</span>
+    <h1 class="serif" style="font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.1; margin:0.5rem 0 1rem;">A lawn-care plan that follows the seasons, not a sales script.</h1>
+    <p style="color:#637063; line-height:1.75; font-size:1.05rem; max-width:38rem; margin:0 auto 2rem;">
+      Most lawn companies sell visits. We sell a year of healthy turf — fertilizer timed to soil temperature, aeration scheduled before fall root push, water audits before the summer rate change. Here's what we actually do, month by month, on every plan.
+    </p>
+    <div style="display:flex; gap:0.85rem; justify-content:center; flex-wrap:wrap;">
+      <a href="#calendar" class="btn-green">See the calendar</a>
+      <a href="/v1-residential-lawn#plans" class="btn-outline">Compare plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S IN EVERY VISIT -->
+<section style="background:#fff;" aria-labelledby="incl-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label">What's included</span>
+      <h2 id="incl-h" class="serif" style="font-size:2.4rem; margin:0.25rem 0 0.75rem;">Three layers of care, woven together.</h2>
+      <p style="color:#637063; max-width:38rem; margin:0 auto; line-height:1.7;">Every plan layers weekly basics with monthly upkeep and seasonal treatments — the same way a barber gives you a trim and a real cut on different visits.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem;">
+      <div class="card">
+        <span class="label">Every visit</span>
+        <h3 class="serif" style="font-size:1.25rem; margin:0 0 0.85rem;">Weekly basics</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.55rem;">
+          {inclusions.every.map(i => (
+            <li style="display:flex; gap:0.55rem; font-size:0.9rem; line-height:1.55;"><span style="color:#2a5f2a; font-weight:700;">✓</span><span>{i}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="card" style="border-color:#c8a84b;">
+        <span class="label" style="color:#c8a84b;">Once a month</span>
+        <h3 class="serif" style="font-size:1.25rem; margin:0 0 0.85rem;">Detail pass</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.55rem;">
+          {inclusions.monthly.map(i => (
+            <li style="display:flex; gap:0.55rem; font-size:0.9rem; line-height:1.55;"><span style="color:#c8a84b; font-weight:700;">✓</span><span>{i}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="card" style="border-color:#2a5f2a; background:#f6f9f6;">
+        <span class="label">Each season</span>
+        <h3 class="serif" style="font-size:1.25rem; margin:0 0 0.85rem;">Agronomy program</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.55rem;">
+          {inclusions.seasonal.map(i => (
+            <li style="display:flex; gap:0.55rem; font-size:0.9rem; line-height:1.55;"><span style="color:#2a5f2a; font-weight:700;">✓</span><span>{i}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12-MONTH CALENDAR -->
+<section id="calendar" style="background:#f0ebe0;" aria-labelledby="cal-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label">12 months in the yard</span>
+      <h2 id="cal-h" class="serif" style="font-size:2.4rem; margin:0.25rem 0 0.75rem;">What we're doing while you're not looking.</h2>
+      <p style="color:#637063; max-width:38rem; margin:0 auto; line-height:1.7;">A coastal North County lawn doesn't behave like a Midwestern one. Our crews adjust mowing height, water budgets, and chemistry to the actual local season — not a generic 12-month chart from a national franchise.</p>
+    </div>
+    <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column;">
+      {calendar.map((c, i) => (
+        <li style="display:grid; grid-template-columns:auto 1fr; gap:1.5rem; padding:1.4rem 0; border-bottom:1px solid #dde8dd; align-items:start;">
+          <span style="background:#2a5f2a; color:#fff; padding:0.7rem 1rem; border-radius:8px; min-width:6.5rem; text-align:center; line-height:1.2;">
+            <span style="display:block; font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; opacity:0.7;">Phase {String(i+1).padStart(2,'0')}</span>
+            <span class="serif" style="display:block; font-size:0.92rem; font-weight:700; margin-top:0.15rem;">{c.months}</span>
+          </span>
+          <div>
+            <h3 class="serif" style="font-size:1.2rem; font-weight:700; margin:0 0 0.35rem;">{c.name}</h3>
+            <p style="color:#637063; line-height:1.7; margin:0; font-size:0.95rem;">{c.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- AGRONOMY PHILOSOPHY -->
+<section style="background:#fff;">
+  <div class="inner" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2.5rem; align-items:start;">
+    <div>
+      <span class="label">How we think about your lawn</span>
+      <h2 class="serif" style="font-size:2.2rem; margin:0.25rem 0 1rem; line-height:1.2;">Less chemistry. More agronomy.</h2>
+      <p style="color:#637063; line-height:1.75; margin:0 0 1rem;">A lawn is a thin community of grass plants growing in living soil. When that soil is right — pH between 6.2 and 7.0, good biology, real organic matter — the grass mostly takes care of itself. When the soil is wrong, no amount of weekly chemicals will fix the result.</p>
+      <p style="color:#637063; line-height:1.75; margin:0;">That's why every Standard and Premium customer gets a real soil sample pulled in their first 60 days. We send it to a UC Davis-affiliated lab and build a year of fertilizer, amendment, and pH adjustment around the actual numbers. No "weed &amp; feed" sprayed across the whole yard. No nitrogen pushed in July just to make the grass look greener for a week.</p>
+    </div>
+    <div style="background:#f6f9f6; border:1px solid #d4ecd4; border-radius:14px; padding:2rem;">
+      <span class="label">By the numbers</span>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 1rem; margin-top:1rem;">
+        <div>
+          <span class="serif" style="font-size:2.25rem; color:#2a5f2a; font-weight:700; line-height:1;">38%</span>
+          <p style="font-size:0.78rem; color:#637063; margin:0.4rem 0 0; line-height:1.5;">Average water-bill reduction in Year 1, audited by our irrigation tech.</p>
+        </div>
+        <div>
+          <span class="serif" style="font-size:2.25rem; color:#2a5f2a; font-weight:700; line-height:1;">9 yr</span>
+          <p style="font-size:0.78rem; color:#637063; margin:0.4rem 0 0; line-height:1.5;">Median customer tenure. We earn it Thursday after Thursday.</p>
+        </div>
+        <div>
+          <span class="serif" style="font-size:2.25rem; color:#2a5f2a; font-weight:700; line-height:1;">3.0"</span>
+          <p style="font-size:0.78rem; color:#637063; margin:0.4rem 0 0; line-height:1.5;">Summer cut height. Higher than the industry standard 2", which protects roots from coastal sun.</p>
+        </div>
+        <div>
+          <span class="serif" style="font-size:2.25rem; color:#2a5f2a; font-weight:700; line-height:1;">0</span>
+          <p style="font-size:0.78rem; color:#637063; margin:0.4rem 0 0; line-height:1.5;">Pre-emergent over-applications since we switched to soil-temp based timing in 2019.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#faf8f3;" aria-labelledby="faq-h">
+  <div class="inner" style="max-width:50rem;">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="label">Common questions</span>
+      <h2 id="faq-h" class="serif" style="font-size:2.2rem; margin:0.25rem 0;">Asked before you signed up.</h2>
+    </div>
+    {faqs.map(f => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#1c2b1a; padding:4.5rem 1.5rem; text-align:center;">
+  <div class="inner" style="max-width:44rem;">
+    <h2 class="serif" style="color:#fff; font-size:2.2rem; margin:0 0 0.85rem;">Ready to hand this off?</h2>
+    <p style="color:rgba(255,255,255,0.7); margin:0 auto 2rem; max-width:32rem; line-height:1.7;">Send us your address and we'll measure your lawn from satellite, build a 12-month program, and email a quote — usually before lunch.</p>
+    <a href="/v1-residential-lawn#contact" class="btn-green" style="padding:1rem 2.5rem;">Get my free quote →</a>
+    <p style="margin-top:1.25rem; color:rgba(255,255,255,0.4); font-size:0.82rem;">Or call <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:rgba(255,255,255,0.7);">{co.phone}</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#111a10; color:rgba(255,255,255,0.55); padding:2rem 1.5rem; text-align:center;">
+  <div style="max-width:72rem; margin:0 auto;">
+    <p style="font-size:0.78rem; margin:0;"><a href="/v1-residential-lawn" style="color:#90cc90; text-decoration:underline;">← Back to GreenScape home</a></p>
+    <p style="font-size:0.74rem; margin:0.6rem 0 0; color:rgba(255,255,255,0.35);">&copy; {new Date().getFullYear()} GreenScape Lawn &amp; Garden · CA Licensed C-27</p>
+  </div>
+</footer>
+
+</LandscapeLayout>

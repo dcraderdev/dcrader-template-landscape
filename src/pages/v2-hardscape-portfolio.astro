@@ -1,0 +1,209 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { v2 as co } from '../data/company';
+const fonts = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap";
+
+const plates = [
+  {
+    title: 'The Reflecting Pool',
+    locale: 'Rancho Santa Fe',
+    img: '/images/landscape/formal-estate.jpg',
+    summary: 'A sixty-foot reflecting pool laid in honed Connecticut bluestone with a hand-cut champagne travertine coping. The basin holds twelve thousand gallons and mirrors the clipped Cleveland sage hedge from the morning room window.',
+    spec: [
+      ['Hardscape', 'Connecticut bluestone, thermal finish, 24"×36" planks'],
+      ['Coping', 'Champagne travertine, hand-tumbled bullnose'],
+      ['Water', 'Recirculating flat-weir, dual skimmer, vanishing edge'],
+      ['Lighting', 'Low-voltage in-pool LED, 2700K, fully shielded'],
+      ['Install duration', '11 weeks · Spring 2024'],
+    ],
+  },
+  {
+    title: 'The Olive Courtyard',
+    locale: 'La Jolla Shores',
+    img: '/images/landscape/coastal-blufftop.jpg',
+    summary: 'Three centenarian Tuscan olive specimens were craned in over the roofline and set into a parquet of reclaimed terracotta and weathered limestone. A monolithic fire altar of board-form concrete anchors the south wall.',
+    spec: [
+      ['Hardscape', 'Reclaimed Provençal terracotta · French limestone borders'],
+      ['Feature wall', 'Board-form concrete, custom oak formwork'],
+      ['Fire', 'Bespoke 9-foot ribbon burner with seating ledge'],
+      ['Specimens', '3× Olea europaea, 80+ years, certified provenance'],
+      ['Install duration', '14 weeks · Autumn 2023'],
+    ],
+  },
+  {
+    title: 'The Parterre Walk',
+    locale: 'Del Mar',
+    img: '/images/landscape/lawn-fresh-mowed.jpg',
+    summary: 'A French-inspired axis cut from the loggia through three rooms of boxwood parterre to a custom-fabricated bronze armillary. Hand-laid Belgian block defines every edge.',
+    spec: [
+      ['Axis material', 'Belgian block, bush-hammered, 8"×8" cubes'],
+      ['Hedging', '2,400 boxwood (Buxus Green Velvet) on biological mesh'],
+      ['Feature', 'Bronze armillary, custom cast, 36" diameter'],
+      ['Stewardship', 'Estate-tier weekly hand shears, 2-person crew'],
+      ['Install duration', '9 weeks · Spring 2023'],
+    ],
+  },
+];
+
+const materials = [
+  { name: 'Connecticut Bluestone', use: 'Terraces · Pool decks · Walks', source: 'Quarried East Otis, MA', note: 'Selected for cool underfoot in coastal sun and a tonal range that flatters silver and sage planting.' },
+  { name: 'Champagne Travertine', use: 'Copings · Outdoor kitchens', source: 'Anatolia, Turkey', note: 'Hand-honed; the warm cream reads as morning light against bluestone.' },
+  { name: 'Board-Form Concrete', use: 'Fire walls · Garden architecture', source: 'Custom oak formwork, San Marcos', note: 'A modernist counterpoint to formal planting. Each pour is photographed before strike-off.' },
+  { name: 'Belgian Granite Block', use: 'Edging · Allée material · Drives', source: 'Reclaimed Brussels paving', note: 'Patina earned over 150 years of street use; no two cubes alike.' },
+  { name: 'Provençal Terracotta', use: 'Courtyards · Loggias · Steps', source: 'Reclaimed Sud de France', note: 'Centuries-old kiln tiles. We restore, never refinish.' },
+];
+---
+
+<LandscapeLayout
+  title="Hardscape Portfolio — Meridian Design + Build"
+  description="A close study of three Meridian hardscape installations across La Jolla, Rancho Santa Fe, and Del Mar — materials, dimensions, and the craft behind each plate."
+  fonts={fonts}
+>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #f9f7f2; color: #1e2b1e; margin: 0; }
+  .garam { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .label-sm { font-size:0.68rem; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:#c8a96a; }
+  .rule { width:48px; height:1px; background:#c8a96a; }
+  hr.divider { border:none; border-top:1px solid #d8cfa8; margin:0; }
+  .btn-inquire { display:inline-block; background:#c8a96a; color:#1e2b1e; font-weight:600; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 2.5rem; text-decoration:none; transition:opacity 0.18s; }
+  .btn-inquire:hover { opacity:0.85; }
+  .btn-ghost { display:inline-block; border:1px solid rgba(255,255,255,0.35); color:#fff; font-weight:500; font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 2.5rem; text-decoration:none; transition:background 0.18s; }
+  .btn-ghost:hover { background:rgba(255,255,255,0.08); }
+</style>
+
+<header style="background: rgba(30,42,30,0.97); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(200,169,106,0.18); padding-top: 35px;">
+  <nav aria-label="Main navigation" style="max-width:88rem; margin:0 auto; padding:1.4rem 3rem; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v2-luxury-design-build" style="text-decoration:none;">
+      <span class="label-sm" style="color:#c8a96a; display:block; letter-spacing:0.25em;">Meridian</span>
+      <span style="color:rgba(255,255,255,0.78); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; display:block; margin-top:1px;">Design + Build · Est. {co.founded}</span>
+    </a>
+    <div style="display:flex; gap:2.5rem; align-items:center;">
+      <a href="/v2-luxury-design-build#services" style="color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.82rem; letter-spacing:0.06em; font-weight:300;">Services</a>
+      <a href="/v2-hardscape-portfolio" style="color:#c8a96a; text-decoration:none; font-size:0.82rem; letter-spacing:0.06em; font-weight:400;">Hardscape</a>
+      <a href="/v2-luxury-design-build#studio" style="color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.82rem; letter-spacing:0.06em; font-weight:300;">Studio</a>
+      <a href="/v2-luxury-design-build#contact" class="btn-inquire" style="padding:0.7rem 1.75rem;">Inquire</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- EDITORIAL HERO -->
+<section style="background:#1e2b1e; padding:7rem 3rem; color:#fff;">
+  <div style="max-width:88rem; margin:0 auto; display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; align-items:end;">
+    <div>
+      <p class="label-sm">Folio I · Stonework &amp; structure</p>
+      <h1 class="garam" style="font-size:clamp(3rem,6vw,5rem); font-weight:300; line-height:1.0; margin:1.25rem 0 0;">A study in <em>stone, water,</em><br/>and <em>shadow.</em></h1>
+      <div class="rule" style="margin:2rem 0;"></div>
+      <p style="color:rgba(255,255,255,0.7); font-weight:300; font-size:0.95rem; line-height:1.85; max-width:30rem;">
+        Three estate gardens. Three philosophies of hardscape. Photographed in late afternoon light and documented to the line of every joint. This folio is intended for clients considering work of similar scope — and for the contemplation of beauty in built landscape.
+      </p>
+    </div>
+    <figure style="margin:0; aspect-ratio:5/4; overflow:hidden; position:relative;">
+      <ResponsiveImage src="/images/landscape/formal-estate.jpg" alt="The reflecting pool at twilight, plate from Folio I" width={1200} height={960} sizes="(max-width: 1024px) 100vw, 50vw" loading="eager" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" />
+      <figcaption style="position:absolute; bottom:1rem; left:1rem; color:rgba(255,255,255,0.85); font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; background:rgba(0,0,0,0.5); padding:0.4rem 0.85rem; border-left:2px solid #c8a96a;">Cover plate — Reflecting Pool, Rancho Santa Fe</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- THE PLATES -->
+{plates.map((p, i) => (
+  <section style={`background:${i%2===0?'#f9f7f2':'#f3ede1'}; padding:7rem 3rem;`} aria-labelledby={`plate-${i}-h`}>
+    <div style="max-width:88rem; margin:0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:1.25rem; border-bottom:1px solid #d8cfa8; margin-bottom:3.5rem;">
+        <p class="label-sm">Plate {String(i+1).padStart(2,'0')} · {p.locale}</p>
+        <p style="color:#7a7a6a; font-size:0.78rem; font-weight:300; letter-spacing:0.06em;">Photograph &copy; studio</p>
+      </div>
+      <div style={`display:grid; grid-template-columns:${i%2===0?'1.2fr 1fr':'1fr 1.2fr'}; gap:4rem; align-items:start;`}>
+        <figure style={`margin:0; ${i%2===1?'order:1':''}`}>
+          <div style="aspect-ratio:5/4; overflow:hidden;">
+            <ResponsiveImage src={p.img} alt={`${p.title} at ${p.locale}`} width={1200} height={960} sizes="(max-width: 1024px) 100vw, 55vw" loading="lazy" style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <figcaption style="margin-top:1rem; color:#7a7a6a; font-size:0.78rem; font-weight:300; letter-spacing:0.04em;">{p.title} &middot; {p.locale}</figcaption>
+        </figure>
+        <div>
+          <h2 id={`plate-${i}-h`} class="garam" style="font-size:2.6rem; font-weight:400; line-height:1.1; margin:0 0 0.4rem;">{p.title}</h2>
+          <p style="color:#7a7a6a; font-size:0.8rem; letter-spacing:0.06em; margin:0;">Completed for a private estate</p>
+          <div class="rule" style="margin:1.75rem 0;"></div>
+          <p style="color:#3d4a3d; font-size:1rem; line-height:1.85; font-weight:300; margin:0 0 2rem;">{p.summary}</p>
+          <dl style="display:grid; grid-template-columns:auto 1fr; gap:1rem 1.5rem; margin:0; padding:1.5rem 0 0; border-top:1px solid #d8cfa8;">
+            {p.spec.map(([k, v]) => (
+              <>
+                <dt style="color:#c8a96a; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; padding-top:0.18rem;">{k}</dt>
+                <dd style="margin:0; color:#1e2b1e; font-size:0.9rem; font-weight:400; line-height:1.5;">{v}</dd>
+              </>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+))}
+
+<!-- MATERIAL LIBRARY -->
+<section style="background:#1a2618; padding:7rem 3rem; color:#fff;" aria-labelledby="mat-h">
+  <div style="max-width:88rem; margin:0 auto;">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; padding-bottom:1.25rem; border-bottom:1px solid rgba(200,169,106,0.25); margin-bottom:3rem;">
+      <div>
+        <p class="label-sm">Appendix A</p>
+        <h2 id="mat-h" class="garam" style="font-size:2.6rem; font-weight:400; margin:0.5rem 0 0;">Material library</h2>
+      </div>
+      <p style="color:rgba(255,255,255,0.5); font-size:0.78rem; font-weight:300;">Stones we are currently sourcing</p>
+    </div>
+    <div style="display:grid; gap:0;">
+      {materials.map((m, i) => (
+        <div style={`display:grid; grid-template-columns:1.2fr 1fr 1fr 2fr; gap:2rem; padding:1.75rem 0; ${i<materials.length-1?'border-bottom:1px solid rgba(200,169,106,0.18);':''}`}>
+          <div>
+            <h3 class="garam" style="font-size:1.5rem; font-weight:400; margin:0; color:#fff;">{m.name}</h3>
+          </div>
+          <div>
+            <p style="color:#c8a96a; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 0.35rem;">Application</p>
+            <p style="color:rgba(255,255,255,0.78); font-size:0.85rem; font-weight:300; margin:0;">{m.use}</p>
+          </div>
+          <div>
+            <p style="color:#c8a96a; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 0.35rem;">Provenance</p>
+            <p style="color:rgba(255,255,255,0.78); font-size:0.85rem; font-weight:300; margin:0;">{m.source}</p>
+          </div>
+          <div>
+            <p style="color:#c8a96a; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; margin:0 0 0.35rem;">Studio note</p>
+            <p style="color:rgba(255,255,255,0.78); font-size:0.85rem; font-weight:300; line-height:1.7; margin:0;">{m.note}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CRAFT ESSAY -->
+<section style="background:#f9f7f2; padding:7rem 3rem;">
+  <div style="max-width:48rem; margin:0 auto; text-align:center;">
+    <p class="label-sm">Studio note</p>
+    <h2 class="garam" style="font-size:2.4rem; font-weight:400; line-height:1.2; margin:1rem 0 2rem;">On the discipline of the joint.</h2>
+    <p style="color:#3d4a3d; font-size:1.05rem; line-height:1.95; font-weight:300; margin:0 0 1.5rem;">A garden of stone is finally judged by the lines between its pieces. We draft hardscape at one-to-one scale on butcher paper, walk it on site at dawn, and adjust until each joint reads as inevitable. Only then do we cut.</p>
+    <p style="color:#3d4a3d; font-size:1.05rem; line-height:1.95; font-weight:300; margin:0 0 1.5rem;">Every Meridian installation is laid by a single mason — never rotated between crews — for the whole of its run. The result is a quietness on the surface that machines cannot reproduce and that distinguishes our work at twenty paces.</p>
+    <p style="color:#3d4a3d; font-size:1.05rem; line-height:1.95; font-weight:300; margin:0;">If the legacy of a garden is its bones, the bones are the stone. We treat them accordingly.</p>
+    <div class="rule" style="margin:2.5rem auto;"></div>
+    <p class="garam" style="font-style:italic; color:#7a7a6a; font-size:1rem; margin:0;">— Alexandra Renoir, Principal Designer</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#1e2b1e; padding:6rem 3rem; color:#fff; text-align:center;">
+  <div style="max-width:42rem; margin:0 auto;">
+    <p class="label-sm">Begin a conversation</p>
+    <h2 class="garam" style="font-size:2.6rem; font-weight:400; margin:1rem 0 1.5rem;">Commission a study for your property.</h2>
+    <p style="color:rgba(255,255,255,0.65); font-weight:300; line-height:1.85; margin:0 0 2.5rem;">We accept four to six new commissions a year. The first conversation is unhurried and unbilled. We meet on site, walk the property at the hour you most use it, and listen.</p>
+    <a href="/v2-luxury-design-build#contact" class="btn-inquire">Inquire about a commission</a>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#0f1810; color:rgba(255,255,255,0.5); padding:2.5rem 3rem; text-align:center;">
+  <p class="label-sm" style="color:rgba(200,169,106,0.7);">Meridian Design + Build · Folio I</p>
+  <p style="font-size:0.78rem; margin:0.6rem 0 0;"><a href="/v2-luxury-design-build" style="color:#c8a96a; text-decoration:underline;">← Return to studio</a></p>
+</footer>
+
+</LandscapeLayout>

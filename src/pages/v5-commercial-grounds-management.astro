@@ -1,0 +1,236 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import { v5 as co } from '../data/company';
+const fonts = "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap";
+
+const verticals = [
+  { code: 'OP', name: 'Office Parks & Corporate Campuses', size: '5 – 80 acres', avg: '$8,400/mo per 10 acres', notes: 'High-visibility entry sequences. Annual color rotations. Walking-trail upkeep. Predictable Mon-morning condition for tenant experience teams.' },
+  { code: 'RT', name: 'Retail Centers & Anchor Plazas', size: '2 – 30 acres', avg: '$4,200/mo per 10 acres', notes: 'Tight overnight service windows. Pedestrian-zone safety inspections. Tenant compliance reporting to ownership groups.' },
+  { code: 'HM', name: 'HOAs & Master-Planned Communities', size: '20 – 600 acres of common area', avg: 'Negotiated per RFP', notes: 'Board governance fluency. Reserve-study input. Resident communication portal. CC&R-aligned plant palette enforcement.' },
+  { code: 'HS', name: 'Hospitality (Hotels, Resorts, Event Venues)', size: '3 – 60 acres', avg: 'Custom · brand-standard tier', notes: 'Five-star guest sightlines. Event-driven scheduling. Coordination with banquet teams. Photo-ready arrival forecourt at all times.' },
+  { code: 'MU', name: 'Municipal & Civic', size: '10 – 250 acres', avg: 'Public-RFP awarded', notes: 'DIR compliance. Prevailing-wage payroll. Public-meeting reporting. Right-of-way maintenance with traffic-control plans.' },
+  { code: 'HC', name: 'Healthcare Campuses', size: '8 – 60 acres', avg: '$11,000/mo per 10 acres', notes: 'Patient-experience landscape priority. Quiet equipment windows. Strict pesticide protocols. Helipad clearance compliance.' },
+];
+
+const slas = [
+  { tier: 'Standard', response: '48 business hours', emergency: 'Next business day', dispatch: 'Email + voicemail', reporting: 'Monthly PDF', escalation: 'Account manager only' },
+  { tier: 'Professional', response: '24 business hours', emergency: '4-hour response, weekdays', dispatch: 'Direct dial + 2-hr ack', reporting: 'Bi-weekly photo report', escalation: 'AM + Ops Director' },
+  { tier: 'Enterprise', response: 'Same business day', emergency: '4-hour, 24/7/365', dispatch: 'Dedicated dispatch line', reporting: 'Weekly + monthly KPI dashboard', escalation: 'AM + Ops Director + VP Operations' },
+];
+
+const compliance = [
+  { area: 'Insurance', detail: '$5M general liability · $2M auto · $1M umbrella · Workers\' Comp Class 0042. Certificates of insurance issued same-day on request, with custom Additional Insured language.' },
+  { area: 'Licensing', detail: 'CA C-27 Landscape Contractor · QAL Branch 3 Pest Control Advisor on staff · CA DIR Registered Public Works Contractor (#PW-1000023014).' },
+  { area: 'Safety', detail: 'OSHA 10 across all field crews · OSHA 30 for foremen · weekly tailgate meetings · monthly safety committee with EMR audit access on request. EMR 0.73.' },
+  { area: 'Sustainability', detail: 'Carbon-tracked fleet (40% electric handheld, 100% by 2027) · ISO 14001 environmental management · USGBC LEED O+M consulting for client buildings.' },
+  { area: 'Data & Reporting', detail: 'GIS-mapped properties · QR-code work-order tracking · client-facing portal (Aspire CRM). Quarterly business reviews with site walk.' },
+];
+
+const transition = [
+  { week: 'Week -4', step: 'RFP scoring & scope alignment', detail: 'We review your current contract, prior 12-month service logs, and any deficiency lists. Meet with your previous vendor when possible to capture institutional knowledge.' },
+  { week: 'Week -2', step: 'Site mobilization plan', detail: 'GIS map walk, asset inventory (every tree, every controller, every bed), photographic baseline of current conditions. Both parties sign the asset condition report.' },
+  { week: 'Day 1', step: 'Crew on site', detail: 'Dedicated crew introduced to your facilities team. Vehicle decals carry your account manager\'s direct line. We provide a one-page tenant-facing FAQ for your front desk.' },
+  { week: 'Day 30', step: 'First QBR & punch-list close', detail: 'Walk the property with stakeholders. Review the deficiency list inherited from the previous vendor and confirm what we closed, what was descoped, and what needs a separate proposal.' },
+  { week: 'Day 90', step: 'Steady state', detail: 'Photo reports landing on your calendar. KPIs trending. Most accounts hit steady state by week 12 — no surprises after this point unless we surface them first.' },
+];
+---
+
+<LandscapeLayout
+  title="Commercial Grounds Management — Apex Commercial Landscapes"
+  description="Multi-site commercial grounds management for office parks, HOAs, hospitality, healthcare, and municipal portfolios across San Diego County. SLA-backed. NALP accredited."
+  fonts={fonts}
+>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'Archivo', sans-serif; background: #fff; color: #0d1b3e; margin: 0; }
+  section { padding: 5rem 2rem; }
+  .inner { max-width: 80rem; margin: 0 auto; }
+  .label { display:block; font-size:0.68rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#8394b0; margin-bottom:0.6rem; }
+  .btn-navy { display:inline-block; background:#0d1b3e; color:#fff; font-weight:700; font-size:0.875rem; letter-spacing:0.03em; padding:0.9rem 2rem; text-decoration:none; }
+  .btn-outline-navy { display:inline-block; background:transparent; color:#0d1b3e; font-weight:600; font-size:0.875rem; padding:0.875rem 2rem; border:2px solid #0d1b3e; text-decoration:none; }
+  .btn-white { display:inline-block; background:#fff; color:#0d1b3e; font-weight:700; font-size:0.875rem; padding:0.9rem 2rem; text-decoration:none; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:0.875rem 1rem; border-bottom:1px solid #c0ccd8; font-size:0.88rem; }
+  th { background:#0d1b3e; color:#fff; font-weight:700; letter-spacing:0.04em; font-size:0.78rem; text-transform:uppercase; }
+</style>
+
+<div style="background:#0d1b3e; padding:0.6rem 2rem; overflow-x:auto; white-space:nowrap; text-align:center;">
+  <span style="color:rgba(255,255,255,0.78); font-size:0.74rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">NALP Accredited · ISO 9001 · DIR Registered · $5M GL · OSHA 10 Crews · EMR 0.73</span>
+</div>
+
+<header style="background:#fff; border-bottom:1px solid #c0ccd8; position:sticky; top:0; z-index:50;">
+  <nav aria-label="Main navigation" style="max-width:80rem; margin:0 auto; padding:1.1rem 2rem; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v5-commercial-property" style="text-decoration:none; display:flex; align-items:baseline; gap:0.5rem;">
+      <span style="font-weight:900; font-size:1.4rem; letter-spacing:-0.02em; color:#0d1b3e;">APEX</span>
+      <span style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#8394b0; font-weight:600;">Commercial Landscapes</span>
+    </a>
+    <div style="display:flex; gap:1.5rem; align-items:center;">
+      <a href="/v5-commercial-property#services" style="color:#0d1b3e; text-decoration:none; font-size:0.88rem; font-weight:600;">Services</a>
+      <a href="/v5-commercial-grounds-management" style="color:#0d1b3e; text-decoration:none; font-size:0.88rem; font-weight:700; border-bottom:2px solid #0d1b3e; padding-bottom:0.2rem;">Grounds Mgmt</a>
+      <a href="/v5-commercial-property#contracts" style="color:#0d1b3e; text-decoration:none; font-size:0.88rem; font-weight:600;">Contracts</a>
+      <a href="/v5-commercial-property#contact" class="btn-navy" style="padding:0.55rem 1.3rem; font-size:0.825rem;">Request RFP</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section style="background:#0d1b3e; color:#fff; padding:5rem 2rem;">
+  <div class="inner" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:center;">
+    <div>
+      <span class="label" style="color:#c8d4e8;">Multi-site grounds management</span>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.5rem); line-height:1.1; margin:0.5rem 0 1.25rem; font-weight:900; letter-spacing:-0.01em;">One contract. Every property. <span style="color:#c8d4e8;">SLA-backed.</span></h1>
+      <p style="color:rgba(255,255,255,0.78); line-height:1.75; font-size:1.05rem; margin:0 0 2rem;">Apex manages grounds for 185 commercial accounts across San Diego County — totaling 4.2 million square feet of maintained acreage. We are built for the operations director who owns six properties on three different management contracts and wants exactly one phone number.</p>
+      <div style="display:flex; gap:0.85rem; flex-wrap:wrap;">
+        <a href="#verticals" class="btn-white">See verticals we serve</a>
+        <a href="/v5-commercial-property#contact" style="display:inline-block; background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.5); padding:0.85rem 2rem; text-decoration:none; font-weight:700; font-size:0.875rem;">Request a portfolio review</a>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid rgba(200,212,232,0.25);">
+      {[
+        { k:'Accounts', v:'185+' },
+        { k:'Sq Ft Maintained', v:'4.2M' },
+        { k:'Years in Business', v:'26' },
+        { k:'Field Staff', v:'90+' },
+        { k:'Customer Retention', v:'94%' },
+        { k:'Multi-site Clients', v:'42' },
+      ].map((s, i) => (
+        <div style={`padding:1.5rem; border-right:${i%2===0?'1px solid rgba(200,212,232,0.25)':'none'}; border-bottom:${i<4?'1px solid rgba(200,212,232,0.25)':'none'};`}>
+          <span style="font-size:1.85rem; font-weight:900; color:#fff; display:block; letter-spacing:-0.02em;">{s.v}</span>
+          <span style="font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:#c8d4e8; font-weight:600; display:block; margin-top:0.25rem;">{s.k}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS TABLE -->
+<section id="verticals" style="background:#f4f7fb;" aria-labelledby="vert-h">
+  <div class="inner">
+    <div style="margin-bottom:2.5rem;">
+      <span class="label">Vertical specialization</span>
+      <h2 id="vert-h" style="font-size:2.4rem; font-weight:900; margin:0.25rem 0 0.75rem; letter-spacing:-0.01em;">Six property types. Six playbooks.</h2>
+      <p style="color:#6a7a90; max-width:46rem; line-height:1.75;">We do not treat a Class A office park the same way we treat a 600-acre HOA. Each vertical has dedicated supervisors, a tailored scope template, and a reporting cadence built for that industry's stakeholders.</p>
+    </div>
+    <div style="background:#fff; border:1px solid #c0ccd8; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:60px;">Code</th>
+            <th>Vertical</th>
+            <th>Typical site size</th>
+            <th>Avg. monthly contract</th>
+            <th>Operating notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {verticals.map(v => (
+            <tr>
+              <td style="font-weight:900; color:#0d1b3e; letter-spacing:0.04em;">{v.code}</td>
+              <td style="font-weight:700;">{v.name}</td>
+              <td style="color:#6a7a90; white-space:nowrap;">{v.size}</td>
+              <td style="color:#6a7a90; white-space:nowrap;">{v.avg}</td>
+              <td style="color:#3a4a60; font-size:0.85rem; line-height:1.6;">{v.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SLA MATRIX -->
+<section style="background:#fff;" aria-labelledby="sla-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label">Service-level agreements</span>
+      <h2 id="sla-h" style="font-size:2.4rem; font-weight:900; margin:0.25rem 0 0.75rem;">Three contract tiers. Spelled out.</h2>
+      <p style="color:#6a7a90; max-width:42rem; margin:0 auto; line-height:1.75;">Every Apex contract states the SLA in plain English on page two. No interpretation, no fine print. If we miss a window, the missed visit is credited within ten business days — automatically.</p>
+    </div>
+    <div style="border:1px solid #c0ccd8; overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Standard response</th>
+            <th>Emergency response</th>
+            <th>Dispatch channel</th>
+            <th>Reporting</th>
+            <th>Escalation path</th>
+          </tr>
+        </thead>
+        <tbody>
+          {slas.map(s => (
+            <tr>
+              <td style="font-weight:900; color:#0d1b3e; font-size:0.95rem;">{s.tier}</td>
+              <td>{s.response}</td>
+              <td>{s.emergency}</td>
+              <td>{s.dispatch}</td>
+              <td>{s.reporting}</td>
+              <td>{s.escalation}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION PLAN -->
+<section style="background:#0d1b3e; color:#fff;" aria-labelledby="trans-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label" style="color:#c8d4e8;">Vendor transition</span>
+      <h2 id="trans-h" style="font-size:2.4rem; font-weight:900; margin:0.25rem 0 0.75rem; color:#fff;">90 days from contract signing to steady state.</h2>
+      <p style="color:rgba(255,255,255,0.7); max-width:42rem; margin:0 auto; line-height:1.75;">Half of our new accounts come from properties switching vendors mid-contract. We have done this 60+ times. Here is what the runway looks like.</p>
+    </div>
+    <ol style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0;">
+      {transition.map((t, i) => (
+        <li style={`background:${i%2===0?'#1a2d5a':'#0d1b3e'}; padding:2rem 1.75rem; border-right:${i<transition.length-1?'1px solid rgba(200,212,232,0.18)':'none'}; min-height:240px;`}>
+          <span style="color:#c8d4e8; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:700;">{t.week}</span>
+          <h3 style="font-size:1.1rem; font-weight:900; margin:0.5rem 0 0.65rem; color:#fff;">{t.step}</h3>
+          <p style="color:rgba(255,255,255,0.72); font-size:0.85rem; line-height:1.7; margin:0;">{t.detail}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section style="background:#f4f7fb;" aria-labelledby="comp-h">
+  <div class="inner" style="max-width:64rem;">
+    <div style="margin-bottom:2.5rem;">
+      <span class="label">Compliance & documentation</span>
+      <h2 id="comp-h" style="font-size:2.4rem; font-weight:900; margin:0.25rem 0 0.75rem;">What your risk-management team will ask for.</h2>
+    </div>
+    <dl style="margin:0; display:flex; flex-direction:column; gap:0;">
+      {compliance.map((c, i) => (
+        <div style={`display:grid; grid-template-columns:200px 1fr; gap:2rem; padding:1.5rem 0; ${i<compliance.length-1?'border-bottom:1px solid #c0ccd8;':''} align-items:start;`}>
+          <dt style="font-weight:900; color:#0d1b3e; letter-spacing:0.04em; text-transform:uppercase; font-size:0.82rem;">{c.area}</dt>
+          <dd style="margin:0; color:#3a4a60; line-height:1.75; font-size:0.92rem;">{c.detail}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#0a1530; color:#fff; text-align:center;">
+  <div class="inner" style="max-width:42rem;">
+    <span class="label" style="color:#c8d4e8;">Next step</span>
+    <h2 style="font-size:2.4rem; font-weight:900; margin:0.25rem 0 1rem; color:#fff;">Send us your portfolio. We'll send a real proposal.</h2>
+    <p style="color:rgba(255,255,255,0.7); line-height:1.75; margin:0 0 2rem;">A site walk on every property, a unified scope, and a single-number monthly invoice — usually within fifteen business days of RFP receipt.</p>
+    <a href="/v5-commercial-property#contact" class="btn-white" style="padding:1rem 2.5rem;">Request a portfolio proposal →</a>
+    <p style="margin-top:1.25rem; color:rgba(255,255,255,0.45); font-size:0.82rem;">Or contact our contracts desk: <a href={`tel:${co.phone.replace(/\D/g,'')}`} style="color:#c8d4e8;">{co.phone}</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#0a1020; color:rgba(255,255,255,0.55); padding:2.5rem 2rem; text-align:center;">
+  <p style="font-size:0.78rem; margin:0;"><a href="/v5-commercial-property" style="color:#c8d4e8; text-decoration:underline;">← Return to Apex home</a></p>
+  <p style="font-size:0.72rem; margin:0.6rem 0 0;">&copy; {new Date().getFullYear()} Apex Commercial Landscapes · NALP Accredited · ISO 9001 Certified</p>
+</footer>
+
+</LandscapeLayout>

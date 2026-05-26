@@ -1,0 +1,230 @@
+---
+import LandscapeLayout from '../layouts/LandscapeLayout.astro';
+import { v3 as co } from '../data/company';
+const fonts = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=Inter:wght@400;500;600&display=swap";
+
+const principles = [
+  {
+    n: '01',
+    title: 'The lawn is not a default.',
+    body: 'A turf lawn is an inherited landscape — borrowed from English manor estates, kept alive in Southern California by imported water and synthetic chemistry. Stop watering it for six weeks in July and the truth shows. A native garden is the opposite: stop watering and almost nothing happens, because the plants were already engineered for this place by ten thousand years of selection.',
+  },
+  {
+    n: '02',
+    title: 'Local first. Always local.',
+    body: 'When we say "native," we mean within roughly thirty miles of your gate. A Sonoran desert plant is technically native to North America. It will struggle and die in Cardiff coastal clay. We work with a plant palette grown from local seed stock — most of it propagated by Tree of Life Nursery, El Nativo Growers, and a handful of small ethical specialty nurseries we have visited and walked.',
+  },
+  {
+    n: '03',
+    title: 'Soil is a creature.',
+    body: 'A native ecosystem above ground is matched by a living soil community below it — mycorrhizal fungi, beneficial bacteria, the soft architecture of root corridors and worm runs. We never till and we never spray. New beds are sheet-mulched in cardboard and compost, then planted into pockets, the way oak woodlands rebuild after a burn.',
+  },
+  {
+    n: '04',
+    title: 'Plant for wildlife, not against it.',
+    body: 'A native garden is a contract: you give habitat, the habitat gives back. We design every project around a wildlife brief — what pollinators we want to host, what birds we want to feed in winter, what reptiles we want to encourage on the bare dirt under the buckwheats. Insects are not pests in our gardens. They are tenants we invited.',
+  },
+  {
+    n: '05',
+    title: 'Beauty is not optional.',
+    body: 'A native garden is not a brown, scraggly yard. We dress with care: rhythm of repeated species, intentional clearings, sculptural rock, paths that invite a slow walk. Done well, a native garden is more beautiful in November than a thirsty lawn is in May.',
+  },
+];
+
+const palette = [
+  { latin: 'Salvia clevelandii', common: 'Cleveland sage', use: 'Pollinator anchor · evergreen aromatic mound · 4×5 ft', water: 'None after Y2' },
+  { latin: 'Arctostaphylos × "Sunset"', common: 'Manzanita "Sunset"', use: 'Architectural shrub · mahogany bark · winter bloom for hummingbirds', water: 'None after Y2' },
+  { latin: 'Eriogonum fasciculatum', common: 'California buckwheat', use: 'Workhorse pollinator · keystone for native bees · 36 species depend on it', water: 'None' },
+  { latin: 'Romneya coulteri', common: 'Matilija poppy', use: 'Drama in the back border · 6-inch fried-egg blooms · prefers to spread', water: 'None' },
+  { latin: 'Heteromeles arbutifolia', common: 'Toyon (Hollywood)', use: 'Bird tree · red berries through winter · the original Hollywood namesake', water: 'None after Y2' },
+  { latin: 'Carex pansa', common: 'California meadow sedge', use: 'A walkable turf alternative · stays green on 1 watering per month', water: 'Minimal' },
+  { latin: 'Encelia californica', common: 'Coast sunflower', use: 'Bluff plant · gold blooms Mar–Jun · butterfly favorite', water: 'None' },
+  { latin: 'Mahonia "Golden Abundance"', common: 'Oregon grape hybrid', use: 'Shade evergreen · yellow flowers · edible blue berries for pies and birds', water: 'Minimal' },
+];
+
+const conversion = [
+  { week: 'Week 1', title: 'Site walk + listening session', body: 'We spend two hours in your yard with you, your kids, and (if invited) your dogs. We measure sun, slope, drainage, soil. We ask what you want to do here, not just what you want to look at.' },
+  { week: 'Week 2–3', title: 'Concept plan & rebate paperwork', body: 'You receive a hand-drawn concept, a planting palette, and the full paperwork pack for your local water agency turf-removal rebate — currently $4/sq ft in most North County jurisdictions. We file on your behalf.' },
+  { week: 'Week 4', title: 'Lawn kill (no herbicides)', body: 'We mow the lawn to scalp, then layer cardboard and four inches of clean compost across the whole area. Smother kill. No glyphosate. The lawn is dead and the soil is alive in 60 days.' },
+  { week: 'Week 8–10', title: 'Plant install', body: 'A 2-person crew plants over one to two days, depending on size. We water in with a deep soak, then taper to once a week for the first eight weeks, then twice a month, then never.' },
+  { week: 'Month 12', title: 'First-year walk-back', body: 'We come back, we adjust, we re-plant anything that did not take. Most native gardens hit their stride somewhere between month 18 and month 24 — and look fully established by year three.' },
+];
+---
+
+<LandscapeLayout
+  title="Native Plant Philosophy — Tierra Viva Native Gardens"
+  description="Why we work only with California natives, how we plant them, and what we believe a residential garden in coastal North County can become. Tierra Viva's working manifesto."
+  fonts={fonts}
+>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #fffdf6; color: #2a1a0a; margin: 0; }
+  .fran { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  section { padding: 5rem 1.5rem; }
+  .inner { max-width: 64rem; margin: 0 auto; }
+  .label { display:block; font-size:0.7rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#4a7c59; margin-bottom:0.75rem; }
+  .btn-terra { display:inline-block; background:#8b4513; color:#fff; font-weight:600; font-size:0.9rem; padding:0.9rem 2rem; border-radius:99px; text-decoration:none; }
+  .btn-terra:hover { opacity:0.87; }
+  .btn-sage { display:inline-block; background:transparent; color:#4a7c59; font-weight:600; font-size:0.9rem; padding:0.875rem 2rem; border-radius:99px; border:2px solid #4a7c59; text-decoration:none; }
+  .btn-sage:hover { background:#4a7c59; color:#fff; }
+</style>
+
+<header style="background:#fffdf6; border-bottom:1px solid #e0d4b8; position:sticky; top:0; z-index:50; padding-top:35px;">
+  <nav aria-label="Main navigation" style="max-width:72rem; margin:0 auto; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v3-eco-native" style="text-decoration:none; display:flex; align-items:center; gap:0.75rem;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <ellipse cx="16" cy="18" rx="10" ry="13" fill="#4a7c59" opacity="0.2"/>
+        <ellipse cx="16" cy="18" rx="6" ry="10" fill="#4a7c59" opacity="0.35"/>
+        <line x1="16" y1="6" x2="16" y2="30" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="16" y1="14" x2="10" y2="20" stroke="#8b4513" stroke-width="1" stroke-linecap="round"/>
+        <line x1="16" y1="18" x2="22" y2="24" stroke="#8b4513" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <span class="fran" style="color:#2a1a0a; font-size:1.15rem; font-weight:600; display:block; line-height:1.1;">Tierra Viva</span>
+        <span style="color:#5c4a28; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; display:block;">Native Gardens</span>
+      </div>
+    </a>
+    <div style="display:flex; gap:1.75rem; align-items:center;">
+      <a href="/v3-eco-native#services" style="color:#5c4a28; text-decoration:none; font-size:0.88rem;">Services</a>
+      <a href="/v3-native-plant-philosophy" style="color:#8b4513; text-decoration:none; font-size:0.88rem; font-weight:700;">Philosophy</a>
+      <a href="/v3-eco-native#work" style="color:#5c4a28; text-decoration:none; font-size:0.88rem;">Our work</a>
+      <a href="/v3-eco-native#contact" class="btn-terra" style="padding:0.55rem 1.3rem; font-size:0.85rem;">Free consult</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section style="background:linear-gradient(180deg,#f7f0e4 0%,#fffdf6 100%); padding:6rem 1.5rem 4rem;">
+  <div class="inner" style="max-width:50rem; text-align:center;">
+    <span class="label">A working manifesto</span>
+    <h1 class="fran" style="font-size:clamp(2.6rem,6vw,4rem); line-height:1.05; font-weight:600; margin:0.5rem 0 1.25rem;">Our garden is the watershed.<br/><em style="color:#8b4513;">Yours can be too.</em></h1>
+    <p style="color:#5c4a28; line-height:1.85; font-size:1.05rem; max-width:38rem; margin:0 auto 2rem;">A short essay on why we no longer touch turf, what we plant instead, and how to convert a yard into the kind of living place that holds rain, feeds bees, and looks better the less you do to it.</p>
+    <div style="display:flex; gap:0.85rem; justify-content:center; flex-wrap:wrap;">
+      <a href="#principles" class="btn-sage">Read the five principles</a>
+      <a href="#palette" class="btn-terra">See the plant palette</a>
+    </div>
+  </div>
+</section>
+
+<!-- PREAMBLE -->
+<section style="background:#fffdf6; padding:3rem 1.5rem 5rem;">
+  <div class="inner" style="max-width:42rem;">
+    <p style="font-family:'Fraunces',serif; font-style:italic; font-size:1.5rem; line-height:1.55; color:#3d2a0f; border-left:3px solid #4a7c59; padding:0.25rem 0 0.25rem 1.5rem; margin:0;">"A native garden is not a wilder version of a tame yard. It is the original ground — temporarily forgotten and now invited back."</p>
+    <p style="text-align:right; margin:0.85rem 0 0; color:#8b6914; font-size:0.85rem;">— Rosa Guerrero, founder</p>
+  </div>
+</section>
+
+<!-- FIVE PRINCIPLES -->
+<section id="principles" style="background:#f7f0e4;" aria-labelledby="prin-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label">Five principles</span>
+      <h2 id="prin-h" class="fran" style="font-size:2.4rem; font-weight:600; margin:0.25rem 0;">How we think before we plant.</h2>
+    </div>
+    {principles.map((p) => (
+      <article style="background:#fff; border:1px solid #e0d4b8; border-radius:20px; padding:2rem 2.25rem; margin-bottom:1.25rem;">
+        <div style="display:flex; gap:1.75rem; align-items:start;">
+          <span class="fran" style="font-size:2.2rem; color:#8b4513; font-weight:600; line-height:1;">{p.n}</span>
+          <div>
+            <h3 class="fran" style="font-size:1.45rem; font-weight:600; margin:0 0 0.65rem; color:#2a1a0a;">{p.title}</h3>
+            <p style="color:#5c4a28; line-height:1.85; margin:0; font-size:0.98rem;">{p.body}</p>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- PLANT PALETTE TABLE -->
+<section id="palette" style="background:#2a1a0a; color:#fffdf6;" aria-labelledby="pal-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <span class="label" style="color:#c8d8a0;">Working plant palette</span>
+      <h2 id="pal-h" class="fran" style="color:#fffdf6; font-size:2.4rem; font-weight:500; margin:0.25rem 0 0.75rem;">The species we lean on, season after season.</h2>
+      <p style="color:rgba(255,253,246,0.65); max-width:36rem; margin:0 auto; line-height:1.75;">Every garden is custom, but most coastal North County projects use some version of this backbone palette. All locally provenanced. All grown without neonicotinoids.</p>
+    </div>
+    <div style="background:#3d2a0f; border-radius:14px; overflow:hidden; border:1px solid #5a3a18;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:#1a0f04;">
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#c8d8a0; font-weight:600;">Latin name</th>
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#c8d8a0; font-weight:600;">Common</th>
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#c8d8a0; font-weight:600; display:none;" class="hide-mobile">Role in the garden</th>
+            <th style="text-align:left; padding:1rem 1.25rem; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:#c8d8a0; font-weight:600;">Water</th>
+          </tr>
+        </thead>
+        <tbody>
+          {palette.map((p, i) => (
+            <tr style={`${i<palette.length-1?'border-bottom:1px solid #5a3a18;':''}`}>
+              <td style="padding:1rem 1.25rem; font-style:italic; color:#f7f0e4; font-size:0.92rem;" class="fran">{p.latin}</td>
+              <td style="padding:1rem 1.25rem; color:#fffdf6; font-size:0.92rem; font-weight:600;">{p.common}</td>
+              <td style="padding:1rem 1.25rem; color:rgba(255,253,246,0.7); font-size:0.85rem; line-height:1.55;">{p.use}</td>
+              <td style="padding:1rem 1.25rem;"><span style="background:#4a7c59; color:#fff; padding:0.25rem 0.65rem; border-radius:99px; font-size:0.7rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">{p.water}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSION TIMELINE -->
+<section style="background:#fffdf6;" aria-labelledby="conv-h">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <span class="label">From lawn to living</span>
+      <h2 id="conv-h" class="fran" style="font-size:2.4rem; font-weight:600; margin:0.25rem 0;">How a conversion actually unfolds.</h2>
+      <p style="color:#5c4a28; max-width:38rem; margin:1rem auto 0; line-height:1.75;">Most clients hesitate because they imagine an ugly construction site for months. The truth is gentler.</p>
+    </div>
+    <ol style="list-style:none; padding:0; margin:0;">
+      {conversion.map((c, i) => (
+        <li style="display:grid; grid-template-columns:auto 1fr; gap:1.5rem; padding:1.5rem 0; border-bottom:1px dashed #d4c4a0;">
+          <div style="text-align:center;">
+            <span style="display:block; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:#8b4513; font-weight:700;">Phase {i+1}</span>
+            <span class="fran" style="display:block; font-size:1rem; font-weight:600; color:#2a1a0a; margin-top:0.2rem; white-space:nowrap;">{c.week}</span>
+          </div>
+          <div>
+            <h3 class="fran" style="font-size:1.25rem; font-weight:600; margin:0 0 0.4rem; color:#2a1a0a;">{c.title}</h3>
+            <p style="color:#5c4a28; line-height:1.75; margin:0; font-size:0.95rem;">{c.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- IMPACT NUMBERS -->
+<section style="background:#4a7c59; color:#fffdf6; text-align:center;">
+  <div class="inner">
+    <span class="label" style="color:#fffdf6;">Across our portfolio</span>
+    <h2 class="fran" style="font-size:2.2rem; font-weight:600; margin:0.25rem 0 2.5rem;">What lawn conversion is actually doing.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:2rem;">
+      {co.stats.map(s => (
+        <div>
+          <span class="fran" style="display:block; font-size:2.6rem; font-weight:600; line-height:1;">{s.value}</span>
+          <p style="margin:0.6rem 0 0; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,253,246,0.8);">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:#fffdf6; text-align:center;">
+  <div class="inner" style="max-width:40rem;">
+    <h2 class="fran" style="font-size:2.2rem; font-weight:600; margin:0 0 1rem;">Walk your yard with us.</h2>
+    <p style="color:#5c4a28; line-height:1.8; margin:0 0 2rem;">A free 90-minute site walk. We bring a plant list, you bring questions. No proposal pressure — most clients sit on the idea for a season before signing on.</p>
+    <a href="/v3-eco-native#contact" class="btn-terra">Book a free site walk</a>
+  </div>
+</section>
+
+</main>
+
+<footer style="background:#3d2a0f; color:rgba(255,253,246,0.6); padding:2rem 1.5rem; text-align:center;">
+  <p style="font-size:0.82rem; margin:0;"><a href="/v3-eco-native" style="color:#c8d8a0; text-decoration:underline;">← Back to Tierra Viva</a></p>
+  <p style="font-size:0.72rem; margin:0.5rem 0 0;">&copy; {new Date().getFullYear()} Tierra Viva Native Gardens · CNPS &middot; QWEL</p>
+</footer>
+
+</LandscapeLayout>
