@@ -20,3 +20,100 @@
     outline-offset: 2px;
   }
 }
+
+/* ============================================================
+   Cross-variant mobile responsive overrides.
+   Variant pages use heavy inline styles; these selectors lift
+   specificity with !important so we don't have to rewrite each
+   variant. Targets the shared structural patterns: nav rows,
+   hero grids, multi-column section grids, oversized section
+   padding, and long inline button/anchor rows.
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* Trim section padding so content has room to breathe. */
+  section {
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Tighten nav padding only — full hide rules live in narrower bp below. */
+  nav[aria-label="Main navigation"] {
+    flex-wrap: wrap !important;
+    gap: 0.5rem 0.75rem !important;
+    padding: 0.85rem 1rem !important;
+  }
+  nav[aria-label="Main navigation"] > div:last-child {
+    gap: 0.6rem 0.9rem !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-end !important;
+  }
+
+  /* Generic grid stacker: anything declaring grid-template-columns with
+     more than one explicit fr/px column inside a hero or section gets
+     stacked. The simplest, broad-stroke approach is to force every grid
+     with multiple columns to single column. */
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  /* Restore tight 2-col grids for icon/title pairs in hero plates. */
+  dl[style*="grid-template-columns"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Hero typography: clamp() values often overshoot at 375px. */
+  h1 { font-size: clamp(1.85rem, 8.5vw, 2.6rem) !important; line-height: 1.1 !important; }
+  h2 { font-size: clamp(1.55rem, 6.5vw, 2.1rem) !important; line-height: 1.15 !important; }
+
+  /* Make stacked CTAs full-width-ish and tappable. */
+  a[class*="btn"], button[class*="btn"] {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Sticky headers eat real estate; allow them to wrap without crushing. */
+  header[style*="sticky"] {
+    padding-top: 36px !important;
+  }
+
+  /* Footer columns stack. */
+  footer [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+
+  /* Tame large display fonts that shipped without clamp. */
+  [style*="font-size:3rem"], [style*="font-size: 3rem"] { font-size: 2rem !important; }
+  [style*="font-size:3.5rem"], [style*="font-size: 3.5rem"] { font-size: 2.1rem !important; }
+  [style*="font-size:2.75rem"], [style*="font-size: 2.75rem"] { font-size: 1.85rem !important; }
+  [style*="font-size:2.5rem"], [style*="font-size: 2.5rem"] { font-size: 1.7rem !important; }
+  [style*="font-size:2.25rem"], [style*="font-size: 2.25rem"] { font-size: 1.55rem !important; }
+
+  /* Some heroes use big serif monograms with absolute padding-right. */
+  [style*="font-size:6rem"], [style*="font-size: 6rem"] { font-size: 3.25rem !important; padding-right: 0 !important; }
+
+  /* Stop horizontal scroll from oversized clamp() headlines. */
+  html, body { overflow-x: hidden !important; }
+}
+
+/* Narrower breakpoint: actually hide non-button nav links — only show on real phones. */
+@media (max-width: 560px) {
+  nav[aria-label="Main navigation"] > div:last-child > a:not([class*="btn"]):not([href^="tel:"]) {
+    display: none !important;
+  }
+}
+
+/* Universal: prevent any image from busting layout */
+img { max-width: 100%; height: auto; }
+
+/* Higher-contrast focus ring for keyboard nav */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid #ffd54a !important;
+  outline-offset: 2px !important;
+  border-radius: 3px;
+}
+
+/* Subtle :hover for any anchor that doesn't already declare one (helps link state visibility). */
+a:not([class*="btn"]):not([class*="card"]):hover { text-decoration: underline; }

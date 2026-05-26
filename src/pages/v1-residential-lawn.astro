@@ -151,7 +151,7 @@ const fonts = "https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght
         { n:'03', icon:'✉️', title:'Get a visit report', body:'After each visit you receive a text with what was done and a photo of your lawn.' },
       ].map(s => (
         <div class="card" style="text-align:left; position:relative;">
-          <span style="position:absolute; top:1.25rem; right:1.5rem; font-size:2.25rem; opacity:0.08; font-family:'IBM Plex Serif',serif; font-weight:700;">{s.n}</span>
+          <span aria-hidden="true" style="position:absolute; top:1.25rem; right:1.5rem; font-size:2.25rem; opacity:0.08; font-family:'IBM Plex Serif',serif; font-weight:700;">{s.n}</span>
           <div style="font-size:2rem; margin-bottom:0.75rem;" aria-hidden="true">{s.icon}</div>
           <h3 style="font-weight:700; font-size:1.05rem; margin-bottom:0.4rem;">{s.title}</h3>
           <p style="color:#637063; font-size:0.9rem; line-height:1.65; margin:0;">{s.body}</p>
