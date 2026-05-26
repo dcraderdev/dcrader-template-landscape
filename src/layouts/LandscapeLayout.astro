@@ -51,6 +51,11 @@ const ogImage = new URL(image, siteUrl).toString();
     {fonts && <link href={fonts} rel="stylesheet" />}
     <slot name="head" />
     <script src="/template-topheader.js" defer></script>
+    <style>
+      html { scroll-padding-top: 40px !important; }
+      body { padding-top: 36px !important; }
+      body > #dcrader-topheader, body > [data-dcrader-topheader] { padding-top: 0 !important; margin-top: -36px !important; }
+    </style>
   </head>
   <body>
     <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:fixed;top:1rem;left:1rem;z-index:9999;padding:0.5rem 1rem;background:white;color:black;font-weight:700;border-radius:4px;text-decoration:none;width:auto;height:auto;overflow:visible;'">
