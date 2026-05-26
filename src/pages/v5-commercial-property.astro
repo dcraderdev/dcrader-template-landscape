@@ -136,13 +136,13 @@ const contractTiers = [
       </div>
       <div>
         <span style="font-weight:900; font-size:1.05rem; color:#0d1b3e; display:block; line-height:1.1; letter-spacing:-0.01em;">APEX</span>
-        <span style="color:#8394b0; font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; display:block;">Commercial Landscapes</span>
+        <span style="color:#4a5a72; font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; display:block;">Commercial Landscapes</span>
       </div>
     </a>
     <div style="display:flex; gap:2rem; align-items:center;">
-      <a href="#services" style="color:#6a7a90; text-decoration:none; font-size:0.85rem; font-weight:500;">Services</a>
-      <a href="#contracts" style="color:#6a7a90; text-decoration:none; font-size:0.85rem; font-weight:500;">Contracts</a>
-      <a href="#portfolio" style="color:#6a7a90; text-decoration:none; font-size:0.85rem; font-weight:500;">Portfolio</a>
+      <a href="#services" style="color:#4a5a72; text-decoration:none; font-size:0.85rem; font-weight:500;">Services</a>
+      <a href="#contracts" style="color:#4a5a72; text-decoration:none; font-size:0.85rem; font-weight:500;">Contracts</a>
+      <a href="#portfolio" style="color:#4a5a72; text-decoration:none; font-size:0.85rem; font-weight:500;">Portfolio</a>
       <a href="#contact" class="btn-navy" style="padding:0.6rem 1.5rem; font-size:0.85rem;">Request Proposal</a>
     </div>
   </nav>
@@ -173,7 +173,7 @@ const contractTiers = [
     ].map(p => (
       <div style="text-align:center; padding:0.75rem 1.5rem; flex:1; min-width:120px;">
         <span style="font-size:2rem; display:block;" aria-hidden="true">{p.icon}</span>
-        <span style="font-size:0.75rem; font-weight:700; color:#6a7a90; text-transform:uppercase; letter-spacing:0.1em;">{p.label}</span>
+        <span style="font-size:0.75rem; font-weight:700; color:#4a5a72; text-transform:uppercase; letter-spacing:0.1em;">{p.label}</span>
       </div>
     ))}
   </div>
@@ -186,7 +186,7 @@ const contractTiers = [
       <div>
         <span class="label">What we provide</span>
         <h2 id="svc-h" style="font-size:2.25rem; font-weight:900; margin:0.25rem 0 1.25rem; letter-spacing:-0.02em;">Commercial services</h2>
-        <p style="color:#6a7a90; line-height:1.75; font-size:0.9rem; margin-bottom:1.5rem;">Scalable programs with dedicated account managers, monthly reporting, and performance SLAs.</p>
+        <p style="color:#4a5a72; line-height:1.75; font-size:0.9rem; margin-bottom:1.5rem;">Scalable programs with dedicated account managers, monthly reporting, and performance SLAs.</p>
         <a href="#contact" class="btn-navy">Get a Proposal</a>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#c0ccd8; border:1px solid #c0ccd8;">
@@ -194,7 +194,7 @@ const contractTiers = [
           <div style={`background:${i%2===0?'#fff':'#f4f7fb'}; padding:1.5rem;`}>
             <span style="font-size:1.75rem; display:block; margin-bottom:0.75rem;" aria-hidden="true">{s.icon}</span>
             <h3 style="font-size:0.95rem; font-weight:700; margin:0 0 0.4rem; color:#0d1b3e;">{s.title}</h3>
-            <p style="color:#6a7a90; font-size:0.85rem; line-height:1.65; margin:0;">{s.description}</p>
+            <p style="color:#4a5a72; font-size:0.85rem; line-height:1.65; margin:0;">{s.description}</p>
           </div>
         ))}
       </div>
@@ -234,7 +234,7 @@ const contractTiers = [
     <div style="text-align:center; margin-bottom:3.5rem;">
       <span class="label">Maintenance contracts</span>
       <h2 id="contracts-h" style="font-size:2.5rem; font-weight:900; margin:0.25rem 0 0.75rem; letter-spacing:-0.02em;">Landscape maintenance programs</h2>
-      <p style="color:#6a7a90; max-width:36rem; margin:0 auto; line-height:1.75; font-size:0.92rem;">All contracts include a dedicated account manager, monthly QA inspection, and photo report. SLA guarantees are in writing.</p>
+      <p style="color:#4a5a72; max-width:36rem; margin:0 auto; line-height:1.75; font-size:0.92rem;">All contracts include a dedicated account manager, monthly QA inspection, and photo report. SLA guarantees are in writing.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; align-items:start;">
       {contractTiers.map(t => (
@@ -244,7 +244,7 @@ const contractTiers = [
           <p style={`font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 1rem; ${t.highlight?'color:#8394b0;':'color:#8394b0;'}`}>SLA: {t.sla}</p>
           <div style="display:flex; align-items:baseline; gap:0.25rem; margin-bottom:1.5rem;">
             <span style={`font-size:2.75rem; font-weight:900; letter-spacing:-0.02em; ${t.highlight?'color:#fff;':'color:#0d1b3e;'}`}>{t.price}</span>
-            <span style={`font-size:0.85rem; ${t.highlight?'color:rgba(255,255,255,0.5);':'color:#6a7a90;'}`}>{t.period}</span>
+            <span style={`font-size:0.85rem; ${t.highlight?'color:rgba(255,255,255,0.5);':'color:#4a5a72;'}`}>{t.period}</span>
           </div>
           <ul style="list-style:none; padding:0; margin:0 0 1.75rem; display:flex; flex-direction:column; gap:0.65rem;">
             {t.features.map(f => (
@@ -261,7 +261,7 @@ const contractTiers = [
     <!-- SLA table -->
     <div style="margin-top:2.5rem; overflow-x:auto;">
       <table>
-        <caption style="text-align:left; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#6a7a90; padding-bottom:0.75rem;">Service Level Comparison</caption>
+        <caption style="text-align:left; font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#4a5a72; padding-bottom:0.75rem;">Service Level Comparison</caption>
         <thead>
           <tr>
             <th>Feature</th>
@@ -283,7 +283,7 @@ const contractTiers = [
               {row.map((cell, ci) => (
                 ci === 0
                   ? <td style="font-weight:600; color:#0d1b3e;">{cell}</td>
-                  : <td style="color:#6a7a90;">{cell}</td>
+                  : <td style="color:#4a5a72;">{cell}</td>
               ))}
             </tr>
           ))}
@@ -306,7 +306,7 @@ const contractTiers = [
           <ResponsiveImage src={p.img} alt={p.title} width={600} height={400} sizes="(max-width: 768px) 100vw, 33vw" loading="lazy" style="width:100%; height:240px; object-fit:cover; display:block;" />
           <figcaption style="padding:1.5rem; background:#f4f7fb;">
             <h3 style="font-weight:700; font-size:1rem; margin:0 0 0.35rem; color:#0d1b3e;">{p.title}</h3>
-            <p style="color:#6a7a90; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
+            <p style="color:#4a5a72; font-size:0.875rem; margin:0; line-height:1.6;">{p.description}</p>
           </figcaption>
         </figure>
       ))}
@@ -322,7 +322,7 @@ const contractTiers = [
         <span class="label">Account performance</span>
         <h2 id="ba-h" style="font-size:2.25rem; font-weight:900; margin:0.4rem 0 0; letter-spacing:-0.02em;">What changes after takeover</h2>
       </div>
-      <p style="color:#6a7a90; font-size:0.9rem; line-height:1.75; margin:0;">Three live accounts, first twelve months. Numbers pulled directly from QA reports and tenant ticket logs.</p>
+      <p style="color:#4a5a72; font-size:0.9rem; line-height:1.75; margin:0;">Three live accounts, first twelve months. Numbers pulled directly from QA reports and tenant ticket logs.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.25rem;">
       {[
@@ -374,7 +374,7 @@ const contractTiers = [
               {account.metrics.map(m => (
                 <tr>
                   <td style="font-size:0.78rem; color:#0d1b3e; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec;">{m.label}</td>
-                  <td style="font-size:0.78rem; color:#6a7a90; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec; text-align:right; font-family:monospace;">{m.before}</td>
+                  <td style="font-size:0.78rem; color:#4a5a72; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec; text-align:right; font-family:monospace;">{m.before}</td>
                   <td style="font-size:0.78rem; color:#0d1b3e; font-weight:900; padding:0.5rem 0; border-bottom:1px dashed #e0e5ec; text-align:right; font-family:monospace;">{m.after}</td>
                 </tr>
               ))}
@@ -420,7 +420,7 @@ const contractTiers = [
           <p style="margin:0; padding-top:1rem; border-top:1px solid #c0ccd8;">
             <span style="display:block; font-weight:900; font-size:0.85rem; color:#0d1b3e; letter-spacing:-0.01em;">{t.name}</span>
             <span style="display:block; font-size:0.75rem; color:#8394b0; letter-spacing:0.08em; text-transform:uppercase; margin-top:0.15rem;">{t.title}</span>
-            <span style="display:block; font-size:0.78rem; color:#6a7a90; margin-top:0.2rem;">{t.firm}</span>
+            <span style="display:block; font-size:0.78rem; color:#4a5a72; margin-top:0.2rem;">{t.firm}</span>
           </p>
         </article>
       ))}
@@ -435,7 +435,7 @@ const contractTiers = [
       <div>
         <span class="label">Leadership</span>
         <h2 id="team-h" style="font-size:2rem; font-weight:900; margin:0.4rem 0 0.75rem; letter-spacing:-0.02em;">Your accountable team</h2>
-        <p style="color:#6a7a90; font-size:0.9rem; line-height:1.75; margin:0;">Every commercial account is assigned a named Account Executive, an Operations lead, and a QA contact. No call-center handoffs.</p>
+        <p style="color:#4a5a72; font-size:0.9rem; line-height:1.75; margin:0;">Every commercial account is assigned a named Account Executive, an Operations lead, and a QA contact. No call-center handoffs.</p>
       </div>
       <table style="width:100%; border-collapse:collapse;">
         <thead>
@@ -450,7 +450,7 @@ const contractTiers = [
             const ext = ['x101','x204','x115','x132'];
             return (
               <tr>
-                <td style="font-size:0.78rem; color:#6a7a90; padding:0.85rem 0; border-bottom:1px solid #c0ccd8; letter-spacing:0.04em;">{m.role}</td>
+                <td style="font-size:0.78rem; color:#4a5a72; padding:0.85rem 0; border-bottom:1px solid #c0ccd8; letter-spacing:0.04em;">{m.role}</td>
                 <td style="font-size:0.88rem; color:#0d1b3e; font-weight:700; padding:0.85rem 0; border-bottom:1px solid #c0ccd8;">{m.name}</td>
                 <td style="font-size:0.78rem; color:#0d1b3e; padding:0.85rem 0; border-bottom:1px solid #c0ccd8; font-family:monospace; text-align:right;">{co.phone} <span style="color:#8394b0;">{ext[i] || ''}</span></td>
               </tr>
@@ -469,7 +469,7 @@ const contractTiers = [
       <div>
         <span class="label">Standards &amp; compliance</span>
         <h2 id="trust-h" style="font-size:2rem; font-weight:900; margin:0.25rem 0 1rem; letter-spacing:-0.02em;">Why property managers choose Apex</h2>
-        <p style="color:#6a7a90; line-height:1.75; font-size:0.9rem;">Every contract includes written SLAs, $5M liability coverage, OSHA-compliant crews, and DIR-registered labor. We carry the risk — so you don't have to.</p>
+        <p style="color:#4a5a72; line-height:1.75; font-size:0.9rem;">Every contract includes written SLAs, $5M liability coverage, OSHA-compliant crews, and DIR-registered labor. We carry the risk — so you don't have to.</p>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
         {trustSignals.map(t => (
